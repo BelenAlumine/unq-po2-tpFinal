@@ -3,18 +3,22 @@ package elementosDelSistemaTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+import org.junit.Test.*;
 
 import elementosDelSistema.Proyecto;
-/*@Run With(MockitoJUnitRunner.class)*/
+import elementosDelSistema.Usuario;
 
 class ProyectoTest {
 	
-	/*@Mock
-	 Usuario usuario1 Mock;*/
 	Proyecto proyectoBio;
 	
-	/*@Inyect Mocks
-	 Proyecto proyecto2;*/
+	@Mock
+	Usuario usuario1;
+	Proyecto proyecto2;
 	
 	@BeforeEach
 	void setup() {
@@ -23,14 +27,14 @@ class ProyectoTest {
 
 	@Test
 	void test() {
-	/*Usuario usuario1 = mock(UsuarioMock);
-	  doReturn...*/ //config mock
+	//Usuario usuario1 = mock();
+	  /*doReturn...*/ //config mock
 		
-	/*Proyecto proyecto = new Proyecto("Proyecto 2", "Proyecto con mock");
-	  proyecto2.suscribirParticipante(usuario1); */ //realizar la prueba
+	Proyecto proyecto = new Proyecto("Proyecto 2", "Proyecto con mock");
+	  proyecto2.suscribirParticipante(usuario1);  //realizar la prueba
 		
-	/*int expected = 1;
-	  assertEquals(1, proyecto.getParticipantes().size;*/
+	int expected = 1;
+	  assertEquals(1, proyecto.getParticipantes().size());
 	}
 
 }
