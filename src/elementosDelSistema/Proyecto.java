@@ -12,8 +12,8 @@ public class Proyecto {
 	//List<> categorias = new ArrayList<>();
 	
 	public Proyecto(String nombre, String descripcion) {
-		nombre = this.nombre;
-		descripcion = this.descripcion;	
+		this.nombre = nombre;
+		this.descripcion = descripcion;	
 	};
 	
 	public List<Usuario> getParticipantes() {
