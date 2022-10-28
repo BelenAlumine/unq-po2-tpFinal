@@ -4,13 +4,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import accionesDeProyecto.EstadoDelDesafio;
+import accionesDeProyecto.EstadoNoRealizado;
+
 public class Desafio {
 	List<Muestra> muestrasRecolectadas = new ArrayList<Muestra>();
 	int muestrasARecolectar;
 	int dificultad;
 	int recompensa;
 	//AreaGeografica
-	//EstadoDelDesafio
+	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
 	//RestriccionTemporal
 	
@@ -18,6 +21,16 @@ public class Desafio {
 	public Desafio(int muestrasARecolectar, int dificultad) {
 		this.muestrasARecolectar = muestrasARecolectar;
 		this.dificultad = dificultad;
+	}
+
+
+	public EstadoDelDesafio getEstadoDelDesafio() {
+		return estadoDelDesafio;
+	}
+
+
+	public void setEstadoDelDesafio(EstadoDelDesafio estadoDelDesafio) {
+		this.estadoDelDesafio = estadoDelDesafio;
 	}
 
 

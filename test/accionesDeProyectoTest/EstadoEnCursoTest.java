@@ -1,11 +1,8 @@
-package elementosDelSistemaTest;
-
+package accionesDeProyectoTest;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDate;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +13,7 @@ import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.EstadoNoRealizado;
 import elementosDelSistema.Desafio;
 
-class DesafioTest {
+class EstadoEnCursoTest {
 
 	Desafio desafio1;
 	EstadoDelDesafio estadoNoRealizado;
@@ -31,23 +28,12 @@ class DesafioTest {
 
 	@Test
 	void validacionDeEstado() {
-		//Verifico que el estado sea el inicial (no realizado)
 		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
 		
-		//setteo un estado nuevo y verifico que no siga siendo el anterior, después verifico que sea el que setteé
 		desafio1.setEstadoDelDesafio(estadoEnCurso);
 		assertFalse(desafio1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
-		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoEnCurso); 
+		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoEnCurso);
 	}
-	
-	@Test
-	void estadoInicial() {
-		assertEquals(5, desafio1.getDificultad());
-		assertEquals(0, desafio1.getRecompensa());
-		assertEquals(5, desafio1.getMuestrasARecolectar());
-		assertEquals(LocalDate.now(), desafio1.getFechaActual());
-		
-		assertEquals(0, desafio1.getMuestrasRecolectadas().size());
-	}
+
 
 }
