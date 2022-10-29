@@ -6,6 +6,7 @@ import java.util.List;
 
 import accionesDeProyecto.EstadoDelDesafio;
 import accionesDeProyecto.EstadoNoRealizado;
+import accionesDeProyecto.RestriccionTemporal;
 
 public class Desafio {
 	List<Muestra> muestrasRecolectadas = new ArrayList<Muestra>();
@@ -15,12 +16,34 @@ public class Desafio {
 	//AreaGeografica
 	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
-	//RestriccionTemporal
+	RestriccionTemporal restriccion;
+	boolean desafioRestingido;
 	
 	
-	public Desafio(int muestrasARecolectar, int dificultad) {
+	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion) {
 		this.muestrasARecolectar = muestrasARecolectar;
 		this.dificultad = dificultad;
+		this.restriccion = restriccion;
+	}
+
+
+	public boolean isDesafioRestingido() {
+		return desafioRestingido;
+	}
+
+
+	public void setDesafioRestingido(boolean desafioRestingido) {
+		this.desafioRestingido = desafioRestingido;
+	}
+
+
+	public RestriccionTemporal getRestriccion() {
+		return restriccion;
+	}
+
+
+	public void setRestriccion(RestriccionTemporal restriccion) {
+		this.restriccion = restriccion;
 	}
 
 
