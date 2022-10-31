@@ -2,6 +2,8 @@ package elementosDelSistema;
 
 import java.util.List;
 
+import accionesDeProyecto.EstadoDelDesafio;
+
 public class Usuario {
 
 	private List<Desafio> desafiosAceptados;
@@ -25,6 +27,15 @@ public class Usuario {
 	public List<Desafio> getDesafiosFinalizados() {
 		return null;
 		//return desafios.(filter para la verifación de estado )
+	}
+	
+	public void aceptarNuevosDesafiosRecomendados(List<Desafio> desafios) {
+		List<Desafio> desafiosAceptados = desafios.subList(0, 5 - this.getDesafiosAceptados().size());
+		for (Desafio desafioActual : desafiosAceptados) {
+			EstadoDelDesafio estadoActual = desafioActual.getEstadoDelDesafio();
+			estadoActual.cambiarDeEstado(desafioActual);
+			desafiosAceptados.add(desafioActual);
+		}
 	}
 	
 }
