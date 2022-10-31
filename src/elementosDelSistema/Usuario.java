@@ -2,6 +2,9 @@ package elementosDelSistema;
 
 
 import accionesGenerales.GeneradorDeMuestra;
+import accionesGenerales.RecomendacionDeDesafio;
+import accionesGenerales.TipoDeRecomendacion;
+
 import java.util.List;
 
 import accionesDeProyecto.EstadoDelDesafio;
@@ -13,7 +16,7 @@ public class Usuario {
 	private PerfilUsuario perfil;
 	private List<Muestra> muestrasRecolectadas;
 	GeneradorDeMuestra generadorDeMuestra = new GeneradorDeMuestra();
-
+	private RecomendacionDeDesafio recomendador;
 	
 	public Usuario(String nombre, PerfilUsuario perfil) {
 		this.nombre = nombre;
@@ -45,4 +48,9 @@ public class Usuario {
 			desafiosAceptados.add(desafioActual);
 		}
 	}
+	
+	public void cambiarTipoDeRecomendacion(TipoDeRecomendacion tipoEscogido) {
+		recomendador.setTipoDeRecomendacion(tipoEscogido);
+	}
+
 }
