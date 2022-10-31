@@ -17,6 +17,7 @@ import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
+import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
 
@@ -29,10 +30,12 @@ class EstadoNoRealizadoTest {
 	EstadoDelDesafio desafioNoRealizado;
 	EstadoDelDesafio desafioEnCurso;
 	Proyecto proyecto;
+	PerfilUsuario perfil;
 	
 	@BeforeEach
 	void setup() {
-		usuario = new Usuario();
+		perfil = new PerfilUsuario();
+		usuario = new Usuario("Juancito", perfil);
 		muestra = new Muestra(usuario);
 		muestra0 = new Muestra(usuario);
 		desafioNoRealizado = new EstadoNoRealizado();
@@ -50,6 +53,7 @@ class EstadoNoRealizadoTest {
 	@Test
 	void cambioDeEstado() {
 		//Acá hay que ver cómo el usuario acepta el desafio, y corroborar que al aceptar cambie de estado
+		desafioNoRealizado.cambiarDeEstado(desafio);
 		assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoEnCurso);
 	}
 }

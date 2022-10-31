@@ -15,8 +15,6 @@ public class EstadoNoRealizado extends EstadoDelDesafio {
 	
 	public void cambiarDeEstado(Desafio desafio) {
 		
-		System.out.println("yyyy, entró o no?");
 		desafio.setEstadoDelDesafio(estadoEnCurso);
-		System.out.println("Acá debería cambiar esta vrg");
 	}
 }
