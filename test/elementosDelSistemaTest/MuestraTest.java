@@ -7,16 +7,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import elementosDelSistema.Muestra;
+import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Usuario;
 
 class MuestraTest {
 	
 	Muestra muestra;
 	Usuario usuario1;
+	PerfilUsuario perfil;
 	
 	@BeforeEach
 	void setup() {
-		usuario1 = new Usuario();
+		perfil = new PerfilUsuario();
+		usuario1 = new Usuario("Juancito", perfil);
 		muestra = new Muestra(usuario1);
 	}
 

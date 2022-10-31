@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import elementosDelSistema.Muestra;
+import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
 
@@ -15,11 +16,13 @@ class ProyectoTest {
 	Proyecto proyectoBio;
 	Usuario usuario;
 	Muestra arbol;
+	PerfilUsuario perfil;
 	
 	@BeforeEach
 	void setup() {
 		proyectoBio = new Proyecto("Proyecto de biología", "Un proyecto para aprender de las plantas.");
-		usuario = new Usuario();
+		perfil = new PerfilUsuario();
+		usuario = new Usuario("Juancito", perfil);
 		arbol = new Muestra(usuario);
 	}
 

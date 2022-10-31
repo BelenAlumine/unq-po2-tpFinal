@@ -12,6 +12,4 @@ public class Muestra {
 	public Muestra(Usuario usuario /*ubicacion*/) {
 		this.usuario = usuario;
 	}
-	
-	
 }

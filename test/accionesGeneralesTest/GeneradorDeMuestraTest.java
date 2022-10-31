@@ -10,6 +10,7 @@ import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.GeneradorDeMuestra;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
+import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
 
@@ -20,10 +21,12 @@ class GeneradorDeMuestraTest {
 	Desafio desafio;
 	RestriccionTemporal restriccionPorFecha;
 	GeneradorDeMuestra generadorDeMuestra;
+	PerfilUsuario perfil;
 	
 	@BeforeEach
 	void setup()  {
-		usuario = new Usuario();
+		perfil = new PerfilUsuario();
+		usuario = new Usuario("Juancito", perfil);
 		proyecto = new Proyecto("null", "null");
 		//muestra = new Muestra(usuario);
 		desafio = new Desafio(2, 3, restriccionPorFecha);
