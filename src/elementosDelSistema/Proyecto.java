@@ -9,7 +9,7 @@ public class Proyecto {
 	List<Usuario> participantes = new ArrayList<Usuario>();
 	List<Muestra> muestras = new ArrayList<Muestra>();
 	List<Desafio> desafios = new ArrayList<Desafio>();
-	//List<> categorias = new ArrayList<>();
+	List<String> categorias = new ArrayList<String>();
 	
 	public Proyecto(String nombre, String descripcion) {
 		this.nombre = nombre;
