@@ -1,4 +1,4 @@
-package tpFinal.elementosDelSistema;
+package elementosDelSistema;
 
 import java.util.List;
 
