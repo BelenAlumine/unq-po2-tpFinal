@@ -50,8 +50,10 @@ class DesafioTest {
 		assertEquals(0, desafio1.getRecompensa());
 		assertEquals(5, desafio1.getMuestrasARecolectar());
 		assertEquals(LocalDate.now(), desafio1.getFechaActual());
+		assertEquals(0, desafio1.getMuestrasRecolectadas());
 		
-		assertEquals(0, desafio1.getMuestrasRecolectadas().size());
+		desafio1.sumarMuestraCargada();
+		assertEquals(1, desafio1.getMuestrasRecolectadas());
 	}
 
 }

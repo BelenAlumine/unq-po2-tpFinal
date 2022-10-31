@@ -15,7 +15,7 @@ public class EstadoEnCurso extends EstadoDelDesafio {
 	public void revisarEstadoDelDesafio(Desafio desafio) {
 		//Revisar si la cantidad de muestras subidas es igual a las requeridas, si es así
 		//actualizar el estado, sino dejarlo como está
-		if (desafio.getMuestrasRecolectadas().size() > desafio.getMuestrasARecolectar()) {
+		if (desafio.getMuestrasRecolectadas() > desafio.getMuestrasARecolectar()) {
 			this.cambiarDeEstado(desafio);
 		}
 		

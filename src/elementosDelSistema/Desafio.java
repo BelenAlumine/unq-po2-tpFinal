@@ -9,7 +9,7 @@ import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionTemporal;
 
 public class Desafio {
-	List<Muestra> muestrasRecolectadas = new ArrayList<Muestra>();
+	int muestrasRecolectadas = 0;
 	int muestrasARecolectar;
 	int dificultad;
 	int recompensa;
@@ -24,6 +24,11 @@ public class Desafio {
 		this.muestrasARecolectar = muestrasARecolectar;
 		this.dificultad = dificultad;
 		this.restriccion = restriccion;
+	}
+
+
+	public int getMuestrasRecolectadas() {
+		return muestrasRecolectadas;
 	}
 
 
@@ -56,12 +61,6 @@ public class Desafio {
 		this.estadoDelDesafio = estadoDelDesafio;
 	}
 
-
-	public List<Muestra> getMuestrasRecolectadas() {
-		return muestrasRecolectadas;
-	}
-
-
 	public int getMuestrasARecolectar() {
 		return muestrasARecolectar;
 	}
@@ -79,5 +78,9 @@ public class Desafio {
 
 	public LocalDate getFechaActual() {
 		return fechaActual;
+	}
+	
+	public int sumarMuestraCargada() {
+		return muestrasRecolectadas++;
 	}
 }

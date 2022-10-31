@@ -17,6 +17,7 @@ import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
+import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
 
 class EstadoNoRealizadoTest {
@@ -27,6 +28,7 @@ class EstadoNoRealizadoTest {
 	RestriccionTemporal restriccionPorFecha;
 	EstadoDelDesafio desafioNoRealizado;
 	EstadoDelDesafio desafioEnCurso;
+	Proyecto proyecto;
 	
 	@BeforeEach
 	void setup() {
@@ -37,6 +39,7 @@ class EstadoNoRealizadoTest {
 		desafioEnCurso = new EstadoEnCurso();
 		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now());
 		desafio = new Desafio(15, 2, restriccionPorFecha); //desafío de 15 muestras, nivel 3
+		proyecto = new Proyecto("String1", "String2");
 	}
 
 	@Test
@@ -46,10 +49,7 @@ class EstadoNoRealizadoTest {
 	
 	@Test
 	void cambioDeEstado() {
-		List<Muestra> muestrasSubidas = new ArrayList<Muestra>();
-		
-		muestrasSubidas.add(muestra);//Acá hay que poner usuario.agregarMuestra(proyecto)
-		                             //el agregar debería ver si la restriccion es FALSE y si el estado es en curso
+		//Acá hay que ver cómo el usuario acepta el desafio, y corroborar que al aceptar cambie de estado
 		assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoEnCurso);
 	}
 }
