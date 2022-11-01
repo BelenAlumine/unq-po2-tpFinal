@@ -14,7 +14,9 @@ public class RestriccionPorFinDeSemana extends RestriccionTemporal {
 	@Override
 	public void restringir(Desafio desafio) {
 		
-		if (desafio.getFechaActual().getDayOfWeek() != null /*!dias de la semana*/) {
+		if (this.esSabado(desafio) || this.esDomingo(desafio)) {
+			desafio.setDesafioRestingido(false);
+		} else {
 			desafio.setDesafioRestingido(true);
 		}
 	}

@@ -1,21 +1,27 @@
 package accionesDeProyecto;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 import elementosDelSistema.Desafio;
 
 public class RestriccionPorSemana extends RestriccionTemporal {
-	LocalDate diaDeSemana;
 	
-	public RestriccionPorSemana(LocalDate diaDeSemana) {
-		this.diaDeSemana = diaDeSemana;
+	
+	public RestriccionPorSemana() {
+		
 	}
 	
 	@Override
 	public void restringir(Desafio desafio) {
 		
-		if (desafio.getFechaActual().getDayOfWeek() != null /*dias de la semana*/) {
+		if (!this.esSabado(desafio) && !this.esDomingo(desafio)) {
+			desafio.setDesafioRestingido(false); 
+		} else {
 			desafio.setDesafioRestingido(true);
 		}
 	}
+	
+	
+	
 }
