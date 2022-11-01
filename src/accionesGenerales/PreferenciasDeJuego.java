@@ -1,16 +1,19 @@
 package accionesGenerales;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
 
 import elementosDelSistema.Desafio;
+import elementosDelSistema.Usuario;
+
 
 public class PreferenciasDeJuego extends TipoDeRecomendacion {
-
+	
 	@Override
-	public LinkedHashMap<Desafio, Integer> ordenarDesafios(Map<Desafio, Integer> desafios) {
-		// TODO Auto-generated method stub
-		return null;
+	protected List<Desafio> desafiosRecomendados(Usuario usuario) {
+
+		return this.desafiosConMayorCoincidencia(
+				this.ordenarDesafios(this.desafiosConCoincidencias(usuario.getPerfil())), 5);
 	}
 
 }

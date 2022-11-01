@@ -60,5 +60,9 @@ public class Usuario {
 	public void cambiarTipoDeRecomendacion(TipoDeRecomendacion tipoEscogido) {
 		recomendador.setTipoDeRecomendacion(tipoEscogido);
 	}
+	
+	public Desafio desafioQueMasLeGusto() {
+		return null;
+	}
 
 }
