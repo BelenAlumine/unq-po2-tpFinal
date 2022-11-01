@@ -1,5 +1,18 @@
 package accionesDeProyecto;
 
-public class RestriccionTemporal {
 
+
+import elementosDelSistema.Desafio;
+
+
+public abstract class RestriccionTemporal {
+
+	
+	public void restringir(Desafio desafio) {
+		desafio.setRestriccion(this);
+	}
+	
+	public void agregarRestriccion() {
+		
+	}
 }

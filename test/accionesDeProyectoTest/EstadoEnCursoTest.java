@@ -26,7 +26,7 @@ class EstadoEnCursoTest {
 	
 	@BeforeEach
 	void setup() {
-		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now());
+		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
 		desafio1 = new Desafio(5, 5, restriccionPorFecha);
 		estadoNoRealizado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();

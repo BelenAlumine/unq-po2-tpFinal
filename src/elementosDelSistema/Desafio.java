@@ -8,13 +8,13 @@ import accionesDeProyecto.RestriccionTemporal;
 public class Desafio {
 	int muestrasRecolectadas = 0;
 	int muestrasARecolectar;
-	int dificultad;
+	int dificultad; //agregar un throw exception para que la dificultad no pueda ser más de 5
 	int recompensa;
 	//AreaGeografica
 	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
 	RestriccionTemporal restriccion;
-	boolean desafioRestingido;
+	boolean desafioRestingido = true;
 	
 	
 	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion) {
@@ -24,6 +24,10 @@ public class Desafio {
 	}
 
 
+	public int getMuestrasARecolectar() {
+		return muestrasARecolectar;
+	}
+	
 	public int getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
 	}
@@ -58,11 +62,7 @@ public class Desafio {
 		this.estadoDelDesafio = estadoDelDesafio;
 	}
 
-	public int getMuestrasARecolectar() {
-		return muestrasARecolectar;
-	}
-
-
+	
 	public int getDificultad() {
 		return dificultad;
 	}
