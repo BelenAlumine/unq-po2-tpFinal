@@ -49,6 +49,14 @@ public class Usuario {
 		}
 	}
 	
+	public void obtenerNuevosDesafios() {
+		recomendador.getRecomendaciones(this.getPerfil());
+	}
+	
+	public PerfilUsuario getPerfil() {
+		return perfil;
+	}
+	
 	public void cambiarTipoDeRecomendacion(TipoDeRecomendacion tipoEscogido) {
 		recomendador.setTipoDeRecomendacion(tipoEscogido);
 	}
