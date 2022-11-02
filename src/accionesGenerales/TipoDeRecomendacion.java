@@ -1,7 +1,6 @@
 package accionesGenerales;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,8 +13,9 @@ import elementosDelSistema.Usuario;
 
 public abstract class TipoDeRecomendacion {
 
-	protected abstract List<Desafio> desafiosRecomendados(Usuario usuario);
+	public abstract List<Desafio> desafiosRecomendados(Usuario usuario, List<Desafio> desafios);
 	
+	// Ordenar los desafios del Map según su valor de coincidencia/similitud
 	public  LinkedHashMap<Desafio, Integer> ordenarDesafios(Map<Desafio, Integer> desafios) {
 		return desafios.entrySet()
 		        .stream()
@@ -23,24 +23,26 @@ public abstract class TipoDeRecomendacion {
 		        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 	}
 	
-	public List<Desafio> desafiosConMayorCoincidencia(LinkedHashMap<Desafio, Integer> desafios, int cantidadDeCoincidencias) {
+	// Devolver los primeros desafios del Map de desafios con sus coincidencias asociadas
+	public List<Desafio> primerosDesafiosARecomendar(LinkedHashMap<Desafio, Integer> desafios, int cantidadRequerida) {
 		List<Desafio> desafiosMasCoincidentes = new ArrayList<Desafio>();
 		Iterator<Desafio> iterator = desafios.keySet().iterator();
-		for (int i = 0; i < cantidadDeCoincidencias; i++) {
+		for (int i = 0; i < cantidadRequerida; i++) {
 			desafiosMasCoincidentes.add(iterator.next());
 		}
 		return desafiosMasCoincidentes;
 	}
 	
-	public LinkedHashMap<Desafio, Integer> desafiosConCoincidencias(PerfilUsuario perfilBase) {
+	// Metodo que procesa los desafios asociando cada desafio con su valor de coincidencia respecto al perfil de usuario dado
+	public LinkedHashMap<Desafio, Integer> desafiosConCoincidencias(PerfilUsuario perfilBase, List<Desafio> desafios) {
 		LinkedHashMap<Desafio, Integer> desafiosARecomendar = new LinkedHashMap<Desafio, Integer>();
-		List<Desafio> desafios = null; // Pasaje de todos los desafios desde sistema a procesar por coincidencias
 		for(Desafio desafioActual : desafios) {
 			desafiosARecomendar.put(desafioActual, this.obtenerCoincidencias(desafioActual, perfilBase));
 		}
 		return desafiosARecomendar;
 	}
 	
+	// Calculo de coincidencias entre desafio y preferencias en el perfil de usuario
 	public int obtenerCoincidencias(Desafio desafio, PerfilUsuario perfil) {
 		return this.diferenciaDeCaracteristicas(desafio.getMuestrasARecolectar(), perfil.getCantidadDeMuestrasARecolectar()) +
 			   this.diferenciaDeCaracteristicas(desafio.getRecompensa(), perfil.getRecompensaPreferida()) +

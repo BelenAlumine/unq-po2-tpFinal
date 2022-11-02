@@ -8,13 +8,14 @@ import accionesDeProyecto.RestriccionTemporal;
 public class Desafio {
 	int muestrasRecolectadas = 0;
 	int muestrasARecolectar;
-	int dificultad; //agregar un throw exception para que la dificultad no pueda ser más de 5
+	int dificultad; //agregar un throw exception para que la dificultad no pueda ser mï¿½s de 5
 	int recompensa;
 	//AreaGeografica
 	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
 	RestriccionTemporal restriccion;
 	boolean desafioRestingido = true;
+	private int votacionDeUsuario;
 	
 	
 	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion) {
@@ -79,5 +80,13 @@ public class Desafio {
 	
 	public int sumarMuestraCargada() {
 		return muestrasRecolectadas++;
+	}
+	
+	public void setVotacionDeUsuario(int votacion) {
+		this.votacionDeUsuario = votacion;
+	}
+	
+	public int getVotacionDeUsuario() {
+		return votacionDeUsuario;
 	}
 }

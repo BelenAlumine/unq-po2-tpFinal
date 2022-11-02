@@ -12,14 +12,15 @@ import elementosDelSistema.Usuario;
 public class Favorito extends TipoDeRecomendacion {
 
 	@Override
-	protected List<Desafio> desafiosRecomendados( Usuario usuario) {
-		List<Desafio> desafiosAOrdenarPorSimilitud =  this.desafiosConMayorCoincidencia(this.desafiosConCoincidencias(usuario.getPerfil()) , 20);
-		LinkedHashMap<Desafio, Integer> desafiosPorSimilitud = this.desafiosConValorDeSimilitud(desafiosAOrdenarPorSimilitud, usuario);
-		
-		return this.desafiosConMayorCoincidencia(this.ordenarDesafios(desafiosPorSimilitud), 5);
+	public List<Desafio> desafiosRecomendados(Usuario usuario, List<Desafio> desafios) {
+		LinkedHashMap<Desafio, Integer> desafiosAOrdenarPorSimilitud = this.desafiosConCoincidencias(usuario.getPerfil(), desafios);
+		List<Desafio> desafiosAOrdenar = this.primerosDesafiosARecomendar(this.ordenarDesafios(desafiosAOrdenarPorSimilitud) , 20);
+		desafiosAOrdenarPorSimilitud = this.desafiosAsociadosASimilitud(desafiosAOrdenar, usuario);
+	
+		return this.primerosDesafiosARecomendar(this.ordenarDesafios(desafiosAOrdenarPorSimilitud), 5);
 	}
 	
-	public LinkedHashMap<Desafio, Integer> desafiosConValorDeSimilitud(List<Desafio> desafios, Usuario usuario) {
+	public LinkedHashMap<Desafio, Integer> desafiosAsociadosASimilitud(List<Desafio> desafios, Usuario usuario) {
 		LinkedHashMap<Desafio, Integer> desafiosConSimilitud = new LinkedHashMap<Desafio, Integer>();
 		for(Desafio desafio : desafios) {
 			desafiosConSimilitud.put(desafio, this.calcularSimilitud(desafio, usuario.desafioQueMasLeGusto()));

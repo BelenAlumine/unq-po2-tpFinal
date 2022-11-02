@@ -1,20 +1,18 @@
 package accionesGenerales;
 
-
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import elementosDelSistema.Desafio;
-import elementosDelSistema.PerfilUsuario;
+import elementosDelSistema.Usuario;
+import sistema.Sistema;
 
 public class RecomendacionDeDesafio {
 
 	private TipoDeRecomendacion recomendacionElegida;
+	private Sistema sistemaBase;
 	
-	public List<Desafio> getRecomendaciones(PerfilUsuario perfilBase) {
-		LinkedHashMap<Desafio, Integer> coincidenciasAOrdenar = recomendacionElegida.desafiosConCoincidencias(perfilBase);
-		coincidenciasAOrdenar = recomendacionElegida.ordenarDesafios(coincidenciasAOrdenar);
-		return recomendacionElegida.desafiosRecomendados(coincidenciasAOrdenar);
+	public List<Desafio> getRecomendaciones(Usuario usuarioBase) {
+		return recomendacionElegida.desafiosRecomendados(usuarioBase, sistemaBase.getDesafios());
 	}
 	
 	

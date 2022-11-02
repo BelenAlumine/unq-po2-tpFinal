@@ -10,10 +10,9 @@ import elementosDelSistema.Usuario;
 public class PreferenciasDeJuego extends TipoDeRecomendacion {
 	
 	@Override
-	protected List<Desafio> desafiosRecomendados(Usuario usuario) {
-
-		return this.desafiosConMayorCoincidencia(
-				this.ordenarDesafios(this.desafiosConCoincidencias(usuario.getPerfil())), 5);
+	public List<Desafio> desafiosRecomendados(Usuario usuario, List<Desafio> desafios) {
+		LinkedHashMap<Desafio, Integer> desafiosAComprobar = this.desafiosConCoincidencias(usuario.getPerfil(), desafios);
+		return this.primerosDesafiosARecomendar(this.ordenarDesafios(desafiosAComprobar), 5);
 	}
 
 }

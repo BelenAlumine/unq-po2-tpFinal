@@ -5,6 +5,8 @@ import accionesGenerales.GeneradorDeMuestra;
 import accionesGenerales.RecomendacionDeDesafio;
 import accionesGenerales.TipoDeRecomendacion;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import accionesDeProyecto.EstadoDelDesafio;
@@ -50,7 +52,7 @@ public class Usuario {
 	}
 	
 	public void obtenerNuevosDesafios() {
-		recomendador.getRecomendaciones(this.getPerfil());
+		recomendador.getRecomendaciones(this);
 	}
 	
 	public PerfilUsuario getPerfil() {
@@ -62,7 +64,7 @@ public class Usuario {
 	}
 	
 	public Desafio desafioQueMasLeGusto() {
-		return null;
+		return this.getDesafiosFinalizados().stream().max(Comparator.comparingInt(Desafio::getVotacionDeUsuario)).get();
 	}
 
 }
