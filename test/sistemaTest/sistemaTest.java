@@ -27,7 +27,7 @@ class sistemaTest {
 	
 	@BeforeEach
 	void setUp(){
-		restriccion = new RestriccionPorFecha(LocalDate.now());
+		restriccion = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
 		desafio = new Desafio(1, 2, restriccion);
 		proyecto = new Proyecto("String1", "String2");
 		perfil = new PerfilUsuario();

@@ -40,7 +40,7 @@ class EstadoNoRealizadoTest {
 		muestra0 = new Muestra(usuario);
 		desafioNoRealizado = new EstadoNoRealizado();
 		desafioEnCurso = new EstadoEnCurso();
-		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now());
+		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
 		desafio = new Desafio(15, 2, restriccionPorFecha); //desafío de 15 muestras, nivel 3
 		proyecto = new Proyecto("String1", "String2");
 	}

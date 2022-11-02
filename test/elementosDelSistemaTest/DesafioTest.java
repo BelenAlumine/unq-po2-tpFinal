@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +26,7 @@ class DesafioTest {
 	
 	@BeforeEach
 	void setup() {
-		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now());
+		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
 		desafio1 = new Desafio(5, 5, restriccionPorFecha);
 		estadoNoRealizado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
