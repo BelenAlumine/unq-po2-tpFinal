@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionTemporal;
+import accionesGenerales.ActualizacionDeDesafio;
 import accionesGenerales.GeneradorDeMuestra;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
@@ -22,6 +23,7 @@ class GeneradorDeMuestraTest {
 	RestriccionTemporal restriccionPorFecha;
 	GeneradorDeMuestra generadorDeMuestra;
 	PerfilUsuario perfil;
+	ActualizacionDeDesafio actualizacion;
 	
 	@BeforeEach
 	void setup()  {
@@ -30,8 +32,17 @@ class GeneradorDeMuestraTest {
 		proyecto = new Proyecto("null", "null");
 		//muestra = new Muestra(usuario);
 		desafio = new Desafio(2, 3, restriccionPorFecha);
+		generadorDeMuestra = new GeneradorDeMuestra();
+		actualizacion = new ActualizacionDeDesafio();
 	}
 
+	@Test 
+	void crearMuestra() {
+		
+		generadorDeMuestra.crearMuestra(usuario, proyecto, desafio, muestra);
+		assertEquals(1, proyecto.getMuestras().size());
+	}
+	
 	@Test
 	void generarMuestra() {
 		//Estado inicial

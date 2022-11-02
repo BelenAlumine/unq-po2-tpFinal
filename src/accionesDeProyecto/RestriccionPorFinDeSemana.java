@@ -20,4 +20,9 @@ public class RestriccionPorFinDeSemana extends RestriccionTemporal {
 			desafio.setDesafioRestingido(true);
 		}
 	}
+
+	@Override
+	public boolean restringido(Desafio desafio) {
+		return this.esFinDeSemana(desafio);
+	}
 }

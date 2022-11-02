@@ -32,11 +32,11 @@ public class Desafio {
 		return muestrasRecolectadas;
 	}
 
-
+/*
 	public boolean isDesafioRestingido() {
 		return desafioRestingido;
 	}
-
+*/
 
 	public void setDesafioRestingido(boolean desafioRestingido) {
 		this.desafioRestingido = desafioRestingido;

@@ -1,5 +1,6 @@
 package accionesDeProyectoTest;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
@@ -35,11 +36,9 @@ class RestriccionPorSemanaTest {
 
 	@Test
 	void test() {
-		//assertEquals(true, desafio.getRestriccion());
 		
-		//restriccion.restringir(desafio);
-		
-		assertEquals(true, restriccion.esSabado(desafio));
+		//assertTrue(desafio.getRestriccion());
+		assertTrue(restriccion.esFinDeSemana(desafio));
 		assertEquals(false, restriccion.esSabado(desafio));
 		
 	}

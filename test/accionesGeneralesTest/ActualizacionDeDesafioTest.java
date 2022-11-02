@@ -2,7 +2,8 @@ package accionesGeneralesTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,7 @@ import accionesDeProyecto.EstadoDelDesafio;
 import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.EstadoFinalizado;
 import accionesDeProyecto.EstadoNoRealizado;
+import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.ActualizacionDeDesafio;
 import elementosDelSistema.Desafio;
@@ -25,6 +27,7 @@ class ActualizacionDeDesafioTest {
 	Proyecto proyecto;
 	ActualizacionDeDesafio actualizacion;
 	RestriccionTemporal restriccion;
+	RestriccionTemporal restriccion2;
 	EstadoDelDesafio estado;
 	EstadoDelDesafio estadoEnCurso;
 	EstadoFinalizado estadoFinalizado;
@@ -36,6 +39,8 @@ class ActualizacionDeDesafioTest {
 		estado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
 		estadoFinalizado = new EstadoFinalizado();
+		restriccion = new RestriccionPorFecha(LocalDate.of(2021, 01, 1), LocalDate.of(2025,3,2));
+		restriccion = new RestriccionPorFecha(LocalDate.of(2020, 12, 1), LocalDate.of(2021,3,2));
 	}
 	
 	@Test
@@ -66,5 +71,21 @@ class ActualizacionDeDesafioTest {
 		actualizacion.actualizarDesafio(desafio);
 		assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoFinalizado);
 		assertEquals(0, desafio.getMuestrasRecolectadas());	
+	}
+	
+	@Test
+	void actualizarMuestras() {
+		desafio.setEstadoDelDesafio(estadoEnCurso);
+		desafio.setRestriccion(restriccion);
+		
+		actualizacion.actualizarMuestrasRecolectadas(desafio);
+		assertEquals(1, desafio.getMuestrasRecolectadas());
+		
+		actualizacion.actualizarDesafio(desafio);
+		assertEquals(2, desafio.getMuestrasRecolectadas());
+		
+		desafio.setRestriccion(restriccion2);
+		actualizacion.actualizarDesafio(desafio);
+		assertEquals(2, desafio.getMuestrasRecolectadas());
 	}
 }

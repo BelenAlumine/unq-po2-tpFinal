@@ -29,5 +29,14 @@ public class RestriccionCombinada extends RestriccionTemporal {
 		};
 		
 	}
+
+	@Override
+	public boolean restringido(Desafio desafio) {
+		for (RestriccionTemporal restriccion : this.getRestricciones()) {
+			this.restringido(desafio);
+			return true;
+		}
+		return false;
+	}
 	
 }

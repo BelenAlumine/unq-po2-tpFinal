@@ -32,7 +32,9 @@ public class GeneradorDeMuestra {
 	}
 	
 	public void crearMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio, Muestra muestra) {
+		actualizar = new ActualizacionDeDesafio();
+		
 		proyecto.agregarMuestra(muestra);
-		//actualizar.actualizarDesafio(desafio);
+		actualizar.actualizarDesafio(desafio);
 	}
 }

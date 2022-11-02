@@ -10,6 +10,7 @@ import elementosDelSistema.Desafio;
 public abstract class RestriccionTemporal {
 
 	
+	
 	abstract public void restringir(Desafio desafio); 
 	
 	public void agregarRestriccion() {
@@ -23,4 +24,10 @@ public abstract class RestriccionTemporal {
 	public boolean esDomingo(Desafio desafio) {
 		return desafio.getFechaActual().getDayOfWeek() == DayOfWeek.SUNDAY;
 	}
+
+	public boolean esFinDeSemana(Desafio desafio) {
+		return this.esSabado(desafio) && this.esDomingo(desafio);
+	}
+
+	public abstract boolean restringido(Desafio desafio);
 }
