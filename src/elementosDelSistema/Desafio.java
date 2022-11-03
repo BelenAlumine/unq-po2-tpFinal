@@ -10,7 +10,7 @@ public class Desafio {
 	int muestrasARecolectar;
 	int dificultad; //agregar un throw exception para que la dificultad no pueda ser m�s de 5
 	int recompensa;
-	//AreaGeografica
+	AreaGeografica areaGeografica;
 	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
 	RestriccionTemporal restriccion;
@@ -18,10 +18,11 @@ public class Desafio {
 	private int votacionDeUsuario;
 	
 	
-	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion) {
+	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion, AreaGeografica areaGeografica) {
 		this.muestrasARecolectar = muestrasARecolectar;
 		this.dificultad = dificultad;
 		this.restriccion = restriccion; 
+		this.areaGeografica = areaGeografica;
 	}
 
 	

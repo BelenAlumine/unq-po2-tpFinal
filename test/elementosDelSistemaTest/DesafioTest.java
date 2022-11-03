@@ -14,9 +14,9 @@ import accionesDeProyecto.EstadoDelDesafio;
 import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionPorFecha;
-import accionesDeProyecto.RestriccionPorFinDeSemana;
 import accionesDeProyecto.RestriccionPorSemana;
 import accionesDeProyecto.RestriccionTemporal;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 
 class DesafioTest {
@@ -29,16 +29,18 @@ class DesafioTest {
 	RestriccionTemporal restriccionPorFecha;
 	RestriccionTemporal restriccionPorSemana;
 	RestriccionTemporal restriccionPorFinDeSemana;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccionPorFecha = new RestriccionPorFecha(LocalDate.of(2021,12,2), LocalDate.of(2023,12,12));
 		restriccionPorSemana = new RestriccionPorSemana(); 
 		//restriccionFinDeSemana = new RestriccionPorFinDeSemana();
-		desafio1 = new Desafio(5, 5, restriccionPorFecha);
+		desafio1 = new Desafio(5, 5, restriccionPorFecha, areaGeografica);
 		estadoNoRealizado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
-		desafio2 = new Desafio(5, 5, restriccionPorSemana);
+		desafio2 = new Desafio(5, 5, restriccionPorSemana, areaGeografica);
 		//desafio3 = new Desafio(5, 5, restriccionPorFinDeSemana);
 	}
 

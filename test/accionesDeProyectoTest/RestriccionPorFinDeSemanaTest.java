@@ -6,9 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionPorFinDeSemana;
-import accionesDeProyecto.RestriccionPorSemana;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -23,13 +23,15 @@ class RestriccionPorFinDeSemanaTest {
 	Proyecto proyecto;
 	PerfilUsuario perfil;
 	RecomendacionDeDesafio recomendacion;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccion = new RestriccionPorFinDeSemana();
 		usuario = new Usuario("String", perfil, recomendacion);
 		muestra = new Muestra(usuario);
-		desafio = new Desafio(1, 2, restriccion);
+		desafio = new Desafio(1, 2, restriccion, areaGeografica);
 		proyecto = new Proyecto("String1", "String2");
 	}
 

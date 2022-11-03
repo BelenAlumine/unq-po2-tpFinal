@@ -2,8 +2,6 @@ package accionesDeProyectoTest;
 
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 
@@ -13,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -29,15 +28,17 @@ class RestriccionPorFechaTest {
 	Proyecto proyecto;
 	PerfilUsuario perfil;
 	RecomendacionDeDesafio recomendacion;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccion = new RestriccionPorFecha(LocalDate.of(2022, 1, 1), LocalDate.of(2022, 12, 31));
 		restriccion1 = new RestriccionPorFecha(LocalDate.of(2020,10,12), LocalDate.of(2020, 12, 31));
 		usuario = new Usuario("String", perfil, recomendacion);
 		muestra = new Muestra(usuario);
-		desafio = new Desafio(1, 2, restriccion);
-		desafio1 = new Desafio(1, 2, restriccion1);
+		desafio = new Desafio(1, 2, restriccion, areaGeografica);
+		desafio1 = new Desafio(1, 2, restriccion1, areaGeografica);
 		proyecto = new Proyecto("String1", "String2");
 	}
 	

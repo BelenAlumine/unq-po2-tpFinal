@@ -1,6 +1,5 @@
 package accionesDeProyecto;
 
-import java.time.LocalDate;
 
 import elementosDelSistema.Desafio;
 

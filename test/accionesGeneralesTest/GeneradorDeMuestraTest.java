@@ -10,6 +10,7 @@ import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.ActualizacionDeDesafio;
 import accionesGenerales.GeneradorDeMuestra;
 import accionesGenerales.RecomendacionDeDesafio;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -21,6 +22,7 @@ class GeneradorDeMuestraTest {
 	Proyecto proyecto;
 	Muestra muestra;
 	Desafio desafio;
+	AreaGeografica areaGeografica;
 	RestriccionTemporal restriccionPorFecha;
 	GeneradorDeMuestra generadorDeMuestra;
 	PerfilUsuario perfil;
@@ -29,11 +31,12 @@ class GeneradorDeMuestraTest {
 	
 	@BeforeEach
 	void setup()  {
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		perfil = new PerfilUsuario();
 		usuario = new Usuario("Juancito", perfil, recomendacion);
 		proyecto = new Proyecto("null", "null");
 		//muestra = new Muestra(usuario);
-		desafio = new Desafio(2, 3, restriccionPorFecha);
+		desafio = new Desafio(2, 3, restriccionPorFecha, areaGeografica);
 		generadorDeMuestra = new GeneradorDeMuestra();
 		actualizacion = new ActualizacionDeDesafio();
 	}

@@ -14,6 +14,7 @@ import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.ActualizacionDeDesafio;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.Proyecto;
@@ -26,6 +27,7 @@ class ActualizacionDeDesafioTest {
 	Desafio desafio;
 	Desafio desafio1;
 	Proyecto proyecto;
+	AreaGeografica areaGeografica;
 	ActualizacionDeDesafio actualizacion;
 	RestriccionTemporal restriccion;
 	RestriccionTemporal restriccion1;
@@ -41,8 +43,9 @@ class ActualizacionDeDesafioTest {
 		estadoFinalizado = new EstadoFinalizado();
 		restriccion = new RestriccionPorFecha(LocalDate.of(2021, 01, 1), LocalDate.of(2025,3,2));
 		restriccion1 = new RestriccionPorFecha(LocalDate.of(2020, 12, 1), LocalDate.of(2021,3,2));
-		desafio = new Desafio(1, 2, restriccion);
-		desafio1 = new Desafio(1, 2, restriccion1);
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
+		desafio = new Desafio(1, 2, restriccion, areaGeografica);
+		desafio1 = new Desafio(1, 2, restriccion1, areaGeografica);
 	}
 	
 	@Test

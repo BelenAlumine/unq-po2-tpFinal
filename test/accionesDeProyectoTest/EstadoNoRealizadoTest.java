@@ -3,10 +3,7 @@ package accionesDeProyectoTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +13,7 @@ import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -33,9 +31,11 @@ class EstadoNoRealizadoTest {
 	Proyecto proyecto;
 	PerfilUsuario perfil;
 	RecomendacionDeDesafio recomendacion;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		perfil = new PerfilUsuario();
 		usuario = new Usuario("Juancito", perfil, recomendacion);
 		muestra = new Muestra(usuario);
@@ -43,7 +43,7 @@ class EstadoNoRealizadoTest {
 		desafioNoRealizado = new EstadoNoRealizado();
 		desafioEnCurso = new EstadoEnCurso();
 		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
-		desafio = new Desafio(15, 2, restriccionPorFecha); //desafío de 15 muestras, nivel 3
+		desafio = new Desafio(15, 2, restriccionPorFecha, areaGeografica); //desafío de 15 muestras, nivel 3
 		proyecto = new Proyecto("String1", "String2");
 	}
 
