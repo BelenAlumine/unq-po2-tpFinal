@@ -22,18 +22,25 @@ public class RestriccionCombinada extends RestriccionTemporal {
 	@Override
 	public void restringir(Desafio desafio) {
 		for (RestriccionTemporal restriccion : this.getRestricciones()) {
-			this.restringir(desafio);
+			restriccion.restringido(desafio);
 		};
 		
 	}
+	
+	/*if (this.restringido(desafio)) {
+			desafio.setDesafioRestringido(true);
+		} else {
+			desafio.setDesafioRestringido(false);
+		}*/
 
 	@Override
 	public boolean restringido(Desafio desafio) {
-		for (RestriccionTemporal restriccion : this.getRestricciones()) {
-			this.restringido(desafio);
-			return true;
-		}
 		return false;
+		/*for (RestriccionTemporal restriccion : this.getRestricciones()) {
+			this.restringir(desafio);
+			return true;
+		}*/
+		 
 	}
 	
 }

@@ -94,5 +94,17 @@ class RestriccionCombinadaTest {
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorSemana);
 		assertEquals(restricciones1, restriccionCombinadaNoRest.getRestricciones());
 	}
-
+	
+	@Test
+	void chequearRestriccion() {
+		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorFechaNoRest);
+		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorSemana);
+		restriccionCombinadaNoRest.restringir(desafio1);
+		assertEquals(false, desafio1.isDesafioRestringido());
+		
+		restriccionCombinadaRest.agregarRestriccion(restriccionPorFechaRest);
+		restriccionCombinadaRest.agregarRestriccion(restriccionPorSemana);
+		restriccionCombinadaRest.restringir(desafio2);
+		assertEquals(true, desafio1.isDesafioRestringido());
+	}
 }
