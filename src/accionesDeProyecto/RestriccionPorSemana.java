@@ -25,4 +25,16 @@ public class RestriccionPorSemana extends RestriccionTemporal {
 	public boolean restringido(Desafio desafio) {
 		return !this.esFinDeSemana(desafio);
 	}
+
+	@Override
+	public void agregarRestriccion(RestriccionTemporal restriccionPorFechaRest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Object getRestricciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

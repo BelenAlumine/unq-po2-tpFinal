@@ -30,4 +30,8 @@ public abstract class RestriccionTemporal {
 	}
 
 	public abstract boolean restringido(Desafio desafio);
+
+	public abstract void agregarRestriccion(RestriccionTemporal restriccionPorFechaRest);
+
+	public abstract Object getRestricciones();
 }
