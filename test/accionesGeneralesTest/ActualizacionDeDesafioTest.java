@@ -24,23 +24,25 @@ class ActualizacionDeDesafioTest {
 	Usuario usuario;
 	Muestra muestra;
 	Desafio desafio;
+	Desafio desafio1;
 	Proyecto proyecto;
 	ActualizacionDeDesafio actualizacion;
 	RestriccionTemporal restriccion;
-	RestriccionTemporal restriccion2;
+	RestriccionTemporal restriccion1;
 	EstadoDelDesafio estado;
 	EstadoDelDesafio estadoEnCurso;
 	EstadoFinalizado estadoFinalizado;
 	
 	@BeforeEach
 	void setUp(){
-		desafio = new Desafio(1, 2, restriccion);
 		actualizacion = new ActualizacionDeDesafio();
 		estado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
 		estadoFinalizado = new EstadoFinalizado();
 		restriccion = new RestriccionPorFecha(LocalDate.of(2021, 01, 1), LocalDate.of(2025,3,2));
-		restriccion = new RestriccionPorFecha(LocalDate.of(2020, 12, 1), LocalDate.of(2021,3,2));
+		restriccion1 = new RestriccionPorFecha(LocalDate.of(2020, 12, 1), LocalDate.of(2021,3,2));
+		desafio = new Desafio(1, 2, restriccion);
+		desafio1 = new Desafio(1, 2, restriccion1);
 	}
 	
 	@Test
@@ -84,8 +86,8 @@ class ActualizacionDeDesafioTest {
 		actualizacion.actualizarDesafio(desafio);
 		assertEquals(2, desafio.getMuestrasRecolectadas());
 		
-		desafio.setRestriccion(restriccion2);
-		actualizacion.actualizarDesafio(desafio);
-		assertEquals(2, desafio.getMuestrasRecolectadas());
+		desafio.setRestriccion(restriccion1);
+		actualizacion.actualizarDesafio(desafio1);
+		assertEquals(0, desafio1.getMuestrasRecolectadas());
 	}
 }

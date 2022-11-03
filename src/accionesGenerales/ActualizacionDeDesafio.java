@@ -22,7 +22,7 @@ public class ActualizacionDeDesafio {
 	public void actualizarMuestrasRecolectadas(Desafio desafio) {
 		RestriccionTemporal restriccion = desafio.getRestriccion();
 		
-		if (restriccion.restringido(desafio)) {
+		if (!restriccion.restringido(desafio)) {
 			desafio.sumarMuestraCargada();
 		}
 	}
