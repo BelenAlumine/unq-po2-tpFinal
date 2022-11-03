@@ -1,9 +1,7 @@
 package accionesDeProyectoTest;
 
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 
@@ -12,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
+import accionesGenerales.RecomendacionDeDesafio;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -20,28 +20,38 @@ import elementosDelSistema.Usuario;
 
 class RestriccionPorFechaTest {
 	RestriccionTemporal restriccion;
+	RestriccionTemporal restriccion1;
 	Desafio desafio;
+	Desafio desafio1;
 	Muestra muestra;
 	Usuario usuario;
 	Proyecto proyecto;
 	PerfilUsuario perfil;
+	RecomendacionDeDesafio recomendacion;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccion = new RestriccionPorFecha(LocalDate.of(2022, 1, 1), LocalDate.of(2022, 12, 31));
-		usuario = new Usuario("String", perfil);
+		restriccion1 = new RestriccionPorFecha(LocalDate.of(2020,10,12), LocalDate.of(2020, 12, 31));
+		usuario = new Usuario("String", perfil, recomendacion);
 		muestra = new Muestra(usuario);
-		desafio = new Desafio(1, 2, restriccion);
+		desafio = new Desafio(1, 2, restriccion, areaGeografica);
+		desafio1 = new Desafio(1, 2, restriccion1, areaGeografica);
 		proyecto = new Proyecto("String1", "String2");
 	}
-
+	
 	@Test
-	void test() {
-		//assertEquals(true, desafio.getRestriccion());
-		
+	void restriccionDelDesafio() {
+		//Por default el desafío no está restringido. Cargo parámetros que contengan en medio la fecha actual. 
+		assertEquals(false, desafio.isDesafioRestringido());
 		restriccion.restringir(desafio);
-		assertEquals(true, desafio.getRestriccion());
+		assertEquals(false, desafio.isDesafioRestringido());
 		
+		//Lo mismo, con un rango de fechas anteriores a la actual.
+		assertEquals(false, desafio1.isDesafioRestringido());
+		restriccion1.restringir(desafio1);
+		assertEquals(true, desafio1.isDesafioRestringido());
 	}
-
 }

@@ -12,17 +12,11 @@ public class RecomendacionDeDesafio {
 	private Sistema sistemaBase;
 	
 	public List<Desafio> getRecomendaciones(Usuario usuarioBase) {
-		List<Desafio> desafiosNoAceptadosPorUsuario = sistemaBase.getDesafios();
-		desafiosNoAceptadosPorUsuario.removeAll(usuarioBase.getDesafiosAceptados());
-		return recomendacionElegida.desafiosRecomendados(usuarioBase, desafiosNoAceptadosPorUsuario);
+		return recomendacionElegida.desafiosRecomendados(usuarioBase, sistemaBase.getDesafios());
 	}
 	
 	
 	public void setTipoDeRecomendacion(TipoDeRecomendacion tipoEscogido) {
 		this.recomendacionElegida = tipoEscogido;
-	}
-	
-	public void setSistemaAUsar(Sistema sistema) {
-		this.sistemaBase = sistema;
 	}
 }

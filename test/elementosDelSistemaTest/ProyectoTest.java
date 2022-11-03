@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
@@ -17,12 +18,13 @@ class ProyectoTest {
 	Usuario usuario;
 	Muestra arbol;
 	PerfilUsuario perfil;
+	RecomendacionDeDesafio recomendacion;
 	
 	@BeforeEach
 	void setup() {
 		proyectoBio = new Proyecto("Proyecto de biología", "Un proyecto para aprender de las plantas.");
 		perfil = new PerfilUsuario();
-		usuario = new Usuario("Juancito", perfil);
+		usuario = new Usuario("Juancito", perfil, recomendacion);
 		arbol = new Muestra(usuario);
 	}
 

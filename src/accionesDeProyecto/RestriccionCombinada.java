@@ -1,6 +1,5 @@
 package accionesDeProyecto;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +8,7 @@ import elementosDelSistema.Desafio;
 public class RestriccionCombinada extends RestriccionTemporal {
 	List<RestriccionTemporal> restricciones = new ArrayList<RestriccionTemporal>();
 	
-	public RestriccionCombinada(LocalDate restriccion) {
-		
-		// TODO Auto-generated constructor stub
+	public RestriccionCombinada() {
 	}
 	
 	public List<RestriccionTemporal> getRestricciones() {
@@ -25,9 +22,26 @@ public class RestriccionCombinada extends RestriccionTemporal {
 	@Override
 	public void restringir(Desafio desafio) {
 		for (RestriccionTemporal restriccion : this.getRestricciones()) {
-			this.restringir(desafio);
+			this.restringido(desafio, restriccion);
 		};
 		
+	}
+	
+
+	public boolean restringido(Desafio desafio, RestriccionTemporal restriccion) {
+		if(restriccion.restringido(desafio)) {
+			desafio.setDesafioRestringido(true);
+			return true;
+		} else {
+		desafio.setDesafioRestringido(false);
+		return false;
+		}
+	}
+
+	@Override
+	public boolean restringido(Desafio desafio) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

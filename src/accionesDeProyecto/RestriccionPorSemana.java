@@ -1,7 +1,5 @@
 package accionesDeProyecto;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 
 import elementosDelSistema.Desafio;
 
@@ -15,13 +13,28 @@ public class RestriccionPorSemana extends RestriccionTemporal {
 	@Override
 	public void restringir(Desafio desafio) {
 		
-		if (!this.esSabado(desafio) && !this.esDomingo(desafio)) {
-			desafio.setDesafioRestingido(false); 
+		if (!this.esFinDeSemana(desafio)) {
+			desafio.setDesafioRestringido(false); 
 		} else {
-			desafio.setDesafioRestingido(true);
+			desafio.setDesafioRestringido(true);
 		}
 	}
 	
-	
-	
+
+	@Override
+	public boolean restringido(Desafio desafio) {
+		return !this.esFinDeSemana(desafio);
+	}
+
+	@Override
+	public void agregarRestriccion(RestriccionTemporal restriccionPorFechaRest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Object getRestricciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
