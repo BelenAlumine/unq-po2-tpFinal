@@ -67,9 +67,9 @@ class RestriccionCombinadaTest {
 		
 		desafio1 = new Desafio(1, 2, restriccionPorFechaNoRest, areaGeografica);
 		desafio2 = new Desafio(1, 2, restriccionPorFechaRest, areaGeografica);
+		
 		desafio3 = new Desafio(1, 2, restriccionPorSemana, areaGeografica);
 		desafio4 = new Desafio(1, 2, restriccionPorFinDeSemana, areaGeografica);
-		
 		desafio5 = new Desafio(1, 2, restriccionCombinadaRest, areaGeografica);
 		desafio6 = new Desafio(1, 2, restriccionCombinadaNoRest, areaGeografica);
 		

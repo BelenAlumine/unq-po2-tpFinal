@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.Favorito;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Usuario;
 
