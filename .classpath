@@ -2,20 +2,15 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/belen/OneDrive/Escritorio/UNQ/OBJ 2/mockito/objenesis/objenesis-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/belen/OneDrive/Escritorio/UNQ/OBJ 2/mockito/mockito inline/mockito-inline-3.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/belen/OneDrive/Escritorio/UNQ/OBJ 2/mockito/mockito core/mockito-core-3.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/belen/OneDrive/Escritorio/UNQ/OBJ 2/mockito/byte buddy agent/byte-buddy-agent-1.10.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/belen/OneDrive/Escritorio/UNQ/OBJ 2/mockito/byte buddy/byte-buddy-1.10.18.jar"/>
-	<classpathentry exported="true" kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/byte-buddy-1.10.18.jar"/>
-	<classpathentry exported="true" kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/byte-buddy-agent-1.10.15.jar"/>
-	<classpathentry exported="true" kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/mockito-core-3.6.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/objenesis-3.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/byte-buddy-1.10.18.jar"/>
+	<classpathentry kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/byte-buddy-agent-1.10.15.jar"/>
+	<classpathentry kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/mockito-core-3.6.0.jar"/>
+	<classpathentry kind="lib" path="D:/Facultad/8.Programacion Con Objetos II/Mockito jars/objenesis-3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
