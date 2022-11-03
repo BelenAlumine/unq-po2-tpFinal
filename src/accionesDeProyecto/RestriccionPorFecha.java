@@ -18,11 +18,10 @@ public class RestriccionPorFecha extends RestriccionTemporal{
 	@Override
 	public void restringir(Desafio desafio) {
 		
-		if (this.fechaPreviaAlDesafio(desafio) && this.fechaPosteriorAlDesafio(desafio)) {
-			desafio.setDesafioRestingido(false);
-		} 
-		else if (this.fechaPreviaAlDesafio(desafio) || this.fechaPosteriorAlDesafio(desafio)){
-			desafio.setDesafioRestingido(true);
+		if (this.restringido(desafio)) {
+			desafio.setDesafioRestringido(true);
+		} else {
+			desafio.setDesafioRestringido(false);
 		}
 	}
 	
@@ -34,9 +33,10 @@ public class RestriccionPorFecha extends RestriccionTemporal{
 		return desafio.getFechaActual().isAfter(inicioRestriccion);
 	}
 
-
 	@Override
 	public boolean restringido(Desafio desafio) {
-		return this.fechaPreviaAlDesafio(desafio) || this.fechaPosteriorAlDesafio(desafio);
+		return !(this.fechaPreviaAlDesafio(desafio) && this.fechaPosteriorAlDesafio(desafio));
 	}
+	
+	
 }

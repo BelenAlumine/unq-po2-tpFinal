@@ -1,7 +1,5 @@
 package accionesDeProyecto;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 
 import elementosDelSistema.Desafio;
 
@@ -16,9 +14,9 @@ public class RestriccionPorSemana extends RestriccionTemporal {
 	public void restringir(Desafio desafio) {
 		
 		if (!this.esFinDeSemana(desafio)) {
-			desafio.setDesafioRestingido(false); 
+			desafio.setDesafioRestringido(false); 
 		} else {
-			desafio.setDesafioRestingido(true);
+			desafio.setDesafioRestringido(true);
 		}
 	}
 	

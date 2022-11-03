@@ -14,33 +14,51 @@ public class Desafio {
 	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
 	RestriccionTemporal restriccion;
-	boolean desafioRestingido = true;
+	boolean desafioRestringido = false;
 	private int votacionDeUsuario;
 	
 	
 	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion) {
 		this.muestrasARecolectar = muestrasARecolectar;
 		this.dificultad = dificultad;
-		this.restriccion = restriccion;
+		this.restriccion = restriccion; 
 	}
 
-
-	public int getMuestrasARecolectar() {
-		return muestrasARecolectar;
-	}
 	
 	public int getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
 	}
 
-/*
-	public boolean isDesafioRestingido() {
-		return desafioRestingido;
+	public int getMuestrasARecolectar() {
+		return muestrasARecolectar;
 	}
-*/
 
-	public void setDesafioRestingido(boolean desafioRestingido) {
-		this.desafioRestingido = desafioRestingido;
+	public int getDificultad() {
+		return dificultad;
+	}
+
+	public int getRecompensa() {
+		return recompensa;
+	}
+
+	public EstadoDelDesafio getEstadoDelDesafio() {
+		return estadoDelDesafio;
+	}
+
+	public void setEstadoDelDesafio(EstadoDelDesafio estadoDelDesafio) {
+		this.estadoDelDesafio = estadoDelDesafio;
+	}
+
+	public LocalDate getFechaActual() {
+		return fechaActual;
+	}
+	
+	public boolean isDesafioRestringido() {
+		return desafioRestringido;
+	}
+
+	public void setDesafioRestringido(boolean desafioRestringido) {
+		this.desafioRestringido = desafioRestringido;
 	}
 
 
@@ -53,30 +71,6 @@ public class Desafio {
 		this.restriccion = restriccion;
 	}
 
-
-	public EstadoDelDesafio getEstadoDelDesafio() {
-		return estadoDelDesafio;
-	}
-
-
-	public void setEstadoDelDesafio(EstadoDelDesafio estadoDelDesafio) {
-		this.estadoDelDesafio = estadoDelDesafio;
-	}
-
-	
-	public int getDificultad() {
-		return dificultad;
-	}
-
-
-	public int getRecompensa() {
-		return recompensa;
-	}
-
-
-	public LocalDate getFechaActual() {
-		return fechaActual;
-	}
 	
 	public int sumarMuestraCargada() {
 		return muestrasRecolectadas++;

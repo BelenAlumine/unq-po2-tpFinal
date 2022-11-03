@@ -5,19 +5,18 @@ import java.time.LocalDate;
 import elementosDelSistema.Desafio;
 
 public class RestriccionPorFinDeSemana extends RestriccionTemporal {
-	LocalDate finDeSemana;
 	
-	public RestriccionPorFinDeSemana(LocalDate finDeSemana) {
-		this.finDeSemana = finDeSemana;
+	public RestriccionPorFinDeSemana() {
+		
 	}
 	
 	@Override
 	public void restringir(Desafio desafio) {
 		
 		if (this.esSabado(desafio) || this.esDomingo(desafio)) {
-			desafio.setDesafioRestingido(false);
+			desafio.setDesafioRestringido(false);
 		} else {
-			desafio.setDesafioRestingido(true);
+			desafio.setDesafioRestringido(true);
 		}
 	}
 

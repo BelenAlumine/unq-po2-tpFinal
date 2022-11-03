@@ -15,6 +15,7 @@ import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
+import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -31,11 +32,12 @@ class EstadoNoRealizadoTest {
 	EstadoDelDesafio desafioEnCurso;
 	Proyecto proyecto;
 	PerfilUsuario perfil;
+	RecomendacionDeDesafio recomendacion;
 	
 	@BeforeEach
 	void setup() {
 		perfil = new PerfilUsuario();
-		usuario = new Usuario("Juancito", perfil);
+		usuario = new Usuario("Juancito", perfil, recomendacion);
 		muestra = new Muestra(usuario);
 		muestra0 = new Muestra(usuario);
 		desafioNoRealizado = new EstadoNoRealizado();

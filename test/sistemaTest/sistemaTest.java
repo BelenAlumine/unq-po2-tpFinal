@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
+import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -24,6 +25,7 @@ class sistemaTest {
 	PerfilUsuario perfil;
 	RestriccionTemporal restriccion;
 	Sistema sistema;
+	RecomendacionDeDesafio recomendacion;
 	
 	@BeforeEach
 	void setUp(){
@@ -31,7 +33,7 @@ class sistemaTest {
 		desafio = new Desafio(1, 2, restriccion);
 		proyecto = new Proyecto("String1", "String2");
 		perfil = new PerfilUsuario();
-		usuario = new Usuario("Pedro", perfil);
+		usuario = new Usuario("Pedro", perfil, recomendacion);
 		muestra = new Muestra(usuario);
 		sistema = new Sistema();
 	}

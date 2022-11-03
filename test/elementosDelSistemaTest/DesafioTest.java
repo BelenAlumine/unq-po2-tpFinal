@@ -14,22 +14,32 @@ import accionesDeProyecto.EstadoDelDesafio;
 import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionPorFecha;
+import accionesDeProyecto.RestriccionPorFinDeSemana;
+import accionesDeProyecto.RestriccionPorSemana;
 import accionesDeProyecto.RestriccionTemporal;
 import elementosDelSistema.Desafio;
 
 class DesafioTest {
 
 	Desafio desafio1;
+	Desafio desafio2;
+	Desafio desafio3;
 	EstadoDelDesafio estadoNoRealizado;
 	EstadoDelDesafio estadoEnCurso;
 	RestriccionTemporal restriccionPorFecha;
+	RestriccionTemporal restriccionPorSemana;
+	RestriccionTemporal restriccionPorFinDeSemana;
 	
 	@BeforeEach
 	void setup() {
-		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
+		restriccionPorFecha = new RestriccionPorFecha(LocalDate.of(2021,12,2), LocalDate.of(2023,12,12));
+		restriccionPorSemana = new RestriccionPorSemana(); 
+		//restriccionFinDeSemana = new RestriccionPorFinDeSemana();
 		desafio1 = new Desafio(5, 5, restriccionPorFecha);
 		estadoNoRealizado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
+		desafio2 = new Desafio(5, 5, restriccionPorSemana);
+		//desafio3 = new Desafio(5, 5, restriccionPorFinDeSemana);
 	}
 
 	@Test
@@ -54,5 +64,11 @@ class DesafioTest {
 		desafio1.sumarMuestraCargada();
 		assertEquals(1, desafio1.getMuestrasRecolectadas());
 	}
-
+	
+	@Test
+	void restriccionDelDesafio() {
+		assertEquals(false, desafio1.isDesafioRestringido());
+		restriccionPorFecha.restringir(desafio1);
+		assertEquals(false, desafio1.isDesafioRestringido());
+	}
 }

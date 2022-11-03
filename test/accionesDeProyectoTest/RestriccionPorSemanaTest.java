@@ -1,16 +1,13 @@
 package accionesDeProyectoTest;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionPorSemana;
 import accionesDeProyecto.RestriccionTemporal;
+import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -24,11 +21,12 @@ class RestriccionPorSemanaTest {
 	Usuario usuario;
 	Proyecto proyecto;
 	PerfilUsuario perfil;
+	RecomendacionDeDesafio recomendacion;
 	
 	@BeforeEach
 	void setup() {
 		restriccion = new RestriccionPorSemana();
-		usuario = new Usuario("String", perfil);
+		usuario = new Usuario("String", perfil, recomendacion);
 		muestra = new Muestra(usuario);
 		desafio = new Desafio(1, 2, restriccion);
 		proyecto = new Proyecto("String1", "String2");
@@ -36,10 +34,14 @@ class RestriccionPorSemanaTest {
 
 	@Test
 	void test() {
-		
-		//assertTrue(desafio.getRestriccion());
-		assertTrue(restriccion.esFinDeSemana(desafio));
+		//Compruebo la restricción inicial, 
+		assertEquals(false, desafio.isDesafioRestringido());
+		assertEquals(false, restriccion.esFinDeSemana(desafio));
 		assertEquals(false, restriccion.esSabado(desafio));
+		assertEquals(false, restriccion.esDomingo(desafio));
+		//compruebo la restriccion
+		restriccion.restringir(desafio);
+		assertEquals(false, desafio.isDesafioRestringido());
 		
 	}
 }

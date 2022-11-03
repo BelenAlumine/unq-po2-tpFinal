@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.ActualizacionDeDesafio;
 import accionesGenerales.GeneradorDeMuestra;
+import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -24,11 +25,12 @@ class GeneradorDeMuestraTest {
 	GeneradorDeMuestra generadorDeMuestra;
 	PerfilUsuario perfil;
 	ActualizacionDeDesafio actualizacion;
+	RecomendacionDeDesafio recomendacion;
 	
 	@BeforeEach
 	void setup()  {
 		perfil = new PerfilUsuario();
-		usuario = new Usuario("Juancito", perfil);
+		usuario = new Usuario("Juancito", perfil, recomendacion);
 		proyecto = new Proyecto("null", "null");
 		//muestra = new Muestra(usuario);
 		desafio = new Desafio(2, 3, restriccionPorFecha);
