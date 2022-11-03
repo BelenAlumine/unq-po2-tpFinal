@@ -6,7 +6,6 @@ import accionesGenerales.RecomendacionDeDesafio;
 import accionesGenerales.TipoDeRecomendacion;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -20,10 +19,26 @@ public class Usuario {
 	private List<Muestra> muestrasRecolectadas;
 	GeneradorDeMuestra generadorDeMuestra = new GeneradorDeMuestra();
 	private RecomendacionDeDesafio recomendador;
+
+	public Usuario(String nombre, PerfilUsuario perfil) {
+		this.desafiosAceptados = new ArrayList<Desafio>();
+		this.nombre = nombre;
+		this.perfil = perfil;
+		this.muestrasRecolectadas = new ArrayList<Muestra>();
+		this.recomendador = null;
+	}
 	
 	public Usuario(String nombre, PerfilUsuario perfil, RecomendacionDeDesafio recomendador) {
 		this.desafiosAceptados = new ArrayList<Desafio>();
 		this.nombre = nombre;
+		this.perfil = perfil;
+		this.muestrasRecolectadas = new ArrayList<Muestra>();
+		this.recomendador = recomendador;
+	}
+	
+	public Usuario(PerfilUsuario perfil, RecomendacionDeDesafio recomendador, List<Desafio> desafiosDeBase) {
+		this.desafiosAceptados = desafiosDeBase;
+		this.nombre = "Test";
 		this.perfil = perfil;
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
 		this.recomendador = recomendador;
@@ -38,8 +53,7 @@ public class Usuario {
 	}
 	
 	public List<Desafio> getDesafiosFinalizados() {
-		return null;
-		//return desafios.(filter para la verifación de estado )
+		return desafiosAceptados.stream().filter(desafio -> desafio.esUnDesafioCompletado()).toList();
 	}
 	
 	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio) {
@@ -47,9 +61,10 @@ public class Usuario {
 	}
 
 	public void solicitarNuevosDesafiosRecomendados() {
-		List<Desafio> desafiosAceptados = this.obtenerNuevosDesafios().subList(0, 5 - this.getDesafiosAceptados().size());
-		// subList(0, 5 - this.getDesafiosAceptados().size()) , para garantizar que el usuario no tiene mas de 5 desafios activos
-		for (Desafio desafioActual : desafiosAceptados) {
+		List<Desafio> desafiosActivos = this.getDesafiosAceptados();
+		desafiosActivos.removeAll(this.getDesafiosFinalizados());
+		List<Desafio> desafiosQueAceptar = this.obtenerNuevosDesafios().subList(0, 5 - desafiosActivos.size());
+		for (Desafio desafioActual : desafiosQueAceptar) {
 			EstadoDelDesafio estadoActual = desafioActual.getEstadoDelDesafio();
 			estadoActual.cambiarDeEstado(desafioActual);
 			desafiosAceptados.add(desafioActual);
@@ -69,7 +84,11 @@ public class Usuario {
 	}
 	
 	public Desafio desafioQueMasLeGusto() {
-		return this.getDesafiosFinalizados().stream().max(Comparator.comparingInt(Desafio::getVotacionDeUsuario)).get();
+		return desafiosAceptados.stream().max(Comparator.comparingInt(Desafio::getVotacionDeUsuario)).get();
+	}
+	
+	public void votarDesafioCon(Desafio desafio, int valoracion) {
+		desafio.setVotacionDeUsuario(valoracion);
 	}
 
 }
