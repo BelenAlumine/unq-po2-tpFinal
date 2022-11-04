@@ -16,6 +16,10 @@ public class Proyecto {
 		this.descripcion = descripcion;	
 	};
 	
+	public String getNombre() {
+		return nombre;
+	}
+
 	public List<Usuario> getParticipantes() {
 		return participantes;
 	}
@@ -26,6 +30,10 @@ public class Proyecto {
 	
 	public List<Desafio> getDesafios() {
 		return desafios;
+	}
+
+	public List<String> getCategorias() {
+		return categorias;
 	}
 
 	public void suscribirParticipante(Usuario participante) {
