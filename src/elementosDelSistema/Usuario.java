@@ -25,7 +25,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.perfil = perfil;
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
-		this.recomendador = null;
+		this.recomendador = new RecomendacionDeDesafio();
 	}
 	
 	public Usuario(String nombre, PerfilUsuario perfil, RecomendacionDeDesafio recomendador) {
@@ -36,13 +36,6 @@ public class Usuario {
 		this.recomendador = recomendador;
 	}
 	
-	public Usuario(PerfilUsuario perfil, RecomendacionDeDesafio recomendador, List<Desafio> desafiosDeBase) {
-		this.desafiosAceptados = desafiosDeBase;
-		this.nombre = "Test";
-		this.perfil = perfil;
-		this.muestrasRecolectadas = new ArrayList<Muestra>();
-		this.recomendador = recomendador;
-	}
 	
 	public List<Muestra> getMuestras() {
 		return muestrasRecolectadas;
@@ -56,8 +49,21 @@ public class Usuario {
 		return desafiosAceptados.stream().filter(desafio -> desafio.esUnDesafioCompletado()).toList();
 	}
 	
-	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio) {
-		generadorDeMuestra.generarMuestra(usuario, proyecto, desafio);
+	public float porcentajeDeCompletitudTotal() {
+		float sumaDePorcentajes = 0;
+		for (Desafio desafio : this.getDesafiosAceptados()) {
+			sumaDePorcentajes = sumaDePorcentajes + desafio.porcentajeDeCompletitud();
+		}
+		return sumaDePorcentajes / this.getDesafiosAceptados().size();
+	}
+	
+	public float porcentajeCompletitudDeDesafio(Desafio desafio) {
+		return desafio.porcentajeDeCompletitud();
+	}
+
+	
+	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio, AreaGeografica area) {
+		generadorDeMuestra.generarMuestra(usuario, proyecto, desafio, area);
 	}
 
 	public void solicitarNuevosDesafiosRecomendados() {
@@ -67,8 +73,12 @@ public class Usuario {
 		for (Desafio desafioActual : desafiosQueAceptar) {
 			EstadoDelDesafio estadoActual = desafioActual.getEstadoDelDesafio();
 			estadoActual.cambiarDeEstado(desafioActual);
-			desafiosAceptados.add(desafioActual);
+			agregarDesafio(desafioActual);
 		}
+	}
+	
+	public void agregarDesafio(Desafio desafio) {
+		desafiosAceptados.add(desafio);
 	}
 	
 	public List<Desafio> obtenerNuevosDesafios() {
@@ -84,11 +94,11 @@ public class Usuario {
 	}
 	
 	public Desafio desafioQueMasLeGusto() {
-		return desafiosAceptados.stream().max(Comparator.comparingInt(Desafio::getVotacionDeUsuario)).get();
+		return desafiosAceptados.stream().max(Comparator.comparingInt(Desafio::getVotacion)).get();
 	}
 	
-	public void votarDesafioCon(Desafio desafio, int valoracion) {
-		desafio.setVotacionDeUsuario(valoracion);
+	public void votarDesafioCon(Desafio desafio, int valoracion) throws Exception {
+		desafio.agregarVotacion(valoracion);
 	}
-
+	
 }

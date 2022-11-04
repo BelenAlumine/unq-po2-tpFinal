@@ -9,6 +9,7 @@ import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.Favorito;
 import accionesGenerales.PreferenciasDeJuego;
 import accionesGenerales.RecomendacionDeDesafio;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Usuario;
@@ -25,8 +26,7 @@ class RecomendacionDeDesafioTest {
 	RecomendacionDeDesafio recomendador1;
 	PreferenciasDeJuego preferencias1;
 	Favorito favorito1;
-	Usuario usuarioBase1;
-	Usuario usuarioBase2;
+	Usuario usuarioBase;
 	PerfilUsuario perfilBase;
 	Desafio desafio1;
 	Desafio desafio2;
@@ -37,6 +37,7 @@ class RecomendacionDeDesafioTest {
 	Desafio desafio7;
 	Desafio desafio8;
 	RestriccionTemporal restriccionBase;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setUp() {
@@ -47,7 +48,7 @@ class RecomendacionDeDesafioTest {
 		preferencias1 = new PreferenciasDeJuego();
 		favorito1 = new Favorito();
 		perfilBase = new PerfilUsuario(6, 3, 8);
-		usuarioBase1 = new Usuario("Prueba", perfilBase, recomendador1);
+		usuarioBase = new Usuario("Prueba", perfilBase, recomendador1);
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
@@ -55,8 +56,7 @@ class RecomendacionDeDesafioTest {
 		desafio5 = mock(Desafio.class);
 		desafio6 = mock(Desafio.class);
 		desafio7 = mock(Desafio.class);
-		desafio8 = new Desafio(7, 3, 10, restriccionBase);
-		usuarioBase2 = new Usuario(perfilBase, recomendador1, Arrays.asList(desafio8));
+		desafio8 = new Desafio(7, 3, 10, restriccionBase, areaGeografica);
 	}
 	
 	@Test
@@ -85,7 +85,7 @@ class RecomendacionDeDesafioTest {
 		when(desafio7.getRecompensa()).thenReturn(6);
 		recomendador1.setSistemaAUsar(sistemaBase);
 		recomendador1.setTipoDeRecomendacion(preferencias1);
-		List<Desafio> resultado = recomendador1.getRecomendaciones(usuarioBase1);
+		List<Desafio> resultado = recomendador1.getRecomendaciones(usuarioBase);
 		
 		// Las preferencias del perfil de usuario es 6(Muestras) 3(Dificultad) 8(Recompensa)
 		assertTrue(resultado.contains(desafio1)); // Coincidencia = 8
@@ -98,9 +98,9 @@ class RecomendacionDeDesafioTest {
 	}
 	
 	@Test
-	void recomendadosSegunTipoFavorito() {
-		
-		usuarioBase2.votarDesafioCon(desafio8, 4);
+	void recomendadosSegunTipoFavorito() throws Exception {
+		usuarioBase.agregarDesafio(desafio8);
+		usuarioBase.votarDesafioCon(desafio8, 4);
 		when(sistemaBase.getDesafios()).thenReturn(Arrays.asList(desafio1, desafio2, desafio3, desafio4, desafio5, desafio6, desafio7));
 		when(desafio1.getMuestrasARecolectar()).thenReturn(9);
 		when(desafio1.getDificultad()).thenReturn(4);
@@ -125,7 +125,7 @@ class RecomendacionDeDesafioTest {
 		when(desafio7.getRecompensa()).thenReturn(6);
 		recomendador1.setSistemaAUsar(sistemaBase);
 		recomendador1.setTipoDeRecomendacion(favorito1);
-		List<Desafio> resultado = recomendador1.getRecomendaciones(usuarioBase2);
+		List<Desafio> resultado = recomendador1.getRecomendaciones(usuarioBase);
 		
 		// Los valores del desafio favorito es 7(Muestras) 3(Dificultad) 10(Recompensa)
 		assertFalse(resultado.contains(desafio1)); // Similitud = 3

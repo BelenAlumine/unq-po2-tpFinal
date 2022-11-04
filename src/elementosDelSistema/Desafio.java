@@ -6,18 +6,19 @@ import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.EstadoFinalizado;
 import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionTemporal;
+import accionesGenerales.ValoracionDesafio;
 
 public class Desafio {
 	int muestrasRecolectadas = 0;
 	int muestrasARecolectar;
 	int dificultad; //agregar un throw exception para que la dificultad no pueda ser m�s de 5
 	int recompensa;
-	//AreaGeografica
+	AreaGeografica areaGeografica;
 	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
 	RestriccionTemporal restriccion;
 	boolean desafioRestingido = true;
-	private int votacionDeUsuario = 0;
+	private ValoracionDesafio valoracion;
 	
 	
 	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion) {
@@ -26,11 +27,13 @@ public class Desafio {
 		this.restriccion = restriccion;
 	}
 	
-	public Desafio(int muestrasARecolectar, int dificultad, int recompensa, RestriccionTemporal restriccion) {
+	public Desafio(int muestrasARecolectar, int dificultad, int recompensa, RestriccionTemporal restriccion, AreaGeografica area) {
 		this.muestrasARecolectar = muestrasARecolectar;
 		this.dificultad = dificultad;
 		this.restriccion = restriccion;
 		this.recompensa = recompensa;
+		this.areaGeografica = area;
+		this.valoracion = new ValoracionDesafio();
 	}
 
 
@@ -91,23 +94,17 @@ public class Desafio {
 		return muestrasRecolectadas++;
 	}
 	
-	public void setVotacionDeUsuario(int votacion) {
-		this.votacionDeUsuario = votacion;
+	public void agregarVotacion(int votacion) throws Exception {
+		valoracion.agregarValoracion(votacion);
 	}
 	
-	public int getVotacionDeUsuario() {
-		return votacionDeUsuario;
+	public int getVotacion() {
+		return valoracion.obtenerValoracion();
 	}
 	
-//	public boolean esUnDesafioEnCurso() {
-//		EstadoEnCurso estadoBuscado = new EstadoEnCurso(); 
-//		return (estadoBuscado).equals(this.getEstadoDelDesafio());
-//	}
-//	
-//	public boolean esUnDesafioFinalizado() {
-//		EstadoDelDesafio estadoBuscado = new EstadoFinalizado(); 
-//		return (this.getEstadoDelDesafio()).equals(new EstadoFinalizado());
-//	}
+	public void agregarMuestraRecolectada() {
+		muestrasRecolectadas = muestrasRecolectadas + 1;
+	}
 	
 	public boolean leFaltanMuestrasARecolectar() {
 		return this.getMuestrasARecolectar() > this.getMuestrasRecolectadas();
@@ -115,5 +112,9 @@ public class Desafio {
 	
 	public boolean esUnDesafioCompletado() {
 		return this.getMuestrasARecolectar() == this.getMuestrasRecolectadas();
+	}
+	
+	public float porcentajeDeCompletitud() {
+		return ((float) this.muestrasRecolectadas / this.muestrasARecolectar) * 100;
 	}
 }

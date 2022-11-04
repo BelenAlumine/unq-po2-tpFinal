@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
@@ -17,13 +18,15 @@ class ProyectoTest {
 	Usuario usuario;
 	Muestra arbol;
 	PerfilUsuario perfil;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
-		proyectoBio = new Proyecto("Proyecto de biología", "Un proyecto para aprender de las plantas.");
+		proyectoBio = new Proyecto("Proyecto de biologï¿½a", "Un proyecto para aprender de las plantas.");
 		perfil = new PerfilUsuario();
 		usuario = new Usuario("Juancito", perfil);
-		arbol = new Muestra(usuario);
+		areaGeografica = new AreaGeografica(0d, 0d, 0d);
+		arbol = new Muestra(usuario, areaGeografica);
 	}
 
 	@Test

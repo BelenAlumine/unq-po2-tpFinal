@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionPorSemana;
 import accionesDeProyecto.RestriccionTemporal;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -23,12 +24,14 @@ class RestriccionPorSemanaTest {
 	Usuario usuario;
 	Proyecto proyecto;
 	PerfilUsuario perfil;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
 		restriccion = new RestriccionPorSemana();
+		areaGeografica = new AreaGeografica(0d, 0d, 0d);
 		usuario = new Usuario("String", perfil);
-		muestra = new Muestra(usuario);
+		muestra = new Muestra(usuario, areaGeografica);
 		desafio = new Desafio(1, 2, restriccion);
 		proyecto = new Proyecto("String1", "String2");
 	}

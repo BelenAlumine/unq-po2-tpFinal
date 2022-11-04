@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -25,12 +26,14 @@ class RestriccionPorFechaTest {
 	Usuario usuario;
 	Proyecto proyecto;
 	PerfilUsuario perfil;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
 		restriccion = new RestriccionPorFecha(LocalDate.of(2022, 1, 1), LocalDate.of(2022, 12, 31));
 		usuario = new Usuario("String", perfil);
-		muestra = new Muestra(usuario);
+		areaGeografica = new AreaGeografica(0d, 0d, 0d);
+		muestra = new Muestra(usuario, areaGeografica);
 		desafio = new Desafio(1, 2, restriccion);
 		proyecto = new Proyecto("String1", "String2");
 	}

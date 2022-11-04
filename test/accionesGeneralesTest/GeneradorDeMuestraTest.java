@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.GeneradorDeMuestra;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -22,6 +23,7 @@ class GeneradorDeMuestraTest {
 	RestriccionTemporal restriccionPorFecha;
 	GeneradorDeMuestra generadorDeMuestra;
 	PerfilUsuario perfil;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup()  {
@@ -30,6 +32,7 @@ class GeneradorDeMuestraTest {
 		proyecto = new Proyecto("null", "null");
 		//muestra = new Muestra(usuario);
 		desafio = new Desafio(2, 3, restriccionPorFecha);
+		areaGeografica = new AreaGeografica(0d, 0d, 0d);
 	}
 
 	@Test
@@ -39,7 +42,7 @@ class GeneradorDeMuestraTest {
 		assertEquals(0, desafio.getMuestrasRecolectadas());
 		
 		//Cambios al generar muestra
-		usuario.generarMuestra(usuario, proyecto, desafio);
+		usuario.generarMuestra(usuario, proyecto, desafio, areaGeografica);
 		assertEquals(1, proyecto.getMuestras().size());
 		//assertEquals(1, desafio.getMuestrasRecolectadas());
 	}
