@@ -20,14 +20,14 @@ public class Usuario {
 	GeneradorDeMuestra generadorDeMuestra = new GeneradorDeMuestra();
 	private RecomendacionDeDesafio recomendador;
 
-	public Usuario(String nombre, PerfilUsuario perfil) {
-		this.desafiosAceptados = new ArrayList<Desafio>();
-		this.nombre = nombre;
-		this.perfil = perfil;
-		this.muestrasRecolectadas = new ArrayList<Muestra>();
-		this.recomendador = new RecomendacionDeDesafio();
-	}
-	
+//	public Usuario(String nombre, PerfilUsuario perfil) {
+//		this.desafiosAceptados = new ArrayList<Desafio>();
+//		this.nombre = nombre;
+//		this.perfil = perfil;
+//		this.muestrasRecolectadas = new ArrayList<Muestra>();
+//		this.recomendador = new RecomendacionDeDesafio();
+//	}
+
 	public Usuario(String nombre, PerfilUsuario perfil, RecomendacionDeDesafio recomendador) {
 		this.desafiosAceptados = new ArrayList<Desafio>();
 		this.nombre = nombre;
@@ -35,10 +35,13 @@ public class Usuario {
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
 		this.recomendador = recomendador;
 	}
-	
-	
+
 	public List<Muestra> getMuestras() {
 		return muestrasRecolectadas;
+	}
+	
+	public PerfilUsuario getPerfil() {
+		return perfil;
 	}
 	
 	public List<Desafio> getDesafiosAceptados() {
@@ -85,9 +88,6 @@ public class Usuario {
 		return recomendador.getRecomendaciones(this);
 	}
 	
-	public PerfilUsuario getPerfil() {
-		return perfil;
-	}
 	
 	public void cambiarTipoDeRecomendacion(TipoDeRecomendacion tipoEscogido) {
 		recomendador.setTipoDeRecomendacion(tipoEscogido);

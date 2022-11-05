@@ -11,6 +11,7 @@ public class AreaGeografica {
 		this.longitud = longitud;
 		this.radio = radio;
 	}
+
 	
 	public double getLatitud() {
 		return latitud;
@@ -23,4 +24,5 @@ public class AreaGeografica {
 	public double getRadio() {
 		return radio;
 	}
+	
 }

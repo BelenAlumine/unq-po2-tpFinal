@@ -13,7 +13,7 @@ import elementosDelSistema.Usuario;
 
 public abstract class TipoDeRecomendacion {
 
-	public abstract List<Desafio> desafiosRecomendados(Usuario usuario, List<Desafio> desafios);
+public abstract List<Desafio> desafiosRecomendados(Usuario usuario, List<Desafio> desafios);
 	
 	// Ordenar los desafios del Map según su valor de coincidencia/similitud
 	public  LinkedHashMap<Desafio, Float> ordenarDesafios(Map<Desafio, Float> desafios) {

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.Favorito;
 import accionesGenerales.PreferenciasDeJuego;
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import java.util.List;
+
 
 class RecomendacionDeDesafioTest {
 
@@ -136,6 +138,5 @@ class RecomendacionDeDesafioTest {
 		assertTrue(resultado.contains(desafio6)); // Similitud =  2.66
 		assertTrue(resultado.contains(desafio7)); // Similitud =  2.33
 	}
-
 
 }

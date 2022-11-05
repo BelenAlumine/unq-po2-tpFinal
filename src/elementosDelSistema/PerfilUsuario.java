@@ -6,16 +6,14 @@ public class PerfilUsuario {
 	private int dificultadDeseada;
 	private int recompensaPreferida;
 	
-	public PerfilUsuario() {
-	}
-	
+
 	public PerfilUsuario(int cantidadDeMuestras, int dificultad, int recompensa) {
 		this.cantidadDeMuestrasARecolectar = cantidadDeMuestras;
 		this.dificultadDeseada = dificultad;
 		this.recompensaPreferida = recompensa;
 	}
 	
-	public void setRecomendacionPreferida(int recompensaDeseada) {
+	public void setRecomenpensaPreferida(int recompensaDeseada) {
 		this.recompensaPreferida = recompensaDeseada;
 	}
 	

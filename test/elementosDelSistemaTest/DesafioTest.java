@@ -14,22 +14,34 @@ import accionesDeProyecto.EstadoDelDesafio;
 import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionPorFecha;
+import accionesDeProyecto.RestriccionPorSemana;
 import accionesDeProyecto.RestriccionTemporal;
+import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 
 class DesafioTest {
 
 	Desafio desafio1;
+	Desafio desafio2;
+	Desafio desafio3;
 	EstadoDelDesafio estadoNoRealizado;
 	EstadoDelDesafio estadoEnCurso;
 	RestriccionTemporal restriccionPorFecha;
+	RestriccionTemporal restriccionPorSemana;
+	RestriccionTemporal restriccionPorFinDeSemana;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setup() {
-		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
-		desafio1 = new Desafio(5, 5, restriccionPorFecha);
+		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
+		restriccionPorFecha = new RestriccionPorFecha(LocalDate.of(2021,12,2), LocalDate.of(2023,12,12));
+		restriccionPorSemana = new RestriccionPorSemana(); 
+		//restriccionFinDeSemana = new RestriccionPorFinDeSemana();
 		estadoNoRealizado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
+		desafio1 = new Desafio(5, 10, 5, restriccionPorFecha, areaGeografica);
+		desafio2 = new Desafio(5, 5, 5, restriccionPorSemana, areaGeografica);
+		//desafio3 = new Desafio(5, 5, restriccionPorFinDeSemana);
 	}
 
 	@Test
@@ -37,7 +49,7 @@ class DesafioTest {
 		//Verifico que el estado sea el inicial (no realizado)
 		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
 		
-		//setteo un estado nuevo y verifico que no siga siendo el anterior, después verifico que sea el que setteé
+		//setteo un estado nuevo y verifico que no siga siendo el anterior, despuï¿½s verifico que sea el que setteï¿½
 		desafio1.setEstadoDelDesafio(estadoEnCurso);
 		assertFalse(desafio1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
 		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoEnCurso); 
@@ -45,8 +57,8 @@ class DesafioTest {
 	
 	@Test
 	void estadoInicial() {
-		assertEquals(5, desafio1.getDificultad());
-		assertEquals(0, desafio1.getRecompensa());
+		assertEquals(10, desafio1.getDificultad());
+		assertEquals(5, desafio1.getRecompensa());
 		assertEquals(5, desafio1.getMuestrasARecolectar());
 		assertEquals(LocalDate.now(), desafio1.getFechaActual());
 		assertEquals(0, desafio1.getMuestrasRecolectadas());
@@ -54,5 +66,23 @@ class DesafioTest {
 		desafio1.sumarMuestraCargada();
 		assertEquals(1, desafio1.getMuestrasRecolectadas());
 	}
-
+	
+	@Test
+	void restriccionDelDesafio() {
+		assertEquals(false, desafio1.isDesafioRestringido());
+		restriccionPorFecha.restringir(desafio1);
+		assertEquals(false, desafio1.isDesafioRestringido());
+	}
+	
+	@Test
+	void avanceDeDesafioEnMuestras() {
+		assertTrue(desafio1.leFaltanMuestrasARecolectar());
+		desafio1.sumarMuestraCargada();
+		desafio1.sumarMuestraCargada();
+		desafio1.sumarMuestraCargada();
+		desafio1.sumarMuestraCargada();
+		assertTrue(desafio1.leFaltanMuestrasARecolectar());
+		desafio1.sumarMuestraCargada();
+		assertTrue(desafio1.esUnDesafioCompletado());
+	}
 }

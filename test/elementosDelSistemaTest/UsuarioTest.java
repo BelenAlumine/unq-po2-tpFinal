@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionTemporal;
+import accionesGenerales.Favorito;
 import accionesGenerales.RecomendacionDeDesafio;
 import accionesGenerales.ValoracionDesafio;
 import elementosDelSistema.AreaGeografica;
@@ -19,6 +20,7 @@ import java.util.Arrays;
 class UsuarioTest {
 
 	Usuario usuarioBase;
+	Usuario usuarioBase2;
 	PerfilUsuario perfilAsociado;
 	Desafio desafio1;
 	Desafio desafio2;
@@ -32,6 +34,7 @@ class UsuarioTest {
 	Desafio desafio10;
 	RecomendacionDeDesafio recomendador1;
 	RecomendacionDeDesafio recomendador2;
+	Favorito tipoFavorito;
 	RestriccionTemporal restriccion1;
 	AreaGeografica areaGeografica;
 	
@@ -41,6 +44,8 @@ class UsuarioTest {
 		recomendador1 = mock(RecomendacionDeDesafio.class);
 		restriccion1 = mock(RestriccionTemporal.class);
 		usuarioBase = new Usuario("Marcos", perfilAsociado, recomendador1);
+		usuarioBase2 = new Usuario("Prueba", perfilAsociado, recomendador2);
+		recomendador2 = new RecomendacionDeDesafio();
 		desafio1 = new Desafio(3, 5, 8, restriccion1, areaGeografica);
 		desafio2 = new Desafio(5, 2, 10, restriccion1, areaGeografica);
 		desafio3 = new Desafio(7, 5, 14, restriccion1, areaGeografica);
@@ -105,4 +110,5 @@ class UsuarioTest {
 		when(desafio10.porcentajeDeCompletitud()).thenReturn(36.5f);
 		assertEquals(70.8f, usuarioBase.porcentajeDeCompletitudTotal());
 	}
+	
 }

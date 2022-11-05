@@ -2,8 +2,6 @@ package elementosDelSistema;
 
 import java.time.LocalDate;
 import accionesDeProyecto.EstadoDelDesafio;
-import accionesDeProyecto.EstadoEnCurso;
-import accionesDeProyecto.EstadoFinalizado;
 import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.ValoracionDesafio;
@@ -17,15 +15,16 @@ public class Desafio {
 	EstadoDelDesafio estadoDelDesafio = new EstadoNoRealizado();
 	LocalDate fechaActual = LocalDate.now();
 	RestriccionTemporal restriccion;
-	boolean desafioRestingido = true;
+	boolean desafioRestringido = false;
 	private ValoracionDesafio valoracion;
+
+
 	
-	
-	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion) {
-		this.muestrasARecolectar = muestrasARecolectar;
-		this.dificultad = dificultad;
-		this.restriccion = restriccion;
-	}
+//	public Desafio(int muestrasARecolectar, int dificultad, RestriccionTemporal restriccion, AreaGeografica areaGeografica) {
+//		this.muestrasARecolectar = muestrasARecolectar;
+//		this.dificultad = dificultad;
+//		this.restriccion = restriccion;
+//	}
 	
 	public Desafio(int muestrasARecolectar, int dificultad, int recompensa, RestriccionTemporal restriccion, AreaGeografica area) {
 		this.muestrasARecolectar = muestrasARecolectar;
@@ -36,53 +35,46 @@ public class Desafio {
 		this.valoracion = new ValoracionDesafio();
 	}
 
-
-	public int getMuestrasARecolectar() {
-		return muestrasARecolectar;
-	}
 	
 	public int getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
 	}
 
-
-	public boolean isDesafioRestingido() {
-		return desafioRestingido;
+	public int getMuestrasARecolectar() {
+		return muestrasARecolectar;
 	}
 
-
-	public void setDesafioRestingido(boolean desafioRestingido) {
-		this.desafioRestingido = desafioRestingido;
-	}
-
-
-	public RestriccionTemporal getRestriccion() {
-		return restriccion;
-	}
-
-
-	public void setRestriccion(RestriccionTemporal restriccion) {
-		this.restriccion = restriccion;
-	}
-
-
-	public EstadoDelDesafio getEstadoDelDesafio() {
-		return estadoDelDesafio;
-	}
-
-
-	public void setEstadoDelDesafio(EstadoDelDesafio estadoDelDesafio) {
-		this.estadoDelDesafio = estadoDelDesafio;
-	}
-
-	
 	public int getDificultad() {
 		return dificultad;
 	}
 
-
 	public int getRecompensa() {
 		return recompensa;
+	}
+	
+	
+	public boolean isDesafioRestringido() {
+		return desafioRestringido;
+	}
+	
+	public void setDesafioRestringido(boolean desafioRestringido) {
+		this.desafioRestringido = desafioRestringido;
+	}
+	
+	public RestriccionTemporal getRestriccion() {
+		return restriccion;
+	}
+	
+	public void setRestriccion(RestriccionTemporal restriccion) {
+		this.restriccion = restriccion;
+	}
+	
+	public EstadoDelDesafio getEstadoDelDesafio() {
+		return estadoDelDesafio;
+	}
+
+	public void setEstadoDelDesafio(EstadoDelDesafio estadoDelDesafio) {
+		this.estadoDelDesafio = estadoDelDesafio;
 	}
 
 
@@ -90,6 +82,7 @@ public class Desafio {
 		return fechaActual;
 	}
 	
+	// toma el lugar de agregarMuestraRecolectada()
 	public int sumarMuestraCargada() {
 		return muestrasRecolectadas++;
 	}
@@ -101,10 +94,7 @@ public class Desafio {
 	public int getVotacion() {
 		return valoracion.obtenerValoracion();
 	}
-	
-	public void agregarMuestraRecolectada() {
-		muestrasRecolectadas = muestrasRecolectadas + 1;
-	}
+
 	
 	public boolean leFaltanMuestrasARecolectar() {
 		return this.getMuestrasARecolectar() > this.getMuestrasRecolectadas();
@@ -117,4 +107,5 @@ public class Desafio {
 	public float porcentajeDeCompletitud() {
 		return ((float) this.muestrasRecolectadas / this.muestrasARecolectar) * 100;
 	}
+
 }
