@@ -13,7 +13,7 @@ import elementosDelSistema.Proyecto;
 import sistema.CriterioDeBusqueda;
 import sistema.IncluyeCategoria;
 
-class IncluyeCategoriaTest {
+class BusquedaIncluyeCategoriaTest {
 	Proyecto proyecto;
 	Proyecto proyecto1;
 	Proyecto proyecto2;
@@ -65,7 +65,7 @@ class IncluyeCategoriaTest {
 		resultado.add(proyecto);
 		assertEquals(1, resultado.size());
 		assertTrue(resultado.contains(proyecto));
-		//assertEquals(resultado, busquedaConCategoria.getProyectosBuscados("bio"));
+		assertEquals(resultado, busquedaConCategoria.getProyectosBuscados("bio"));
 		
 		
 		List<Proyecto> resultado1 = new ArrayList<Proyecto>();

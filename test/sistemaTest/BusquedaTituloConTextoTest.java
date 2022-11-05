@@ -11,11 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import elementosDelSistema.Proyecto;
 import sistema.CriterioDeBusqueda;
-import sistema.IncluyeCategoria;
 import sistema.TituloConTexto;
 
-class TituloConTextoTest {
-
+class BusquedaTituloConTextoTest {
 	Proyecto proyecto;
 	Proyecto proyecto1;
 	Proyecto proyecto2;

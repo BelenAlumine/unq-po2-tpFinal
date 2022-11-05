@@ -13,8 +13,7 @@ import elementosDelSistema.Proyecto;
 import sistema.CriterioDeBusqueda;
 import sistema.IncluyeCategoria;
 
-class ExcluyeCategoriaTest {
-
+class BusquedaExcluyeCategoriaTest {
 	Proyecto proyecto;
 	Proyecto proyecto1;
 	Proyecto proyecto2;
@@ -79,6 +78,4 @@ class ExcluyeCategoriaTest {
 		assertEquals(null, busquedaConCategoria.getProyectosBuscados("bio"));
 		
 	}
-
-
 }
