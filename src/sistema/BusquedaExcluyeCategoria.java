@@ -5,7 +5,7 @@ import java.util.List;
 import elementosDelSistema.Proyecto;
 
 public class BusquedaExcluyeCategoria extends BuscadorSimple {
-String valorBuscado;
+	String valorBuscado;
 	
 
 	public String getValorBuscado() {

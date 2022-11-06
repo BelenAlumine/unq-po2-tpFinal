@@ -5,12 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-<<<<<<< HEAD
-=======
-
 import elementosDelSistema.AreaGeografica;
->>>>>>> branch 'Carlos' of git@github.com:BelenAlumine/unq-po2-tpFinal.git
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
