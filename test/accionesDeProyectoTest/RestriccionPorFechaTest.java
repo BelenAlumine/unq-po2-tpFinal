@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
+import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;
@@ -19,6 +20,7 @@ import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
 
 class RestriccionPorFechaTest {
+	
 	RestriccionTemporal restriccion;
 	RestriccionTemporal restriccion1;
 	Desafio desafio;
@@ -36,15 +38,15 @@ class RestriccionPorFechaTest {
 		restriccion = new RestriccionPorFecha(LocalDate.of(2022, 1, 1), LocalDate.of(2022, 12, 31));
 		restriccion1 = new RestriccionPorFecha(LocalDate.of(2020,10,12), LocalDate.of(2020, 12, 31));
 		usuario = new Usuario("String", perfil, recomendacion);
-		muestra = new Muestra(usuario);
-		desafio = new Desafio(1, 2, restriccion, areaGeografica);
-		desafio1 = new Desafio(1, 2, restriccion1, areaGeografica);
+		muestra = new Muestra(usuario, areaGeografica);
+		desafio = new Desafio(1, 2, 3, restriccion, areaGeografica);
+		desafio1 = new Desafio(1, 2, 3, restriccion1, areaGeografica);
 		proyecto = new Proyecto("String1", "String2");
 	}
 	
 	@Test
 	void restriccionDelDesafio() {
-		//Por default el desafío no está restringido. Cargo parámetros que contengan en medio la fecha actual. 
+		//Por default el desafio no esta restringido. Cargo parametros que contengan en medio la fecha actual. 
 		assertEquals(false, desafio.isDesafioRestringido());
 		restriccion.restringir(desafio);
 		assertEquals(false, desafio.isDesafioRestringido());

@@ -1,6 +1,9 @@
 package accionesGenerales;
 
 
+import elementosDelSistema.AreaGeografica;
+
+import accionesDeProyecto.EstadoEnCurso;
 
 import accionesDeProyecto.EstadoEnCurso;
 
@@ -23,10 +26,12 @@ public class GeneradorDeMuestra {
 	Muestra muestra;
 	ActualizacionDeDesafio actualizar;
 	
-	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio) {
-		muestra = new Muestra(usuario);
+	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio, AreaGeografica area) {
+		muestra = new Muestra(usuario, area);
 		
 		this.crearMuestra(usuario, proyecto, desafio, muestra); 
+
+
 	}
 	
 	public void crearMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio, Muestra muestra) {

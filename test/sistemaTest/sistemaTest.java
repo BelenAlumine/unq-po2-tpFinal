@@ -33,11 +33,11 @@ class sistemaTest {
 	void setUp(){
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccion = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
-		desafio = new Desafio(1, 2, restriccion, areaGeografica);
+		desafio = new Desafio(1, 2, 3, restriccion, areaGeografica);
 		proyecto = new Proyecto("String1", "String2");
-		perfil = new PerfilUsuario();
+		perfil = new PerfilUsuario(1, 1, 1);
 		usuario = new Usuario("Pedro", perfil, recomendacion);
-		muestra = new Muestra(usuario);
+		muestra = new Muestra(usuario, areaGeografica);
 		sistema = new Sistema();
 	}
 

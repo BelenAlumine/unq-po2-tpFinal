@@ -44,8 +44,8 @@ class ActualizacionDeDesafioTest {
 		restriccion = new RestriccionPorFecha(LocalDate.of(2021, 01, 1), LocalDate.of(2025,3,2));
 		restriccion1 = new RestriccionPorFecha(LocalDate.of(2020, 12, 1), LocalDate.of(2021,3,2));
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
-		desafio = new Desafio(1, 2, restriccion, areaGeografica);
-		desafio1 = new Desafio(1, 2, restriccion1, areaGeografica);
+		desafio = new Desafio(1, 2, 3, restriccion, areaGeografica);
+		desafio1 = new Desafio(1, 2, 3, restriccion1, areaGeografica);
 	}
 	
 	@Test
@@ -68,10 +68,10 @@ class ActualizacionDeDesafioTest {
 	@Test
 	void estadoFinalizado() {
 		//No actualiza porque el estado es finalizado
-		//Acá es test provisorio. Hay que terminar el state.
-		//Porque o sea, el assertEquals es comparando con cero, en el estado finalizado además
+		//AcÃ¡ es test provisorio. Hay que terminar el state.
+		//Porque o sea, el assertEquals es comparando con cero, en el estado finalizado ademï¿½s
 		//de chequear el estado se tiene que cumplir que la cantidad de muestras sea igual a las 
-		//necesarias para pasar el desafío, pero bueno, eso no le interesa a esta parte(?
+		//necesarias para pasar el desafï¿½o, pero bueno, eso no le interesa a esta parte(?
 		desafio.setEstadoDelDesafio(estadoFinalizado); 
 		actualizacion.actualizarDesafio(desafio);
 		assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoFinalizado);

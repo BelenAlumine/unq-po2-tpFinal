@@ -3,10 +3,7 @@ package accionesDeProyecto;
 import elementosDelSistema.Desafio;
 
 public class EstadoFinalizado extends EstadoDelDesafio {
-/**Una vez que el desafío llega al estadoFinalizado ya no puede volver a cambiar. 
- * Este estado habilita al usuario a votar el desafío. 
- */
- 
+	//Una vez que el desafÃ­o llega al estadoFinalizado ya no puede volver a cambiar. 
 
 	@Override
 	public void revisarEstadoDelDesafio(Desafio desafio) {

@@ -29,6 +29,7 @@ class TipoFavorito {
 	Desafio desafio7;
 	RestriccionTemporal restriccionBase;
 	Usuario usuarioBase;
+	AreaGeografica areaGeografica;
 	
 	@BeforeEach
 	void setUp() {
@@ -40,7 +41,7 @@ class TipoFavorito {
 		desafio5 = mock(Desafio.class);
 		desafio6 = mock(Desafio.class);
 		usuarioBase = mock(Usuario.class);
-		desafio7 = new Desafio(7, 3, 10, restriccionBase);
+		desafio7 = new Desafio(7, 3, 10, restriccionBase, areaGeografica);
 	}
 	
 	@Test

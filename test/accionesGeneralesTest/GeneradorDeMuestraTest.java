@@ -26,17 +26,18 @@ class GeneradorDeMuestraTest {
 	RestriccionTemporal restriccionPorFecha;
 	GeneradorDeMuestra generadorDeMuestra;
 	PerfilUsuario perfil;
+
 	ActualizacionDeDesafio actualizacion;
 	RecomendacionDeDesafio recomendacion;
 	
 	@BeforeEach
 	void setup()  {
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
-		perfil = new PerfilUsuario();
+		perfil = new PerfilUsuario(1, 1, 1);
 		usuario = new Usuario("Juancito", perfil, recomendacion);
 		proyecto = new Proyecto("null", "null");
-		//muestra = new Muestra(usuario);
-		desafio = new Desafio(2, 3, restriccionPorFecha, areaGeografica);
+		muestra = new Muestra(usuario, areaGeografica);
+		desafio = new Desafio(2, 3, 1, restriccionPorFecha, areaGeografica);
 		generadorDeMuestra = new GeneradorDeMuestra();
 		actualizacion = new ActualizacionDeDesafio();
 	}
@@ -55,9 +56,8 @@ class GeneradorDeMuestraTest {
 		assertEquals(0, desafio.getMuestrasRecolectadas());
 		
 		//Cambios al generar muestra
-		usuario.generarMuestra(usuario, proyecto, desafio);
+		usuario.generarMuestra(usuario, proyecto, desafio, areaGeografica);
 		assertEquals(1, proyecto.getMuestras().size());
-		//assertEquals(1, desafio.getMuestrasRecolectadas());
 	}
 
 }

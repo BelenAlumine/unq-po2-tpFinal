@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.EstadoDelDesafio;
 import accionesDeProyecto.EstadoEnCurso;
+import accionesDeProyecto.EstadoFinalizado;
 import accionesDeProyecto.EstadoNoRealizado;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
@@ -21,6 +22,7 @@ class EstadoEnCursoTest {
 	Desafio desafio1;
 	EstadoDelDesafio estadoNoRealizado;
 	EstadoDelDesafio estadoEnCurso;
+	EstadoDelDesafio estadoFinalizado;
 	RestriccionTemporal restriccionPorFecha;
 	AreaGeografica areaGeografica;
 	
@@ -28,9 +30,10 @@ class EstadoEnCursoTest {
 	void setup() {
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
-		desafio1 = new Desafio(5, 5, restriccionPorFecha, areaGeografica);
+		desafio1 = new Desafio(5, 5, 5, restriccionPorFecha, areaGeografica);
 		estadoNoRealizado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
+		estadoFinalizado = new EstadoFinalizado();
 	}
 
 	@Test
@@ -41,6 +44,5 @@ class EstadoEnCursoTest {
 		assertFalse(desafio1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
 		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoEnCurso);
 	}
-
 
 }

@@ -5,11 +5,12 @@ import java.time.LocalTime;
 
 public class Muestra {
 	Usuario usuario;
-	//ubicacion: Coordenada
+	AreaGeografica areaGeografica;
 	LocalDate fechaCreacion = LocalDate.now();
 	LocalTime horaDeCreacion = LocalTime.now();
 	
-	public Muestra(Usuario usuario /*ubicacion*/) {
+	public Muestra(Usuario usuario, AreaGeografica ubicacion) {
 		this.usuario = usuario;
+		this.areaGeografica = ubicacion;
 	}
 }

@@ -4,6 +4,11 @@ package elementosDelSistemaTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+<<<<<<< HEAD
+=======
+
+import elementosDelSistema.AreaGeografica;
+>>>>>>> branch 'Carlos' of git@github.com:BelenAlumine/unq-po2-tpFinal.git
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
@@ -14,13 +19,15 @@ class MuestraTest {
 	Muestra muestra;
 	Usuario usuario1;
 	PerfilUsuario perfil;
+	AreaGeografica areaGeografica;
 	RecomendacionDeDesafio recomendacion;
 	
 	@BeforeEach
 	void setup() {
-		perfil = new PerfilUsuario();
+		perfil = new PerfilUsuario(1, 1, 1);
 		usuario1 = new Usuario("Juancito", perfil, recomendacion);
-		muestra = new Muestra(usuario1);
+		areaGeografica = new AreaGeografica(0d, 0d, 0d);
+		muestra = new Muestra(usuario1, areaGeografica);
 	}
 
 	@Test

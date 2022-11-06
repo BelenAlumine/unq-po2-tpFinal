@@ -15,9 +15,14 @@ import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
 
+import static org.mockito.Mockito.*;
+
+import java.time.LocalDate;
+
 class RestriccionPorSemanaTest {
 	RestriccionTemporal restriccion;
-	Desafio desafio;
+	Desafio desafio1;
+	Desafio desafio2;
 	Muestra muestra;
 	Usuario usuario;
 	Proyecto proyecto;
@@ -27,24 +32,33 @@ class RestriccionPorSemanaTest {
 	
 	@BeforeEach
 	void setup() {
+		
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccion = new RestriccionPorSemana();
-		usuario = new Usuario("String", perfil, recomendacion);
-		muestra = new Muestra(usuario);
-		desafio = new Desafio(1, 2, restriccion, areaGeografica);
+		desafio1 = mock(Desafio.class);
+		desafio2 = new Desafio(1, 2, 3, restriccion, areaGeografica);
+
 		proyecto = new Proyecto("String1", "String2");
 	}
-
+	
 	@Test
-	void test() {
-		//Compruebo la restricci髇 inicial, 
-		assertEquals(false, desafio.isDesafioRestringido());
-		assertEquals(false, restriccion.esFinDeSemana(desafio));
-		assertEquals(false, restriccion.esSabado(desafio));
-		assertEquals(false, restriccion.esDomingo(desafio));
-		//compruebo la restriccion
-		restriccion.restringir(desafio);
-		assertEquals(false, desafio.isDesafioRestringido());
+	void testSobreFechaConcreta() {
+		//Compruebo la restricci贸n en un dia particular, un d铆a martes
+		when(desafio1.getFechaActual()).thenReturn(LocalDate.of(2022, 11, 1)); 
+		assertFalse(restriccion.esFinDeSemana(desafio1));
+		assertFalse(restriccion.esSabado(desafio1));
+		assertFalse(restriccion.esDomingo(desafio1));
 		
+	}
+	
+//	@Test
+	void testRestriccionDeSemanaAplicadaADesafio() {
+		// Comprobaci贸n de su estado inicial
+		// Al solo tomar en cuenta el d铆a actual que se toma del desafio, solo en los d铆as de semana el test se va a cumplir
+		assertFalse(desafio2.isDesafioRestringido());
+		
+		// Comprobaci贸n tras aplicar la restricci贸n
+		restriccion.restringir(desafio2);
+		assertTrue(desafio2.isDesafioRestringido());
 	}
 }

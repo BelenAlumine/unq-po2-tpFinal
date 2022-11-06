@@ -35,27 +35,42 @@ class EstadoNoRealizadoTest {
 	
 	@BeforeEach
 	void setup() {
-		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
-		perfil = new PerfilUsuario();
-		usuario = new Usuario("Juancito", perfil, recomendacion);
-		muestra = new Muestra(usuario);
-		muestra0 = new Muestra(usuario);
-		desafioNoRealizado = new EstadoNoRealizado();
-		desafioEnCurso = new EstadoEnCurso();
-		restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
-		desafio = new Desafio(15, 2, restriccionPorFecha, areaGeografica); //desafío de 15 muestras, nivel 3
-		proyecto = new Proyecto("String1", "String2");
-	}
+		Usuario usuario;
+		Desafio desafio;
+		Muestra muestra;
+		Muestra muestra0;
+		RestriccionTemporal restriccionPorFecha;
+		EstadoDelDesafio desafioNoRealizado;
+		EstadoDelDesafio desafioEnCurso;
+		Proyecto proyecto;
+		PerfilUsuario perfil;
+		RecomendacionDeDesafio recomendacion;
+		AreaGeografica areaGeografica;
+		
+		@BeforeEach
+		void setup() {
+			areaGeografica = new AreaGeografica(0.0, 0.0, 1);
+			perfil = new PerfilUsuario(5, 5, 5);
+			usuario = new Usuario("Juancito", perfil, recomendacion);
+			muestra = new Muestra(usuario, areaGeografica);
+			muestra0 = new Muestra(usuario, areaGeografica);
 
-	@Test
-	void test() {
-		assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoNoRealizado);
-	}
-	
-	@Test
-	void cambioDeEstado() {
-		//Acá hay que ver cómo el usuario acepta el desafio, y corroborar que al aceptar cambie de estado
-		desafioNoRealizado.cambiarDeEstado(desafio);
-		assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoEnCurso);
-	}
+			desafioNoRealizado = new EstadoNoRealizado();
+			desafioEnCurso = new EstadoEnCurso();
+			restriccionPorFecha = new RestriccionPorFecha(LocalDate.now(), LocalDate.now());
+			desafio = new Desafio(15, 3, 20, restriccionPorFecha, areaGeografica); //desafÃ­o de 15 muestras, dificultad 3
+			proyecto = new Proyecto("String1", "String2");
+		}
+
+		@Test
+		void test() {
+			assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoNoRealizado);
+		}
+		
+		@Test
+		void cambioDeEstado() {
+			//AcÃ¡ hay que ver como el usuario acepta el desafio, y corroborar que al aceptar cambie de estado
+			desafioNoRealizado.cambiarDeEstado(desafio);
+			assertTrue(desafio.getEstadoDelDesafio() instanceof EstadoEnCurso);
+		}
 }

@@ -6,10 +6,10 @@ import elementosDelSistema.Desafio;
 
 public class ActualizacionDeDesafio {
 	/**
-	 * Clase que actualiza los desafíos cuándo se carga una muestra.
-	 * El método ''agregarMuestra'' en Proyecto utiliza esta clase para chequear el estado del desafio,
+	 * Clase que actualiza los desafÃ­os cuando se carga una muestra.
+	 * El mÃ©todo ''agregarMuestra'' en Proyecto utiliza esta clase para chequear el estado del desafio,
 	 * si este se encuentra en curso, actualiza.
-	 * La actualización debe incrementar en 1 la cantidad de muestras recolectadas.
+	 * La actualizaciÃ³n debe incrementar en 1 la cantidad de muestras recolectadas.
 	 */
 	
 	

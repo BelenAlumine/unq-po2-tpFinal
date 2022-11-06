@@ -63,22 +63,22 @@ class RestriccionCombinadaTest {
 		
 		usuario = new Usuario("String", perfil, recomendacion);
 		
-		muestra = new Muestra(usuario);
+		muestra = new Muestra(usuario, areaGeografica);
 		
-		desafio1 = new Desafio(1, 2, restriccionPorFechaNoRest, areaGeografica);
-		desafio2 = new Desafio(1, 2, restriccionPorFechaRest, areaGeografica);
+		desafio1 = new Desafio(1, 2, 3, restriccionPorFechaNoRest, areaGeografica);
+		desafio2 = new Desafio(1, 2, 3, restriccionPorFechaRest, areaGeografica);
 		
-		desafio3 = new Desafio(1, 2, restriccionPorSemana, areaGeografica);
-		desafio4 = new Desafio(1, 2, restriccionPorFinDeSemana, areaGeografica);
-		desafio5 = new Desafio(1, 2, restriccionCombinadaRest, areaGeografica);
-		desafio6 = new Desafio(1, 2, restriccionCombinadaNoRest, areaGeografica);
+		desafio3 = new Desafio(1, 2, 3, restriccionPorSemana, areaGeografica);
+		desafio4 = new Desafio(1, 2, 3, restriccionPorFinDeSemana, areaGeografica);
+		desafio5 = new Desafio(1, 2, 3, restriccionCombinadaRest, areaGeografica);
+		desafio6 = new Desafio(1, 2, 3, restriccionCombinadaNoRest, areaGeografica);
 		
 		proyecto = new Proyecto("String1", "String2");
 	}
 
 	@Test
 	void agregarRestricciones() {
-		//Creo lista restricciones y le cargo una restricción para comparar en el assert
+		//Creo lista restricciones y le cargo una restricciÃ³n para comparar en el assert
 		List<RestriccionTemporal> restricciones = new ArrayList<RestriccionTemporal>();
 		restricciones.add(restriccionPorFechaRest);
 		//Creo otra lista para comparar que se cargue correctamente
@@ -96,15 +96,19 @@ class RestriccionCombinadaTest {
 	}
 	
 	@Test
-	void chequearRestriccion() {
+	void chequearRestriccionDesafioNoRestringido() {
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorFechaNoRest);
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaNoRest.restringir(desafio1);
 		assertEquals(false, desafio1.isDesafioRestringido());
-		
+	}
+	
+	// El assert se cumple solo en los dias de semana debido al uso del LocalUpdate.now() que se guia por la fecha actual
+	@Test
+	void chequearRestriccionDesafioRestringido() {
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorFechaRest);
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaRest.restringir(desafio2);
-		assertEquals(true, desafio1.isDesafioRestringido());
+		assertEquals(true, desafio2.isDesafioRestringido());
 	}
 }

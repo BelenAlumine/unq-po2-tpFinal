@@ -11,7 +11,7 @@ public abstract class RestriccionTemporal {
 
 	
 	
-	abstract public void restringir(Desafio desafio); 
+	public abstract void restringir(Desafio desafio); 
 	
 	public void agregarRestriccion() {
 		
@@ -26,7 +26,7 @@ public abstract class RestriccionTemporal {
 	}
 
 	public boolean esFinDeSemana(Desafio desafio) {
-		return this.esSabado(desafio) && this.esDomingo(desafio);
+		return this.esSabado(desafio) || this.esDomingo(desafio);
 	}
 
 	public abstract boolean restringido(Desafio desafio);

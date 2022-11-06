@@ -15,9 +15,14 @@ import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
 
+import static org.mockito.Mockito.*;
+
+import java.time.LocalDate;
+
 class RestriccionPorFinDeSemanaTest {
 	RestriccionTemporal restriccion;
-	Desafio desafio;
+	Desafio desafio1;
+	Desafio desafio2;
 	Muestra muestra;
 	Usuario usuario;
 	Proyecto proyecto;
@@ -30,21 +35,29 @@ class RestriccionPorFinDeSemanaTest {
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccion = new RestriccionPorFinDeSemana();
 		usuario = new Usuario("String", perfil, recomendacion);
-		muestra = new Muestra(usuario);
-		desafio = new Desafio(1, 2, restriccion, areaGeografica);
+		muestra = new Muestra(usuario, areaGeografica);
+		desafio1 = mock(Desafio.class);
+		desafio2 = new Desafio(1, 2, 3, restriccion, areaGeografica);
 		proyecto = new Proyecto("String1", "String2");
 	}
 
 	@Test
-	void test() {
-		//Compruebo la restricci�n inicial, 
-		assertEquals(false, desafio.isDesafioRestringido());
-		assertEquals(false, restriccion.esFinDeSemana(desafio));
-		assertEquals(false, restriccion.esSabado(desafio));
-		assertEquals(false, restriccion.esDomingo(desafio));
-		//compruebo la restriccion
-		restriccion.restringir(desafio);
-		assertEquals(true, desafio.isDesafioRestringido());
+	void testSobreComprobacionDeFinDeSemana() {
+		///Compruebo la restricción en un dia particular, un día domingo
+		when(desafio1.getFechaActual()).thenReturn(LocalDate.of(2022, 10, 30));
+		assertTrue(restriccion.esFinDeSemana(desafio1));
+		assertFalse(restriccion.esSabado(desafio1));
+		assertTrue(restriccion.esDomingo(desafio1));
 		
+	}
+	
+//	@Test
+	void testRestrccionFinDeSemanaEnDesafio() {
+		//Comprobación de la restricción inicial,
+		assertFalse(desafio2.isDesafioRestringido());
+		
+		/// Al solo tomar en cuenta el día actual que se toma del desafio, solo en los días de semana el test se va a cumplir
+		restriccion.restringir(desafio2);
+		assertFalse(desafio2.isDesafioRestringido());
 	}
 }

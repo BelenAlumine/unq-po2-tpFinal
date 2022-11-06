@@ -12,7 +12,7 @@ public class RestriccionPorFinDeSemana extends RestriccionTemporal {
 	@Override
 	public void restringir(Desafio desafio) {
 		
-		if (this.esSabado(desafio) || this.esDomingo(desafio)) {
+		if (this.restringido(desafio)) {
 			desafio.setDesafioRestringido(false);
 		} else {
 			desafio.setDesafioRestringido(true);
