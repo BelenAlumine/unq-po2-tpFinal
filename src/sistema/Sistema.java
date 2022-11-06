@@ -48,7 +48,7 @@ public class Sistema {
 	}
 	
 	
-	public List<Proyecto> buscar(String busqueda) {
-		return filtro.buscar(busqueda);
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
+		return filtro.buscar(proyectos);
 	}
 }

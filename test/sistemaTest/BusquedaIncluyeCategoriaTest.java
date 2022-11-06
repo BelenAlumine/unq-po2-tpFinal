@@ -10,19 +10,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import elementosDelSistema.Proyecto;
-import sistema.CriterioDeBusqueda;
-import sistema.IncluyeCategoria;
+import sistema.Busqueda;
+import sistema.BusquedaIncluyeCategoria;
+import sistema.FiltroDeBusqueda;
 
 class BusquedaIncluyeCategoriaTest {
 	Proyecto proyecto;
 	Proyecto proyecto1;
 	Proyecto proyecto2;
-	CriterioDeBusqueda busquedaConCategoria;
+	FiltroDeBusqueda filtro;
+	Busqueda busqueda;
+	BusquedaIncluyeCategoria buscadorCategoria;
+	
 	
 	@BeforeEach
 	void setUp() {
-		busquedaConCategoria = new IncluyeCategoria();
-		
+		buscadorCategoria = new BusquedaIncluyeCategoria();
 		proyecto = new Proyecto("bio", "bio");
 		proyecto1 = new Proyecto("mateqca", "mate");
 		proyecto2 = new Proyecto("bioqca", "qca");
@@ -41,7 +44,8 @@ class BusquedaIncluyeCategoriaTest {
 		List<Proyecto> resultado = new ArrayList<Proyecto>();
 		resultado.add(proyecto);
 		
-		assertEquals(1, resultado.size());
+		
+		/*assertEquals(1, resultado.size());
 		assertTrue(resultado.contains(proyecto));
 		assertEquals(proyecto, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto));
 		///
@@ -56,27 +60,57 @@ class BusquedaIncluyeCategoriaTest {
 		
 		assertEquals(proyecto2, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto2));
 		assertEquals(resultado2, busquedaConCategoria.getProyectosBuscados("bio"));
-		
+		*/
 	}
 	
 	@Test
-	void test() {
+	void busquedaConUnElementoYCoincidencia() {
+		List<Proyecto> proyectosARevisar = new ArrayList<Proyecto>();
 		List<Proyecto> resultado = new ArrayList<Proyecto>();
+		proyectosARevisar.add(proyecto);
 		resultado.add(proyecto);
+		
+		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
+		buscadorCategoria.setValorBuscado("bio");
+		
+		buscadorCategoria.buscar(proyectosARevisar);
+		
 		assertEquals(1, resultado.size());
 		assertTrue(resultado.contains(proyecto));
-		assertEquals(resultado, busquedaConCategoria.getProyectosBuscados("bio"));
-		
-		
-		List<Proyecto> resultado1 = new ArrayList<Proyecto>();
-		resultado.add(proyecto1);
-		assertEquals(null, busquedaConCategoria.getProyectosBuscados("bio"));
-		
-		
-		List<Proyecto> resultado2 = new ArrayList<Proyecto>();
-		resultado.add(proyecto2);
-		assertEquals(resultado2, busquedaConCategoria.getProyectosBuscados("bio"));
+		assertEquals(resultado, buscadorCategoria.getResultadoDeBusqueda());
 		
 	}
 
+	@Test
+	void busquedaConDosElementosYSinCoincidencia() {
+		List<Proyecto> proyectosARevisar = new ArrayList<Proyecto>();
+		List<Proyecto> resultado = new ArrayList<Proyecto>();
+		proyectosARevisar.add(proyecto1);
+		
+		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
+		buscadorCategoria.setValorBuscado("bio");
+		
+		buscadorCategoria.buscar(proyectosARevisar);
+		
+		assertEquals(0, resultado.size());
+		assertFalse(resultado.contains(proyecto1));
+		assertEquals(resultado, buscadorCategoria.getResultadoDeBusqueda());
+	}
+	
+	@Test
+	void busquedaConDosElementosYCoincidencia() {
+		List<Proyecto> proyectosARevisar = new ArrayList<Proyecto>();
+		List<Proyecto> resultado = new ArrayList<Proyecto>();
+		proyectosARevisar.add(proyecto2);
+		resultado.add(proyecto2);
+		
+		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
+		buscadorCategoria.setValorBuscado("bio");
+		
+		buscadorCategoria.buscar(proyectosARevisar);
+		
+		assertEquals(1, resultado.size());
+		assertTrue(resultado.contains(proyecto2));
+		assertEquals(resultado, buscadorCategoria.getResultadoDeBusqueda());
+	}
 }

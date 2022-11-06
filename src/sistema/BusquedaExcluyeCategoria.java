@@ -5,22 +5,30 @@ import java.util.List;
 import elementosDelSistema.Proyecto;
 
 public class BusquedaExcluyeCategoria extends BuscadorSimple {
+	String valorBuscado;
+	
+
+	public String getValorBuscado() {
+		return valorBuscado;
+	}
+
+	public void setValorBuscado(String valorBuscado) {
+		this.valorBuscado = valorBuscado;
+	}
 
 	@Override
-public List<Proyecto> buscar(String busqueda) {
-	for (Proyecto proyecto : proyectos) {
-		this.proyectoIncluyeBusqueda(busqueda, proyecto);
-		resultadoDeBusqueda.add(proyecto);
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
+		for (Proyecto proyecto : proyectos) {
+			this.proyectoExcluyeValor(proyecto, valorBuscado);
+		}
+		return resultadoDeBusqueda;
 	}
-	return resultadoDeBusqueda;
-		
+	
+	public Proyecto proyectoExcluyeValor(Proyecto proyecto, String valorBuscado) {
+		if (!proyecto.getCategorias().contains(valorBuscado)) {
+			resultadoDeBusqueda.add(proyecto);
+			return proyecto;
+		}
+		return null;
 	}
-		
-public Proyecto proyectoIncluyeBusqueda(String busqueda, Proyecto proyecto) {
-	if (!proyecto.getCategorias().contains(busqueda)) {				
-		return proyecto; //proyectosResultantes.add(proyecto);
-	}
-	return null;
-	}
-
 }

@@ -4,28 +4,33 @@ import java.util.List;
 
 import elementosDelSistema.Proyecto;
 
-public class BusquedaTituloConTexto extends BuscadorSimple {
+public class BusquedaTituloConTexto extends BuscadorSimple {	
+	
+	String valorBuscado;
+	
 
-@Override
-public List<Proyecto> buscar(String busqueda) {
-		
-	for (Proyecto proyecto : proyectos) {
-		this.agregar(proyecto, busqueda, resultadoDeBusqueda);
+	public String getValorBuscado() {
+		return valorBuscado;
 	}
-	return resultadoDeBusqueda;
-}
-		
-public List<Proyecto> agregar(Proyecto proyecto, String busqueda, List<Proyecto> resultadoDeBusqueda) {
 
-	if (proyecto.getNombre().contains(busqueda)) {				
-		resultadoDeBusqueda.add(proyecto);
+	public void setValorBuscado(String valorBuscado) {
+		this.valorBuscado = valorBuscado;
 	}
-	return resultadoDeBusqueda;
-}
 
+	@Override
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
+		for (Proyecto proyecto : proyectos) {
+			this.proyectoConValorBuscadoEnTitulo(proyecto, valorBuscado);
+		}
+		return resultadoDeBusqueda;
+	}
+	
+	public Proyecto proyectoConValorBuscadoEnTitulo(Proyecto proyecto, String valorBuscado) {
+		if (proyecto.getNombre().contains(valorBuscado)) {
+			resultadoDeBusqueda.add(proyecto);
+			return proyecto; //proyectosResultantes.add(proyecto);
+		}
+		return null;
+	}
 
-public Proyecto proyectoIncluyeBusqueda(String string, Proyecto proyecto) {
-	// TODO Auto-generated method stub
-	return null;
-}
 }
