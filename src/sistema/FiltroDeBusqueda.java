@@ -6,6 +6,6 @@ import elementosDelSistema.Proyecto;
 
 public interface FiltroDeBusqueda {
 	
-	public abstract List<Proyecto> buscar(String string);
+	public abstract List<Proyecto> buscar(List<Proyecto> proyectos);
 	
 }

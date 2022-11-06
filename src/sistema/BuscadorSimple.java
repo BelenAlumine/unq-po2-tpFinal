@@ -6,6 +6,6 @@ import elementosDelSistema.Proyecto;
 
 public abstract class BuscadorSimple extends Busqueda {
 	
-	public abstract List<Proyecto> buscar(String busqueda);
+	public abstract List<Proyecto> buscar(List<Proyecto> proyectos);
 
 }
