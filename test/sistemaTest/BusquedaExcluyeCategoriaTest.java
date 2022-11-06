@@ -38,30 +38,7 @@ class BusquedaExcluyeCategoriaTest {
 		proyecto2.getCategorias().add("qca");
 		proyecto2.getCategorias().add("bio");
 	}
-	
-	@Test
-	void proyectoIncluye() {
-		List<Proyecto> resultado = new ArrayList<Proyecto>();
-		resultado.add(proyecto);
-		
-		
-		/*assertEquals(1, resultado.size());
-		assertTrue(resultado.contains(proyecto));
-		assertEquals(proyecto, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto));
-		///
-		List<Proyecto> resultado1 = new ArrayList<Proyecto>();
-		resultado.add(proyecto1);
-		
-		assertEquals(resultado1, busquedaConCategoria.getProyectosBuscados("bio"));
-		assertEquals(null, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto1));
-		///
-		List<Proyecto> resultado2 = new ArrayList<Proyecto>();
-		resultado.add(proyecto2);
-		
-		assertEquals(proyecto2, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto2));
-		assertEquals(resultado2, busquedaConCategoria.getProyectosBuscados("bio"));
-		*/
-	}
+
 	
 	@Test
 	void busquedaConUnElementoYCoincidencia() {
@@ -69,7 +46,6 @@ class BusquedaExcluyeCategoriaTest {
 		List<Proyecto> resultado = new ArrayList<Proyecto>();
 		proyectosARevisar.add(proyecto);
 		
-		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
 		buscadorCategoria.setValorBuscado("bio");
 		
 		buscadorCategoria.buscar(proyectosARevisar);
@@ -87,7 +63,6 @@ class BusquedaExcluyeCategoriaTest {
 		proyectosARevisar.add(proyecto1);
 		resultado.add(proyecto1);
 		
-		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
 		buscadorCategoria.setValorBuscado("bio");
 		
 		buscadorCategoria.buscar(proyectosARevisar);
@@ -103,7 +78,6 @@ class BusquedaExcluyeCategoriaTest {
 		List<Proyecto> resultado = new ArrayList<Proyecto>();
 		proyectosARevisar.add(proyecto2);
 		
-		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
 		buscadorCategoria.setValorBuscado("bio");
 		
 		buscadorCategoria.buscar(proyectosARevisar);

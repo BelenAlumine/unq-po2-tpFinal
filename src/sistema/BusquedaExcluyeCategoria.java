@@ -5,17 +5,8 @@ import java.util.List;
 import elementosDelSistema.Proyecto;
 
 public class BusquedaExcluyeCategoria extends BuscadorSimple {
-	String valorBuscado;
 	
-
-	public String getValorBuscado() {
-		return valorBuscado;
-	}
-
-	public void setValorBuscado(String valorBuscado) {
-		this.valorBuscado = valorBuscado;
-	}
-
+	
 	@Override
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		for (Proyecto proyecto : proyectos) {
