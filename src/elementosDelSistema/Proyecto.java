@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Proyecto {
-	String nombre;
-	String descripcion;
-	List<Usuario> participantes = new ArrayList<Usuario>();
-	List<Muestra> muestras = new ArrayList<Muestra>();
-	List<Desafio> desafios = new ArrayList<Desafio>();
-	List<String> categorias = new ArrayList<String>();
+	private String nombre;
+	private String descripcion;
+	private List<Usuario> participantes = new ArrayList<Usuario>();
+	private List<Muestra> muestras = new ArrayList<Muestra>();
+	private List<Desafio> desafios = new ArrayList<Desafio>();
+	private List<String> categorias = new ArrayList<String>();
 	
 	public Proyecto(String nombre, String descripcion) {
 		this.nombre = nombre;

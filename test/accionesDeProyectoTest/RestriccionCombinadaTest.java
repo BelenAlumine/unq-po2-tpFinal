@@ -78,7 +78,7 @@ class RestriccionCombinadaTest {
 
 	@Test
 	void agregarRestricciones() {
-		//Creo lista restricciones y le cargo una restricci�n para comparar en el assert
+		//Creo lista restricciones y le cargo una restricción para comparar en el assert
 		List<RestriccionTemporal> restricciones = new ArrayList<RestriccionTemporal>();
 		restricciones.add(restriccionPorFechaRest);
 		//Creo otra lista para comparar que se cargue correctamente
@@ -96,15 +96,18 @@ class RestriccionCombinadaTest {
 	}
 	
 	@Test
-	void chequearRestriccion() {
+	void chequearRestriccionDesafioNoRestringido() {
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorFechaNoRest);
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaNoRest.restringir(desafio1);
 		assertEquals(false, desafio1.isDesafioRestringido());
-		
+	}
+	
+	@Test
+	void chequearRestriccionDesafioRestringido() {
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorFechaRest);
-		restriccionCombinadaRest.agregarRestriccion(restriccionPorSemana);
+		restriccionCombinadaRest.agregarRestriccion(restriccionPorFinDeSemana);
 		restriccionCombinadaRest.restringir(desafio2);
-		assertEquals(true, desafio1.isDesafioRestringido());
+		assertEquals(true, desafio2.isDesafioRestringido());
 	}
 }

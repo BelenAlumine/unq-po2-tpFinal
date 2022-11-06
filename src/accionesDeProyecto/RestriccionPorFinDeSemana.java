@@ -13,9 +13,9 @@ public class RestriccionPorFinDeSemana extends RestriccionTemporal {
 	public void restringir(Desafio desafio) {
 		
 		if (this.restringido(desafio)) {
-			desafio.setDesafioRestringido(true);
-		} else {
 			desafio.setDesafioRestringido(false);
+		} else {
+			desafio.setDesafioRestringido(true);
 		}
 	}
 

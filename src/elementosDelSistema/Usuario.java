@@ -20,14 +20,6 @@ public class Usuario {
 	GeneradorDeMuestra generadorDeMuestra = new GeneradorDeMuestra();
 	private RecomendacionDeDesafio recomendador;
 
-//	public Usuario(String nombre, PerfilUsuario perfil) {
-//		this.desafiosAceptados = new ArrayList<Desafio>();
-//		this.nombre = nombre;
-//		this.perfil = perfil;
-//		this.muestrasRecolectadas = new ArrayList<Muestra>();
-//		this.recomendador = new RecomendacionDeDesafio();
-//	}
-
 	public Usuario(String nombre, PerfilUsuario perfil, RecomendacionDeDesafio recomendador) {
 		this.desafiosAceptados = new ArrayList<Desafio>();
 		this.nombre = nombre;
@@ -69,6 +61,7 @@ public class Usuario {
 		generadorDeMuestra.generarMuestra(usuario, proyecto, desafio, area);
 	}
 
+	// Método se encarga de que la cantidad a agregar de nuevos desafios no lo haga sobrepasarse de 5 desafios activos, no finalizados
 	public void solicitarNuevosDesafiosRecomendados() {
 		List<Desafio> desafiosActivos = this.getDesafiosAceptados();
 		desafiosActivos.removeAll(this.getDesafiosFinalizados());
