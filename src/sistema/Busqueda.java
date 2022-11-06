@@ -7,8 +7,6 @@ import elementosDelSistema.Proyecto;
 
 public abstract class Busqueda implements FiltroDeBusqueda {
 	List<Proyecto> resultadoDeBusqueda = new ArrayList<Proyecto>();
-	//Sistema sistema = new Sistema();
-	//List<Proyecto> proyectos = sistema.getProyectos();
 	
 	public abstract List<Proyecto> buscar(List<Proyecto> proyectos);
 	

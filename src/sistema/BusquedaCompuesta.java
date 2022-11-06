@@ -9,10 +9,10 @@ public abstract class BusquedaCompuesta extends Busqueda {
 	
 	FiltroDeBusqueda busqueda1;
 	FiltroDeBusqueda busqueda2;
-	List<Proyecto> primerResultado = new ArrayList<Proyecto>();
-	List<Proyecto> segundoResultado = new ArrayList<Proyecto>();
+	List<Proyecto> primerFiltrado = new ArrayList<Proyecto>();
+	List<Proyecto> segundoFiltrado = new ArrayList<Proyecto>();
 	
-	public abstract List<Proyecto> buscar(String busqueda);
+	public abstract List<Proyecto> buscar(List<Proyecto> proyecto);
 	
 	public FiltroDeBusqueda getBusqueda1() {
 		return busqueda1;
@@ -26,20 +26,20 @@ public abstract class BusquedaCompuesta extends Busqueda {
 		this.busqueda1 = busqueda1;
 	}
 
-	public void setPrimerResultado(List<Proyecto> primerResultado) {
-		this.primerResultado = primerResultado;
+	public void setPrimerFiltrado(List<Proyecto> primerResultado) {
+		this.primerFiltrado = primerResultado;
 	}
 
-	public void setSegundoResultado(List<Proyecto> segundoResultado) {
-		this.segundoResultado = segundoResultado;
+	public void setSegundoFiltrado(List<Proyecto> segundoResultado) {
+		this.segundoFiltrado = segundoResultado;
 	}
 
-	public List<Proyecto> getPrimerResultado() {
-		return primerResultado;
+	public List<Proyecto> getPrimerFiltrado() {
+		return primerFiltrado;
 	}
 
-	public List<Proyecto> getSegundoResultado() {
-		return segundoResultado;
+	public List<Proyecto> getSegundoFiltrado() {
+		return segundoFiltrado;
 	}
 
 	public void setBusqueda2(FiltroDeBusqueda busqueda2) {

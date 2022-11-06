@@ -1,32 +1,32 @@
 package sistema;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import elementosDelSistema.Proyecto;
 
 public class OperadorAND extends BusquedaCompuesta {
 
-	public OperadorAND(FiltroDeBusqueda busqueda1, FiltroDeBusqueda busqueda2) {
-		this.busqueda1 = busqueda1;
-		this.busqueda2 = busqueda2;
+	public OperadorAND(FiltroDeBusqueda primerFiltro, FiltroDeBusqueda segundoFiltro) {
+		this.setBusqueda1(primerFiltro);
+		this.setBusqueda2(segundoFiltro);
 	}
 	
 	@Override
-	public List<Proyecto> buscar(String busqueda) {
-		/*FiltroDeBusqueda busqueda1;
-	FiltroDeBusqueda busqueda2;
-	List<Proyecto> primerResultado = new ArrayList<Proyecto>();
-	List<Proyecto> segundoResultado = new ArrayList<Proyecto>();*/
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
+		this.setPrimerFiltrado(this.getBusqueda1().buscar(proyectos)); 
+		this.setSegundoFiltrado(this.getBusqueda2().buscar(proyectos));
+		this.setResultadoDeBusqueda(this.getPrimerFiltrado());
 		
-		
-		/*
-		for (Proyecto proyecto : proyectos) {
-			this.proyectoIncluyeBusqueda(busqueda, proyecto);
-			resultadoDeBusqueda.add(proyecto);
+		for (Proyecto proyecto : this.getSegundoFiltrado()) {
+			this.agregarProyecto(proyecto);
 		}
-		return resultadoDeBusqueda;
-		*/
-		return null;
+		return resultadoDeBusqueda; 
+	}
+
+	public void agregarProyecto(Proyecto proyecto) {
+		if (this.getPrimerFiltrado().contains(proyecto) && !resultadoDeBusqueda.contains(proyecto)) {
+			this.getResultadoDeBusqueda().add(proyecto);
+		}
 	}
 }
