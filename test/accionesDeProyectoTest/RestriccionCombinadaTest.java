@@ -103,10 +103,11 @@ class RestriccionCombinadaTest {
 		assertEquals(false, desafio1.isDesafioRestringido());
 	}
 	
+	// El assert se cumple solo en los dias de semana debido al uso del LocalUpdate.now() que se guia por la fecha actual
 	@Test
 	void chequearRestriccionDesafioRestringido() {
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorFechaRest);
-		restriccionCombinadaRest.agregarRestriccion(restriccionPorFinDeSemana);
+		restriccionCombinadaRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaRest.restringir(desafio2);
 		assertEquals(true, desafio2.isDesafioRestringido());
 	}
