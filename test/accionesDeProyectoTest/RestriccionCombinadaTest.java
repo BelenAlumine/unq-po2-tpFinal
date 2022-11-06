@@ -96,15 +96,18 @@ class RestriccionCombinadaTest {
 	}
 	
 	@Test
-	void chequearRestriccion() {
+	void chequearRestriccionDesafioNoRestringido() {
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorFechaNoRest);
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaNoRest.restringir(desafio1);
 		assertEquals(false, desafio1.isDesafioRestringido());
-		
+	}
+	
+	@Test
+	void chequearRestriccionDesafioRestringido() {
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorFechaRest);
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaRest.restringir(desafio2);
-		assertEquals(true, desafio1.isDesafioRestringido());
+		assertEquals(true, desafio2.isDesafioRestringido());
 	}
 }
