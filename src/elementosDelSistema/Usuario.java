@@ -18,8 +18,9 @@ public class Usuario {
 	private String nombre;
 	private PerfilUsuario perfil;
 	private List<Muestra> muestrasRecolectadas;
-	GeneradorDeMuestra generadorDeMuestra = new GeneradorDeMuestra();
+	private GeneradorDeMuestra generadorDeMuestra = new GeneradorDeMuestra();
 	private RecomendacionDeDesafio recomendador;
+	private List<Proyecto> proyectos;
 
 	public Usuario(String nombre, PerfilUsuario perfil, RecomendacionDeDesafio recomendador) {
 		this.desafiosAceptados = new ArrayList<Desafio>();
@@ -43,6 +44,10 @@ public class Usuario {
 	
 	public List<Desafio> getDesafiosFinalizados() {
 		return desafiosAceptados.stream().filter(desafio -> desafio.esUnDesafioCompletado()).toList();
+	}
+	
+	public void agregarProyecto(Proyecto proyecto) {
+		this.proyectos.add(proyecto);
 	}
 	
 	public float porcentajeDeCompletitudTotal() {
