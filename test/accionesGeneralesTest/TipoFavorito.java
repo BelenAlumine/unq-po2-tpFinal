@@ -3,6 +3,7 @@ package accionesGeneralesTest;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -16,6 +17,7 @@ import accionesGenerales.Favorito;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Usuario;
+
 
 class TipoFavorito {
 

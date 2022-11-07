@@ -5,8 +5,6 @@ import elementosDelSistema.AreaGeografica;
 
 import accionesDeProyecto.EstadoEnCurso;
 
-import accionesDeProyecto.EstadoEnCurso;
-
 //import java.time.LocalDate;
 //import java.time.LocalTime;
 

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
-import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.Muestra;

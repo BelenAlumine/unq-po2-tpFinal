@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import elementosDelSistema.Desafio;
-import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Usuario;
 
 
