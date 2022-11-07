@@ -39,29 +39,6 @@ class BusquedaTituloConTextoTest {
 		proyecto2.getCategorias().add("bio");
 	}
 	
-	@Test
-	void proyectoIncluye() {
-		List<Proyecto> resultado = new ArrayList<Proyecto>();
-		resultado.add(proyecto);
-		
-		
-		/*assertEquals(1, resultado.size());
-		assertTrue(resultado.contains(proyecto));
-		assertEquals(proyecto, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto));
-		///
-		List<Proyecto> resultado1 = new ArrayList<Proyecto>();
-		resultado.add(proyecto1);
-		
-		assertEquals(resultado1, busquedaConCategoria.getProyectosBuscados("bio"));
-		assertEquals(null, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto1));
-		///
-		List<Proyecto> resultado2 = new ArrayList<Proyecto>();
-		resultado.add(proyecto2);
-		
-		assertEquals(proyecto2, busquedaConCategoria.proyectoIncluyeBusqueda("bio", proyecto2));
-		assertEquals(resultado2, busquedaConCategoria.getProyectosBuscados("bio"));
-		*/
-	}
 	
 	@Test
 	void busquedaConCoincidencia() {
@@ -70,7 +47,6 @@ class BusquedaTituloConTextoTest {
 		proyectosARevisar.add(proyecto);
 		resultado.add(proyecto);
 		
-		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
 		buscadorTitulo.setValorBuscado("bio");
 		
 		buscadorTitulo.buscar(proyectosARevisar);
@@ -87,7 +63,6 @@ class BusquedaTituloConTextoTest {
 		List<Proyecto> resultado = new ArrayList<Proyecto>();
 		proyectosARevisar.add(proyecto1);
 		
-		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
 		buscadorTitulo.setValorBuscado("bio");
 		
 		buscadorTitulo.buscar(proyectosARevisar);
@@ -104,7 +79,6 @@ class BusquedaTituloConTextoTest {
 		proyectosARevisar.add(proyecto2);
 		resultado.add(proyecto2);
 		
-		//buscadorCategoria = new BusquedaIncluyeCategoria(proyectosARevisar);
 		buscadorTitulo.setValorBuscado("bio");
 		
 		buscadorTitulo.buscar(proyectosARevisar);
