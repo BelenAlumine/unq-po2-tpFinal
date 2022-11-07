@@ -20,7 +20,7 @@ public class Usuario {
 	private List<Muestra> muestrasRecolectadas;
 	private GeneradorDeMuestra generadorDeMuestra = new GeneradorDeMuestra();
 	private RecomendacionDeDesafio recomendador;
-	private List<Proyecto> proyectos;
+	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Usuario(String nombre, PerfilUsuario perfil, RecomendacionDeDesafio recomendador) {
 		this.desafiosAceptados = new ArrayList<Desafio>();
