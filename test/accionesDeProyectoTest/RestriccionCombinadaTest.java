@@ -29,12 +29,12 @@ class RestriccionCombinadaTest {
 	PerfilUsuario perfil;
 	RecomendacionDeDesafio recomendacion;
 	
-	RestriccionTemporal restriccionPorFechaNoRest;
-	RestriccionTemporal restriccionPorFechaRest;
-	RestriccionTemporal restriccionPorSemana;
-	RestriccionTemporal restriccionPorFinDeSemana;
-	RestriccionTemporal restriccionCombinadaRest;
-	RestriccionTemporal restriccionCombinadaNoRest;
+	RestriccionPorFecha restriccionPorFechaNoRest;
+	RestriccionPorFecha restriccionPorFechaRest;
+	RestriccionPorSemana restriccionPorSemana;
+	RestriccionPorFinDeSemana restriccionPorFinDeSemana;
+	RestriccionCombinada restriccionCombinadaRest;
+	RestriccionCombinada restriccionCombinadaNoRest;
 	
 	Usuario usuario;
 	
