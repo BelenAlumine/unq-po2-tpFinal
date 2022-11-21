@@ -47,9 +47,9 @@ class BusquedaIncluyeCategoriaTest {
 		proyectosARevisar.add(proyecto);
 		resultado.add(proyecto);
 		
-		buscadorCategoria.setValorBuscado("bio");
-		
-		buscadorCategoria.buscar(proyectosARevisar);
+		buscadorCategoria.buscar("bio", proyectosARevisar);
+		//buscadorCategoria.setValorBuscado("bio");		
+		//buscadorCategoria.buscar(proyectosARevisar);
 		
 		assertEquals(1, resultado.size());
 		assertTrue(resultado.contains(proyecto));
@@ -63,9 +63,9 @@ class BusquedaIncluyeCategoriaTest {
 		List<Proyecto> resultado = new ArrayList<Proyecto>();
 		proyectosARevisar.add(proyecto1);
 		
-		buscadorCategoria.setValorBuscado("bio");
-		
-		buscadorCategoria.buscar(proyectosARevisar);
+		buscadorCategoria.buscar("bio", proyectosARevisar);
+		//buscadorCategoria.setValorBuscado("bio");
+		//buscadorCategoria.buscar(proyectosARevisar);
 		
 		assertEquals(0, resultado.size());
 		assertFalse(resultado.contains(proyecto1));
@@ -79,9 +79,9 @@ class BusquedaIncluyeCategoriaTest {
 		proyectosARevisar.add(proyecto2);
 		resultado.add(proyecto2);
 		
-		buscadorCategoria.setValorBuscado("bio");
-		
-		buscadorCategoria.buscar(proyectosARevisar);
+		buscadorCategoria.buscar("bio", proyectosARevisar);
+		//buscadorCategoria.setValorBuscado("bio");		
+		//buscadorCategoria.buscar(proyectosARevisar);
 		
 		assertEquals(1, resultado.size());
 		assertTrue(resultado.contains(proyecto2));

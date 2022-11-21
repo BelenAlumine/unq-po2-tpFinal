@@ -47,9 +47,9 @@ class BusquedaTituloConTextoTest {
 		proyectosARevisar.add(proyecto);
 		resultado.add(proyecto);
 		
-		buscadorTitulo.setValorBuscado("bio");
-		
-		buscadorTitulo.buscar(proyectosARevisar);
+		buscadorTitulo.buscar("bio", proyectosARevisar);
+		//buscadorTitulo.setValorBuscado("bio");
+		//buscadorTitulo.buscar(proyectosARevisar);
 		
 		assertEquals(1, resultado.size());
 		assertTrue(resultado.contains(proyecto));
@@ -63,9 +63,9 @@ class BusquedaTituloConTextoTest {
 		List<Proyecto> resultado = new ArrayList<Proyecto>();
 		proyectosARevisar.add(proyecto1);
 		
-		buscadorTitulo.setValorBuscado("bio");
-		
-		buscadorTitulo.buscar(proyectosARevisar);
+		buscadorTitulo.buscar("bio", proyectosARevisar);
+		//buscadorTitulo.setValorBuscado("bio");
+		//buscadorTitulo.buscar(proyectosARevisar);
 		
 		assertEquals(0, resultado.size());
 		assertFalse(resultado.contains(proyecto1));
@@ -79,9 +79,9 @@ class BusquedaTituloConTextoTest {
 		proyectosARevisar.add(proyecto2);
 		resultado.add(proyecto2);
 		
-		buscadorTitulo.setValorBuscado("bio");
-		
-		buscadorTitulo.buscar(proyectosARevisar);
+		buscadorTitulo.buscar("bio", proyectosARevisar);
+		//buscadorTitulo.setValorBuscado("bio");
+		//buscadorTitulo.buscar(proyectosARevisar);
 		
 		assertEquals(1, resultado.size());
 		assertTrue(resultado.contains(proyecto2));
