@@ -7,6 +7,7 @@ import elementosDelSistema.Proyecto;
 
 public abstract class BusquedaCompuesta extends Busqueda {
 	
+	
 	FiltroDeBusqueda busqueda1;
 	FiltroDeBusqueda busqueda2;
 	List<Proyecto> primerFiltrado = new ArrayList<Proyecto>();
@@ -45,6 +46,4 @@ public abstract class BusquedaCompuesta extends Busqueda {
 	public void setBusqueda2(FiltroDeBusqueda busqueda2) {
 		this.busqueda2 = busqueda2;
 	}
-	
-	
 }
