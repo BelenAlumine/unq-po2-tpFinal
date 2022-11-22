@@ -1,6 +1,8 @@
 package accionesDeProyectoTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
 import elementosDelSistema.Usuario;
+
+import static org.mockito.Mockito.*;
 
 class RestriccionCombinadaTest {
 	
@@ -46,11 +50,12 @@ class RestriccionCombinadaTest {
 	Desafio desafio4;
 	Desafio desafio5;
 	Desafio desafio6;
+	Desafio desafioMock;
 	
 	Proyecto proyecto;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() {
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		
 		restriccionPorFechaNoRest = new RestriccionPorFecha(LocalDate.of(2022, 1, 1), LocalDate.of(2022, 12, 31));
@@ -73,8 +78,11 @@ class RestriccionCombinadaTest {
 		desafio5 = new Desafio(1, 2, 3, restriccionCombinadaRest, areaGeografica);
 		desafio6 = new Desafio(1, 2, 3, restriccionCombinadaNoRest, areaGeografica);
 		
+		desafioMock = mock(Desafio.class);
+		
 		proyecto = new Proyecto("String1", "String2");
 	}
+//		when(desafio1.getFechaActual()).thenReturn(LocalDate.of(2022, 10, 30));
 
 	@Test
 	void agregarRestricciones() {
@@ -100,7 +108,9 @@ class RestriccionCombinadaTest {
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorFechaNoRest);
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaNoRest.restringir(desafio1);
-		assertEquals(false, desafio1.isDesafioRestringido());
+		
+		when(desafioMock.getFechaActual()).thenReturn(LocalDate.of(2022, 9, 22));
+		assertEquals(false, desafioMock.isDesafioRestringido());
 	}
 	
 	// El assert se cumple solo en los dias de semana debido al uso del LocalUpdate.now() que se guia por la fecha actual
@@ -109,6 +119,8 @@ class RestriccionCombinadaTest {
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorFechaRest);
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorSemana);
 		restriccionCombinadaRest.restringir(desafio2);
+		
+		when(desafioMock.getFechaActual()).thenReturn(LocalDate.of(2022, 11, 22));
 		assertEquals(true, desafio2.isDesafioRestringido());
 	}
 }
