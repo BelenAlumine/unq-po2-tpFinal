@@ -13,19 +13,24 @@ public class OperadorOR extends BusquedaCompuesta {
 	
 	@Override
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		this.setPrimerFiltrado(this.getBusqueda1().buscar(proyectos));
-		this.setSegundoFiltrado(this.getBusqueda2().buscar(proyectos));
-		this.setResultadoDeBusqueda(this.getPrimerFiltrado());
+		this.getPrimerFiltrado().addAll(this.getBusqueda1().buscar(proyectos));
+		this.getSegundoFiltrado().addAll(this.getBusqueda2().buscar(proyectos));
 		
-		for (Proyecto proyecto : this.getSegundoFiltrado()) {
+		for (Proyecto proyecto : proyectos) {
 			this.agregarProyecto(proyecto);
-		}
-		return resultadoDeBusqueda; 
+		} 
+		return this.getResultadoDeBusqueda();
 	}
 
 	public void agregarProyecto(Proyecto proyecto) {
-		if (!this.getPrimerFiltrado().contains(proyecto) && !resultadoDeBusqueda.contains(proyecto)) {
+		if(primerFiltrado.contains(proyecto) || segundoFiltrado.contains(proyecto)) {
 			this.getResultadoDeBusqueda().add(proyecto);
-		}
+		} 
+	}
+
+	@Override
+	public List<Proyecto> buscar(String valorBuscado, List<Proyecto> proyectos) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

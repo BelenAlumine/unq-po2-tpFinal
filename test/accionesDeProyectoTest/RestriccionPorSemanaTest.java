@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionPorSemana;
-import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
@@ -20,7 +19,7 @@ import static org.mockito.Mockito.*;
 import java.time.LocalDate;
 
 class RestriccionPorSemanaTest {
-	RestriccionTemporal restriccion;
+	RestriccionPorSemana restriccion;
 	Desafio desafio1;
 	Desafio desafio2;
 	Muestra muestra;

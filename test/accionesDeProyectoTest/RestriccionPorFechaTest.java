@@ -1,6 +1,5 @@
 package accionesDeProyectoTest;
 
-
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionPorFecha;
-import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
@@ -20,8 +18,8 @@ import elementosDelSistema.Usuario;
 
 class RestriccionPorFechaTest {
 	
-	RestriccionTemporal restriccion;
-	RestriccionTemporal restriccion1;
+	RestriccionPorFecha restriccion;
+	RestriccionPorFecha restriccion1;
 	Desafio desafio;
 	Desafio desafio1;
 	Muestra muestra;

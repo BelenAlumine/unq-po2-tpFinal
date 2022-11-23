@@ -3,7 +3,7 @@ package accionesDeProyecto;
 
 import elementosDelSistema.Desafio;
 
-public class RestriccionPorFinDeSemana extends RestriccionTemporal {
+public class RestriccionPorFinDeSemana extends RestriccionTemporalSimple  {
 	
 	public RestriccionPorFinDeSemana() {
 		
@@ -25,14 +25,8 @@ public class RestriccionPorFinDeSemana extends RestriccionTemporal {
 	}
 
 	@Override
-	public void agregarRestriccion(RestriccionTemporal restriccionPorFechaRest) {
+	public void agregarRestriccion(RestriccionTemporal restriccionPorSemana) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public Object getRestricciones() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

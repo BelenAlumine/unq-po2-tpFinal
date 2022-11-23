@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import elementosDelSistema.Desafio;
 
-public class RestriccionPorFecha extends RestriccionTemporal{
+public class RestriccionPorFecha extends RestriccionTemporalSimple {
 	LocalDate inicioRestriccion;
 	LocalDate finRestriccion;
 	
@@ -40,17 +40,8 @@ public class RestriccionPorFecha extends RestriccionTemporal{
 
 
 	@Override
-	public void agregarRestriccion(RestriccionTemporal restriccionPorFechaRest) {
+	public void agregarRestriccion(RestriccionTemporal restriccionPorSemana) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-	@Override
-	public Object getRestricciones() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 }

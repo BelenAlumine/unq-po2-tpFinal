@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import accionesDeProyecto.RestriccionPorFinDeSemana;
-import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
@@ -20,7 +19,7 @@ import static org.mockito.Mockito.*;
 import java.time.LocalDate;
 
 class RestriccionPorFinDeSemanaTest {
-	RestriccionTemporal restriccion;
+	RestriccionPorFinDeSemana restriccion;
 	Desafio desafio1;
 	Desafio desafio2;
 	Muestra muestra;
@@ -51,13 +50,14 @@ class RestriccionPorFinDeSemanaTest {
 		
 	}
 	
-//	@Test
+	@Test
 	void testRestrccionFinDeSemanaEnDesafio() {
 		//Comprobación de la restricción inicial,
-		assertFalse(desafio2.isDesafioRestringido());
+		assertFalse(desafio1.isDesafioRestringido());
 		
-		/// Al solo tomar en cuenta el día actual que se toma del desafio, solo en los días de semana el test se va a cumplir
-		restriccion.restringir(desafio2);
-		assertFalse(desafio2.isDesafioRestringido());
+		//compruebo cambio con m�todo restringir
+		when(desafio1.getFechaActual()).thenReturn(LocalDate.of(2022, 10, 30));
+		restriccion.restringir(desafio1);
+		assertFalse(desafio1.isDesafioRestringido());
 	}
 }
