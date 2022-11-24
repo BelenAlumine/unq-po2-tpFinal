@@ -9,6 +9,7 @@ import accionesDeProyecto.RestriccionPorSemana;
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
@@ -22,6 +23,7 @@ class RestriccionPorSemanaTest {
 	RestriccionPorSemana restriccion;
 	Desafio desafio1;
 	Desafio desafio2;
+	DesafioDeUsuario desafioUsuario2;
 	Muestra muestra;
 	Usuario usuario;
 	Proyecto proyecto;
@@ -36,6 +38,7 @@ class RestriccionPorSemanaTest {
 		restriccion = new RestriccionPorSemana();
 		desafio1 = mock(Desafio.class);
 		desafio2 = new Desafio(1, 2, 3, restriccion, areaGeografica);
+		desafioUsuario2 = new DesafioDeUsuario(desafio2);
 
 		proyecto = new Proyecto("String1", "String2");
 	}
@@ -54,10 +57,10 @@ class RestriccionPorSemanaTest {
 	void testRestriccionDeSemanaAplicadaADesafio() {
 		// Comprobación de su estado inicial
 		// Al solo tomar en cuenta el día actual que se toma del desafio, solo en los días de semana el test se va a cumplir
-		assertFalse(desafio2.isDesafioRestringido());
+		assertFalse(desafioUsuario2.isDesafioRestringido());
 		
 		// Comprobación tras aplicar la restricción
-		restriccion.restringir(desafio2);
-		assertTrue(desafio2.isDesafioRestringido());
+		restriccion.restringir(desafioUsuario2);
+		assertTrue(desafioUsuario2.isDesafioRestringido());
 	}
 }

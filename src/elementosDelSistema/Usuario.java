@@ -13,7 +13,7 @@ import accionesDeProyecto.EstadoDelDesafio;
 
 public class Usuario {
 
-	private List<Desafio> desafiosAceptados;
+	private List<DesafioDeUsuario> desafiosAceptados;
 	private String nombre;
 	private PerfilUsuario perfil;
 	private List<Muestra> muestrasRecolectadas;
@@ -22,7 +22,7 @@ public class Usuario {
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Usuario(String nombre, PerfilUsuario perfil, RecomendacionDeDesafio recomendador) {
-		this.desafiosAceptados = new ArrayList<Desafio>();
+		this.desafiosAceptados = new ArrayList<DesafioDeUsuario>();
 		this.nombre = nombre;
 		this.perfil = perfil;
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
@@ -37,52 +37,63 @@ public class Usuario {
 		return perfil;
 	}
 	
-	public List<Desafio> getDesafiosAceptados() {
+	public List<DesafioDeUsuario> getDesafiosAceptados() {
 		return desafiosAceptados;
 	}
 	
-	public List<Desafio> getDesafiosFinalizados() {
+	public List<DesafioDeUsuario> getDesafiosFinalizados() {
 		return desafiosAceptados.stream().filter(desafio -> desafio.esUnDesafioCompletado()).toList();
 	}
+	
+	// Metodos con que reemplazar --------------------------------------------------------------
+	
+	public float porcentajeDeCompletitudTotal() {
+		float sumaDePorcentajes = 0;
+		for (DesafioDeUsuario desafio : this.getDesafiosAceptados()) {
+			sumaDePorcentajes = sumaDePorcentajes + desafio.porcentajeDeCompletitud();
+		}
+		return sumaDePorcentajes / this.getDesafiosAceptados().size();
+	}
+
+	
+	public float porcentajeCompletitudDeDesafio(DesafioDeUsuario desafio) {
+		return desafio.porcentajeDeCompletitud();
+	}
+	
+	// Deberia recibir un DesafioDeUsuario en su lugar dado que ya no tiene sentido recibir desafio
+//	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio, AreaGeografica area) {
+//		generadorDeMuestra.generarMuestra(usuario, proyecto, desafio, area);
+//	}
+	
+	public void agregarDesafio(DesafioDeUsuario desafio) {
+		desafiosAceptados.add(desafio);
+	}
+		
+	//  -----------------
 	
 	public void agregarProyecto(Proyecto proyecto) {
 		this.proyectos.add(proyecto);
 	}
 	
-	public float porcentajeDeCompletitudTotal() {
-		float sumaDePorcentajes = 0;
-		for (Desafio desafio : this.getDesafiosAceptados()) {
-			sumaDePorcentajes = sumaDePorcentajes + desafio.porcentajeDeCompletitud();
-		}
-		return sumaDePorcentajes / this.getDesafiosAceptados().size();
-	}
 	
-	public float porcentajeCompletitudDeDesafio(Desafio desafio) {
-		return desafio.porcentajeDeCompletitud();
-	}
-
 	
-	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio, AreaGeografica area) {
-		generadorDeMuestra.generarMuestra(usuario, proyecto, desafio, area);
+	public void generarMuestra(Usuario usuario, Proyecto proyecto, DesafioDeUsuario desafio, double latitud, double longitud) {
+		generadorDeMuestra.generarMuestra(usuario, proyecto, desafio, latitud, longitud);
 	}
 
 	// Método se encarga de que la cantidad a agregar de nuevos desafios no lo haga sobrepasarse de 5 desafios activos, no finalizados
 	public void solicitarNuevosDesafiosRecomendados() {
-		List<Desafio> desafiosActivos = this.getDesafiosAceptados();
+		List<DesafioDeUsuario> desafiosActivos = this.getDesafiosAceptados();
 		desafiosActivos.removeAll(this.getDesafiosFinalizados());
-		List<Desafio> desafiosQueAceptar = this.obtenerNuevosDesafios().subList(0, 5 - desafiosActivos.size());
-		for (Desafio desafioActual : desafiosQueAceptar) {
+		List<DesafioDeUsuario> desafiosQueAceptar = this.obtenerNuevosDesafios().subList(0, 5 - desafiosActivos.size());
+		for (DesafioDeUsuario desafioActual : desafiosQueAceptar) {
 			EstadoDelDesafio estadoActual = desafioActual.getEstadoDelDesafio();
 			estadoActual.cambiarDeEstado(desafioActual);
 			agregarDesafio(desafioActual);
 		}
 	}
 	
-	public void agregarDesafio(Desafio desafio) {
-		desafiosAceptados.add(desafio);
-	}
-	
-	public List<Desafio> obtenerNuevosDesafios() {
+	public List<DesafioDeUsuario> obtenerNuevosDesafios() {
 		return recomendador.getRecomendaciones(this);
 	}
 	
@@ -92,10 +103,10 @@ public class Usuario {
 	}
 	
 	public Desafio desafioQueMasLeGusto() {
-		return desafiosAceptados.stream().max(Comparator.comparingInt(Desafio::getVotacion)).get();
+		return desafiosAceptados.stream().max(Comparator.comparingInt(DesafioDeUsuario::getVotacion)).get().getDesafioBase();
 	}
 	
-	public void votarDesafioCon(Desafio desafio, int valoracion) throws Exception {
+	public void votarDesafioCon(DesafioDeUsuario desafio, int valoracion) throws Exception {
 		desafio.agregarVotacion(valoracion);
 	}
 	

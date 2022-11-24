@@ -13,7 +13,7 @@ public class Sistema {
 	List<Muestra> muestras = new ArrayList<Muestra>();
 	List<Usuario> usuarios = new ArrayList<Usuario>();
 	List<Proyecto> proyectos = new ArrayList<Proyecto>();
-	FiltroDeBusqueda filtro;
+//	FiltroDeBusqueda filtro;
 	
 	public List<Desafio> getDesafios() {
 		return desafios;
@@ -51,7 +51,7 @@ public class Sistema {
 		this.filtro = filtro;
 	}*/
 	
-	public List<Proyecto> buscar(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos, Busqueda filtro) {
 		return filtro.buscar(proyectos);
 	}
 }

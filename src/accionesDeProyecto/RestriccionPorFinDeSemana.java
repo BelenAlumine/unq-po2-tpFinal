@@ -1,7 +1,7 @@
 package accionesDeProyecto;
 
 
-import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 
 public class RestriccionPorFinDeSemana extends RestriccionTemporalSimple  {
 	
@@ -10,7 +10,7 @@ public class RestriccionPorFinDeSemana extends RestriccionTemporalSimple  {
 	}
 	
 	@Override
-	public void restringir(Desafio desafio) {
+	public void restringir(DesafioDeUsuario desafio) {
 		
 		if (this.restringido(desafio)) {
 			desafio.setDesafioRestringido(false);
@@ -20,8 +20,8 @@ public class RestriccionPorFinDeSemana extends RestriccionTemporalSimple  {
 	}
 
 	@Override
-	public boolean restringido(Desafio desafio) {
-		return this.esFinDeSemana(desafio);
+	public boolean restringido(DesafioDeUsuario desafio) {
+		return this.esFinDeSemana(desafio.getDesafioBase());
 	}
 
 	@Override

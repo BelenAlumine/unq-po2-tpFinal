@@ -9,6 +9,7 @@ import accionesDeProyecto.RestriccionPorFinDeSemana;
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
@@ -21,7 +22,8 @@ import java.time.LocalDate;
 class RestriccionPorFinDeSemanaTest {
 	RestriccionPorFinDeSemana restriccion;
 	Desafio desafio1;
-	Desafio desafio2;
+//	Desafio desafio2;
+	DesafioDeUsuario desafioUsuario1;
 	Muestra muestra;
 	Usuario usuario;
 	Proyecto proyecto;
@@ -34,10 +36,11 @@ class RestriccionPorFinDeSemanaTest {
 		areaGeografica = new AreaGeografica(0.0, 0.0, 1);
 		restriccion = new RestriccionPorFinDeSemana();
 		usuario = new Usuario("String", perfil, recomendacion);
-		muestra = new Muestra(usuario, areaGeografica);
+		muestra = new Muestra(usuario, 0.0, 1.0);
 		desafio1 = mock(Desafio.class);
-		desafio2 = new Desafio(1, 2, 3, restriccion, areaGeografica);
+//		desafio2 = new Desafio(1, 2, 3, restriccion, areaGeografica);
 		proyecto = new Proyecto("String1", "String2");
+		desafioUsuario1 = new DesafioDeUsuario(desafio1);
 	}
 
 	@Test
@@ -53,11 +56,11 @@ class RestriccionPorFinDeSemanaTest {
 	@Test
 	void testRestrccionFinDeSemanaEnDesafio() {
 		//Comprobación de la restricción inicial,
-		assertFalse(desafio1.isDesafioRestringido());
+		assertFalse(desafioUsuario1.isDesafioRestringido());
 		
-		//compruebo cambio con m�todo restringir
+		//compruebo cambio con metodo restringir
 		when(desafio1.getFechaActual()).thenReturn(LocalDate.of(2022, 10, 30));
-		restriccion.restringir(desafio1);
-		assertFalse(desafio1.isDesafioRestringido());
+		restriccion.restringir(desafioUsuario1);
+		assertFalse(desafioUsuario1.isDesafioRestringido());
 	}
 }

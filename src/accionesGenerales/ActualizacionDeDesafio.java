@@ -3,6 +3,8 @@ package accionesGenerales;
 import accionesDeProyecto.EstadoEnCurso;
 import accionesDeProyecto.RestriccionTemporal;
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
+import elementosDelSistema.Muestra;
 
 public class ActualizacionDeDesafio {
 	/**
@@ -13,14 +15,16 @@ public class ActualizacionDeDesafio {
 	 */
 	
 	
-	public void actualizarDesafio(Desafio desafio) {
-		if (desafio.getEstadoDelDesafio() instanceof EstadoEnCurso) {
+	public void actualizarDesafio(DesafioDeUsuario desafio, Muestra muestra) {
+		boolean esMuestraDeArea = desafio.getDesafioBase().getAreaDeDesafio().seEncuentraEnElArea(muestra.getLatitudMuestra(), muestra.getLongitudMuestra());
+		
+		if (desafio.getEstadoDelDesafio() instanceof EstadoEnCurso && esMuestraDeArea) {
 			desafio.sumarMuestraCargada();
 		}
 	 }
 	
-	public void actualizarMuestrasRecolectadas(Desafio desafio) {
-		RestriccionTemporal restriccion = desafio.getRestriccion();
+	public void actualizarMuestrasRecolectadas(DesafioDeUsuario desafio) {
+		RestriccionTemporal restriccion = desafio.getDesafioBase().getRestriccion();
 		
 		if (!restriccion.restringido(desafio)) {
 			desafio.sumarMuestraCargada();

@@ -12,6 +12,7 @@ import accionesGenerales.GeneradorDeMuestra;
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
@@ -22,6 +23,7 @@ class GeneradorDeMuestraTest {
 	Proyecto proyecto;
 	Muestra muestra;
 	Desafio desafio;
+	DesafioDeUsuario desafioUsuario;
 	AreaGeografica areaGeografica;
 	RestriccionTemporal restriccionPorFecha;
 	GeneradorDeMuestra generadorDeMuestra;
@@ -36,8 +38,9 @@ class GeneradorDeMuestraTest {
 		perfil = new PerfilUsuario(1, 1, 1);
 		usuario = new Usuario("Juancito", perfil, recomendacion);
 		proyecto = new Proyecto("null", "null");
-		muestra = new Muestra(usuario, areaGeografica);
+		muestra = new Muestra(usuario, 0.0, 1.0);
 		desafio = new Desafio(2, 3, 1, restriccionPorFecha, areaGeografica);
+		desafioUsuario = new DesafioDeUsuario(desafio);
 		generadorDeMuestra = new GeneradorDeMuestra();
 		actualizacion = new ActualizacionDeDesafio();
 	}
@@ -45,7 +48,7 @@ class GeneradorDeMuestraTest {
 	@Test 
 	void crearMuestra() {
 		
-		generadorDeMuestra.crearMuestra(usuario, proyecto, desafio, muestra);
+		generadorDeMuestra.crearMuestra(usuario, proyecto, desafioUsuario, muestra);
 		assertEquals(1, proyecto.getMuestras().size());
 	}
 	
@@ -53,10 +56,10 @@ class GeneradorDeMuestraTest {
 	void generarMuestra() {
 		//Estado inicial
 		assertEquals(0, proyecto.getMuestras().size());
-		assertEquals(0, desafio.getMuestrasRecolectadas());
+		assertEquals(0, desafioUsuario.getMuestrasRecolectadas());
 		
 		//Cambios al generar muestra
-		usuario.generarMuestra(usuario, proyecto, desafio, areaGeografica);
+		usuario.generarMuestra(usuario, proyecto, desafioUsuario, 0.0, 1.0);
 		assertEquals(1, proyecto.getMuestras().size());
 	}
 

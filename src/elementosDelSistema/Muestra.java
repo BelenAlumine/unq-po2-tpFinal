@@ -4,13 +4,24 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Muestra {
+	
 	Usuario usuario;
-	AreaGeografica areaGeografica;
+	private double latitudMuestra;
+	private double longitudMuestra;
 	LocalDate fechaCreacion = LocalDate.now();
 	LocalTime horaDeCreacion = LocalTime.now();
 	
-	public Muestra(Usuario usuario, AreaGeografica ubicacion) {
+	public Muestra(Usuario usuario, double latitud, double longitud) {
 		this.usuario = usuario;
-		this.areaGeografica = ubicacion;
+		this.latitudMuestra = latitud;
+		this.longitudMuestra = longitud;
+	}
+	
+	public double getLatitudMuestra() {
+		return latitudMuestra;
+	}
+	
+	public double getLongitudMuestra() {
+		return longitudMuestra;
 	}
 }

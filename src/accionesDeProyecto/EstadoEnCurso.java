@@ -1,6 +1,6 @@
 package accionesDeProyecto;
 
-import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 
 public class EstadoEnCurso extends EstadoDelDesafio {
 	/** Método que calcule el porcentaje de realización del desafío. Info para el usuario
@@ -8,20 +8,20 @@ public class EstadoEnCurso extends EstadoDelDesafio {
 	 *  cuando se logran la cantidad de muestras necesarias. 
 	 */
 		EstadoEnCurso desafioEnCurso;
-		EstadoFinalizado desafioFinalizado;
+		EstadoFinalizado desafioFinalizado = new EstadoFinalizado();
 		
 		@Override
-		public void revisarEstadoDelDesafio(Desafio desafio) {
+		public void revisarEstadoDelDesafio(DesafioDeUsuario desafio) {
 			//Revisar si la cantidad de muestras subidas es igual a las requeridas, si es as�
 			//actualizar el estado, sino dejarlo como esta
-			if (desafio.getMuestrasRecolectadas() == desafio.getMuestrasARecolectar()) {
+			if (desafio.esUnDesafioCompletado()) {
 				this.cambiarDeEstado(desafio);
 			}
 			
 		}
 
 		@Override
-		public void cambiarDeEstado(Desafio desafio) {
+		public void cambiarDeEstado(DesafioDeUsuario desafio) {
 			desafio.setEstadoDelDesafio(desafioFinalizado);
 			
 		}

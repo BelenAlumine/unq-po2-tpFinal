@@ -3,6 +3,7 @@ package accionesDeProyecto;
 import java.time.DayOfWeek;
 
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 
 public abstract class RestriccionTemporalSimple implements RestriccionTemporal {
 	
@@ -19,13 +20,13 @@ public abstract class RestriccionTemporalSimple implements RestriccionTemporal {
 	}
 	
 	@Override
-	public void restringir(Desafio desafio) {
+	public void restringir(DesafioDeUsuario desafio) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean restringido(Desafio desafio) {
+	public boolean restringido(DesafioDeUsuario desafio) {
 		// TODO Auto-generated method stub
 		return false;
 	}

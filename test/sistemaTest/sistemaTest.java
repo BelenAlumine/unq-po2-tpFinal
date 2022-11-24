@@ -37,7 +37,7 @@ class sistemaTest {
 		proyecto = new Proyecto("String1", "String2");
 		perfil = new PerfilUsuario(1, 1, 1);
 		usuario = new Usuario("Pedro", perfil, recomendacion);
-		muestra = new Muestra(usuario, areaGeografica);
+		muestra = new Muestra(usuario, 0.0, 1.0);
 		sistema = new Sistema();
 	}
 

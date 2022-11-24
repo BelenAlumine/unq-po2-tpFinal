@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 
 public class RestriccionCombinada implements RestriccionTemporal {
 	List<RestriccionTemporal> restricciones = new ArrayList<RestriccionTemporal>();
@@ -20,24 +21,24 @@ public class RestriccionCombinada implements RestriccionTemporal {
 	}
 
 	@Override
-	public void restringir(Desafio desafio) {
+	public void restringir(DesafioDeUsuario desafio) {
 		for (RestriccionTemporal restriccion : this.getRestricciones()) {
 			this.restringido(desafio, restriccion);
 		}		
 	}
 
-	public boolean restringido(Desafio desafio, RestriccionTemporal restriccion) {
+	public boolean restringido(DesafioDeUsuario desafio, RestriccionTemporal restriccion) {
 		if(restriccion.restringido(desafio)) {
 			desafio.setDesafioRestringido(true);
 			return true;
 		} else {
 		desafio.setDesafioRestringido(false);
-		return false;
+			return false;
 		}
 	}
 
 	@Override
-	public boolean restringido(Desafio desafio) {
+	public boolean restringido(DesafioDeUsuario desafio) {
 		
 		return false;
 	}

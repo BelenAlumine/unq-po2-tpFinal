@@ -16,6 +16,7 @@ import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.Favorito;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 import elementosDelSistema.Usuario;
 
 
@@ -29,6 +30,7 @@ class TipoFavorito {
 	Desafio desafio5;
 	Desafio desafio6;
 	Desafio desafio7;
+	DesafioDeUsuario desafioUsuario7;
 	RestriccionTemporal restriccionBase;
 	Usuario usuarioBase;
 	AreaGeografica areaGeografica;

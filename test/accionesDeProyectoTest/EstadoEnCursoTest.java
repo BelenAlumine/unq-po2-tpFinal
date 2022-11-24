@@ -16,10 +16,12 @@ import accionesDeProyecto.RestriccionPorFecha;
 import accionesDeProyecto.RestriccionTemporal;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 
 class EstadoEnCursoTest {
 
 	Desafio desafio1;
+	DesafioDeUsuario desafioUsuario1;
 	EstadoDelDesafio estadoNoRealizado;
 	EstadoDelDesafio estadoEnCurso;
 	EstadoDelDesafio estadoFinalizado;
@@ -34,15 +36,30 @@ class EstadoEnCursoTest {
 		estadoNoRealizado = new EstadoNoRealizado();
 		estadoEnCurso = new EstadoEnCurso();
 		estadoFinalizado = new EstadoFinalizado();
+		desafioUsuario1 = new DesafioDeUsuario(desafio1);
 	}
 
 	@Test
 	void validacionDeEstado() {
-		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
+		assertTrue(desafioUsuario1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
 		
-		desafio1.setEstadoDelDesafio(estadoEnCurso);
-		assertFalse(desafio1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
-		assertTrue(desafio1.getEstadoDelDesafio() instanceof EstadoEnCurso);
+		desafioUsuario1.setEstadoDelDesafio(estadoEnCurso);
+		assertFalse(desafioUsuario1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
+		assertTrue(desafioUsuario1.getEstadoDelDesafio() instanceof EstadoEnCurso);
+	}
+	
+	@Test
+	void cambioDeEstadoEnDesafio() {
+		assertTrue(desafioUsuario1.getEstadoDelDesafio() instanceof EstadoNoRealizado);
+		desafioUsuario1.setEstadoDelDesafio(estadoEnCurso);
+		desafioUsuario1.sumarMuestraCargada();
+		desafioUsuario1.sumarMuestraCargada();
+		desafioUsuario1.sumarMuestraCargada();
+		desafioUsuario1.sumarMuestraCargada();
+		desafioUsuario1.sumarMuestraCargada();
+		estadoEnCurso.revisarEstadoDelDesafio(desafioUsuario1);
+		assertFalse(desafioUsuario1.getEstadoDelDesafio() instanceof EstadoEnCurso);
+		assertTrue(desafioUsuario1.getEstadoDelDesafio() instanceof EstadoFinalizado);
 	}
 
 }

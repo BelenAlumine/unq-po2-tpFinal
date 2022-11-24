@@ -19,6 +19,7 @@ import accionesDeProyecto.RestriccionTemporal;
 import accionesGenerales.RecomendacionDeDesafio;
 import elementosDelSistema.AreaGeografica;
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 import elementosDelSistema.Muestra;
 import elementosDelSistema.PerfilUsuario;
 import elementosDelSistema.Proyecto;
@@ -52,6 +53,9 @@ class RestriccionCombinadaTest {
 	Desafio desafio6;
 	Desafio desafioMock;
 	
+	DesafioDeUsuario desafioUsuario1;
+	DesafioDeUsuario desafioUsuario2;
+	
 	Proyecto proyecto;
 	
 	@BeforeEach
@@ -65,10 +69,9 @@ class RestriccionCombinadaTest {
 		restriccionCombinadaRest = new RestriccionCombinada();
 		restriccionCombinadaNoRest = new RestriccionCombinada();
 		
-		
 		usuario = new Usuario("String", perfil, recomendacion);
 		
-		muestra = new Muestra(usuario, areaGeografica);
+		muestra = new Muestra(usuario, 0.0, 1.0);
 		
 		desafio1 = new Desafio(1, 2, 3, restriccionPorFechaNoRest, areaGeografica);
 		desafio2 = new Desafio(1, 2, 3, restriccionPorFechaRest, areaGeografica);
@@ -79,6 +82,8 @@ class RestriccionCombinadaTest {
 		desafio6 = new Desafio(1, 2, 3, restriccionCombinadaNoRest, areaGeografica);
 		
 		desafioMock = mock(Desafio.class);
+		desafioUsuario1 = new DesafioDeUsuario(desafio1);
+		desafioUsuario2 = new DesafioDeUsuario(desafio2);
 		
 		proyecto = new Proyecto("String1", "String2");
 	}
@@ -107,10 +112,10 @@ class RestriccionCombinadaTest {
 	void chequearRestriccionDesafioNoRestringido() {
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorFechaNoRest);
 		restriccionCombinadaNoRest.agregarRestriccion(restriccionPorSemana);
-		restriccionCombinadaNoRest.restringir(desafio1);
+		restriccionCombinadaNoRest.restringir(desafioUsuario1);
 		
-		when(desafioMock.getFechaActual()).thenReturn(LocalDate.of(2022, 9, 22));
-		assertEquals(false, desafioMock.isDesafioRestringido());
+//		when(desafioMock.getFechaActual()).thenReturn(LocalDate.of(2022, 9, 22));
+		assertEquals(false, desafioUsuario1.isDesafioRestringido());
 	}
 	
 	// El assert se cumple solo en los dias de semana debido al uso del LocalUpdate.now() que se guia por la fecha actual
@@ -118,9 +123,9 @@ class RestriccionCombinadaTest {
 	void chequearRestriccionDesafioRestringido() {
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorFechaRest);
 		restriccionCombinadaRest.agregarRestriccion(restriccionPorSemana);
-		restriccionCombinadaRest.restringir(desafio2);
+		restriccionCombinadaRest.restringir(desafioUsuario2);
 		
-		when(desafioMock.getFechaActual()).thenReturn(LocalDate.of(2022, 11, 22));
-		assertEquals(true, desafio2.isDesafioRestringido());
+//		when(desafioMock.getFechaActual()).thenReturn(LocalDate.of(2022, 11, 22));
+		assertEquals(true, desafioUsuario2.isDesafioRestringido());
 	}
 }

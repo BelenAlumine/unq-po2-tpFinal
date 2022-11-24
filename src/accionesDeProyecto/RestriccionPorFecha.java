@@ -3,6 +3,7 @@ package accionesDeProyecto;
 import java.time.LocalDate;
 
 import elementosDelSistema.Desafio;
+import elementosDelSistema.DesafioDeUsuario;
 
 public class RestriccionPorFecha extends RestriccionTemporalSimple {
 	LocalDate inicioRestriccion;
@@ -16,7 +17,7 @@ public class RestriccionPorFecha extends RestriccionTemporalSimple {
 	
 	
 	@Override
-	public void restringir(Desafio desafio) {
+	public void restringir(DesafioDeUsuario desafio) {
 		
 		if (this.restringido(desafio)) {
 			desafio.setDesafioRestringido(true);
@@ -34,8 +35,8 @@ public class RestriccionPorFecha extends RestriccionTemporalSimple {
 	}
 
 	@Override
-	public boolean restringido(Desafio desafio) {
-		return !(this.fechaPreviaAlDesafio(desafio) && this.fechaPosteriorAlDesafio(desafio));
+	public boolean restringido(DesafioDeUsuario desafio) {
+		return !(this.fechaPreviaAlDesafio(desafio.getDesafioBase()) && this.fechaPosteriorAlDesafio(desafio.getDesafioBase()));
 	}
 
 

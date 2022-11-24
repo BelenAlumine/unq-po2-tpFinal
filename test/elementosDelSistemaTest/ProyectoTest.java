@@ -27,7 +27,7 @@ class ProyectoTest {
 		perfil = new PerfilUsuario(1, 1, 1);
 		usuario = new Usuario("Juancito", perfil, recomendacion);
 		areaGeografica = new AreaGeografica(0d, 0d, 0d);
-		arbol = new Muestra(usuario, areaGeografica);
+		arbol = new Muestra(usuario, 0.0, 1.0);
 	}
 
 	@Test

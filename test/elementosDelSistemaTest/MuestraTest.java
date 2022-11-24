@@ -22,7 +22,7 @@ class MuestraTest {
 		perfil = new PerfilUsuario(1, 1, 1);
 		usuario1 = new Usuario("Juancito", perfil, recomendacion);
 		areaGeografica = new AreaGeografica(0d, 0d, 0d);
-		muestra = new Muestra(usuario1, areaGeografica);
+		muestra = new Muestra(usuario1, 0.0, 1.0);
 	}
 
 	@Test
