@@ -1,7 +1,6 @@
 package accionesDeProyecto;
 
 
-import elementosDelSistema.Desafio;
 import elementosDelSistema.DesafioDeUsuario;
 
 public class RestriccionPorSemana extends RestriccionTemporalSimple  {

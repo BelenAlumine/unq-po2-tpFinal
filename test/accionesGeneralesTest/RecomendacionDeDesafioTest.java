@@ -119,16 +119,8 @@ class RecomendacionDeDesafioTest {
 		assertTrue(resultado.stream().anyMatch(d -> d.getDesafioBase().getMuestrasARecolectar() == 3));  // Coincidencia = 6
 		assertTrue(resultado.stream().anyMatch(d -> d.getDesafioBase().getMuestrasARecolectar() == 4));  // Coincidencia = 4
 		
-//		assertTrue(resultado.contains(desafioUsuario1)); // Coincidencia = 8
-//		assertFalse(resultado.contains(desafioUsuario2)); // Coincidencia = 10
-//		assertTrue(resultado.contains(desafioUsuario3)); // Coincidencia = 4
-//		assertTrue(resultado.contains(desafioUsuario4)); // Coincidencia = 4
-//		assertFalse(resultado.contains(desafioUsuario5)); // Coincidencia = 15 
-//		assertTrue(resultado.contains(desafioUsuario6)); // Coincidencia = 6
-//		assertTrue(resultado.contains(desafioUsuario7)); // Coincidencia = 4
 	} 
-	                    // muestras dificultad recompensa
-	// desafio8 = new Desafio(7, 3, 10, restriccionBase, areaGeografica);
+
 	@Test
 	void recomendadosSegunTipoFavorito() throws Exception {
 		usuarioBase.agregarDesafio(desafioUsuario8);
@@ -170,13 +162,7 @@ class RecomendacionDeDesafioTest {
 		assertTrue(resultado.stream().anyMatch(d -> d.getDesafioBase().getMuestrasARecolectar() == 3));  // Similitud = 2.66
 		assertTrue(resultado.stream().anyMatch(d -> d.getDesafioBase().getMuestrasARecolectar() == 4));  // Similitud = 2.33
 		
-//		assertFalse(resultado.contains(desafioUsuario1)); // Similitud = 3
-//		assertTrue(resultado.contains(desafioUsuario2)); // Similitud =  2.33
-//		assertTrue(resultado.contains(desafioUsuario3)); // Similitud =  0.66
-//		assertTrue(resultado.contains(desafioUsuario4)); // Similitud =  1.33
-//		assertFalse(resultado.contains(desafioUsuario5)); // Similitud =  4
-//		assertTrue(resultado.contains(desafioUsuario6)); // Similitud =  2.66
-//		assertTrue(resultado.contains(desafioUsuario7)); // Similitud =  2.33
+
 	}
 
 }

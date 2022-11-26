@@ -53,7 +53,7 @@ class ActualizacionDeDesafioTest {
 		restriccion = new RestriccionPorFecha(LocalDate.of(2021, 01, 1), LocalDate.of(2025,3,2));
 		restriccion1 = new RestriccionPorFecha(LocalDate.of(2020, 12, 1), LocalDate.of(2021,3,2));
 		areaGeografica = new AreaGeografica(8.0, 4.0, 10);
-		desafio = new Desafio(1, 2, 3, restriccion, areaGeografica);
+		desafio = new Desafio(2, 2, 3, restriccion, areaGeografica);
 		desafio1 = new Desafio(1, 2, 3, restriccion, areaGeografica);
 		
 		muestra1 = new Muestra(usuario, 3, 5);
@@ -79,16 +79,26 @@ class ActualizacionDeDesafioTest {
 		actualizacion.actualizarDesafio(desafioUsuario, muestra2);
 		actualizacion.actualizarDesafio(desafioUsuario, muestra3); 
 		assertTrue(desafioUsuario.getEstadoDelDesafio() instanceof EstadoEnCurso);
-		assertEquals(1, desafioUsuario.getMuestrasRecolectadas());	
+		assertEquals(1, desafioUsuario.getMuestrasRecolectadas());
+	}
+	
+	@Test
+	void actualizarDeEstadoEnCursoAFinalizado() {
+		// Actualiza su estado a Finalizado tras almacenar dos muestras que se encuentran en el area del desafio
+		desafioUsuario.setEstadoDelDesafio(estadoEnCurso); 
+		actualizacion.actualizarDesafio(desafioUsuario, muestra2);
+		actualizacion.actualizarDesafio(desafioUsuario, muestra1); 
+		assertEquals(2, desafioUsuario.getMuestrasRecolectadas());
+		assertTrue(desafioUsuario.getEstadoDelDesafio() instanceof EstadoFinalizado);
 	}
 	
 	@Test
 	void estadoFinalizado() {
 		//No actualiza porque el estado es finalizado
 		//Acá es test provisorio. Hay que terminar el state.
-		//Porque o sea, el assertEquals es comparando con cero, en el estado finalizado adem�s
+		//Porque o sea, el assertEquals es comparando con cero, en el estado finalizado ademas
 		//de chequear el estado se tiene que cumplir que la cantidad de muestras sea igual a las 
-		//necesarias para pasar el desaf�o, pero bueno, eso no le interesa a esta parte(?
+		//necesarias para pasar el desafio, pero bueno, eso no le interesa a esta parte(?
 		desafioUsuario.setEstadoDelDesafio(estadoFinalizado); 
 		actualizacion.actualizarDesafio(desafioUsuario, muestra2);
 		assertTrue(desafioUsuario.getEstadoDelDesafio() instanceof EstadoFinalizado);

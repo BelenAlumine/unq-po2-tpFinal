@@ -59,7 +59,6 @@ public class DesafioDeUsuario {
 	// Completitud de desafio
 	
 	public int sumarMuestraCargada() {
-		// Falta la condición para sumar la muestra quizas, o puede que en otro lado
 		return muestrasRecolectadas++;
 	}
 	

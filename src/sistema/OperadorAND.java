@@ -1,5 +1,6 @@
 package sistema;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import elementosDelSistema.Proyecto;
@@ -13,19 +14,22 @@ public class OperadorAND extends BusquedaCompuesta {
 	
 	@Override
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		this.getPrimerFiltrado().addAll(this.getBusqueda1().buscar(proyectos));
-		this.getSegundoFiltrado().addAll(this.getBusqueda2().buscar(proyectos));
+		
+		List<Proyecto> primerFiltrado = new ArrayList<Proyecto>();
+		List<Proyecto> segundoFiltrado = new ArrayList<Proyecto>();
+		primerFiltrado.addAll(this.getBusqueda1().buscar(proyectos));
+		segundoFiltrado.addAll(this.getBusqueda2().buscar(proyectos));
 		
 		for (Proyecto proyecto : primerFiltrado) {
-			this.agregarProyecto(proyecto);
+			if(segundoFiltrado.contains(proyecto)) {
+				this.agregarProyectoFiltradoAResultado(proyecto);
+			}
 		} 
 		return this.getResultadoDeBusqueda();
 	}
 
-	public void agregarProyecto(Proyecto proyecto) {
-		if(segundoFiltrado.contains(proyecto)) {
-			this.getResultadoDeBusqueda().add(proyecto);
-		}
+	public void agregarProyectoFiltradoAResultado(Proyecto proyecto) {
+		this.getResultadoDeBusqueda().add(proyecto);
 	}
 	
 	@Override

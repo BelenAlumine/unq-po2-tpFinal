@@ -3,7 +3,6 @@ package accionesDeProyecto;
 import java.util.ArrayList;
 import java.util.List;
 
-import elementosDelSistema.Desafio;
 import elementosDelSistema.DesafioDeUsuario;
 
 public class RestriccionCombinada implements RestriccionTemporal {

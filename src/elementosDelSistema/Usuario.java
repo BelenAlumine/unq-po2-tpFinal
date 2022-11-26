@@ -41,11 +41,10 @@ public class Usuario {
 		return desafiosAceptados;
 	}
 	
-	public List<DesafioDeUsuario> getDesafiosFinalizados() {
+	public List<DesafioDeUsuario> desafiosCompletos() {
 		return desafiosAceptados.stream().filter(desafio -> desafio.esUnDesafioCompletado()).toList();
 	}
 	
-	// Metodos con que reemplazar --------------------------------------------------------------
 	
 	public float porcentajeDeCompletitudTotal() {
 		float sumaDePorcentajes = 0;
@@ -60,21 +59,15 @@ public class Usuario {
 		return desafio.porcentajeDeCompletitud();
 	}
 	
-	// Deberia recibir un DesafioDeUsuario en su lugar dado que ya no tiene sentido recibir desafio
-//	public void generarMuestra(Usuario usuario, Proyecto proyecto, Desafio desafio, AreaGeografica area) {
-//		generadorDeMuestra.generarMuestra(usuario, proyecto, desafio, area);
-//	}
 	
 	public void agregarDesafio(DesafioDeUsuario desafio) {
 		desafiosAceptados.add(desafio);
 	}
 		
-	//  -----------------
 	
 	public void agregarProyecto(Proyecto proyecto) {
 		this.proyectos.add(proyecto);
 	}
-	
 	
 	
 	public void generarMuestra(Usuario usuario, Proyecto proyecto, DesafioDeUsuario desafio, double latitud, double longitud) {
@@ -84,7 +77,7 @@ public class Usuario {
 	// Método se encarga de que la cantidad a agregar de nuevos desafios no lo haga sobrepasarse de 5 desafios activos, no finalizados
 	public void solicitarNuevosDesafiosRecomendados() {
 		List<DesafioDeUsuario> desafiosActivos = this.getDesafiosAceptados();
-		desafiosActivos.removeAll(this.getDesafiosFinalizados());
+		desafiosActivos.removeAll(this.desafiosCompletos());
 		List<DesafioDeUsuario> desafiosQueAceptar = this.obtenerNuevosDesafios().subList(0, 5 - desafiosActivos.size());
 		for (DesafioDeUsuario desafioActual : desafiosQueAceptar) {
 			EstadoDelDesafio estadoActual = desafioActual.getEstadoDelDesafio();
@@ -96,7 +89,6 @@ public class Usuario {
 	public List<DesafioDeUsuario> obtenerNuevosDesafios() {
 		return recomendador.getRecomendaciones(this);
 	}
-	
 	
 	public void cambiarTipoDeRecomendacion(TipoDeRecomendacion tipoEscogido) {
 		recomendador.setTipoDeRecomendacion(tipoEscogido);

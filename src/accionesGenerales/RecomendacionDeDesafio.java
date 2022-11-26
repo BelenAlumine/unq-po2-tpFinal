@@ -15,8 +15,9 @@ public class RecomendacionDeDesafio {
 	
 	public List<DesafioDeUsuario> getRecomendaciones(Usuario usuarioBase) {
 		List<Desafio> desafiosNoAceptadosPorUsuario = sistemaBase.getDesafios();
-		desafiosNoAceptadosPorUsuario.removeAll(usuarioBase.getDesafiosAceptados());
-		// Cambio efectuado para entregar DesafioDeUsuario en lugar de Desafio 
+		desafiosNoAceptadosPorUsuario.removeAll(usuarioBase.getDesafiosAceptados().stream().map(d -> d.getDesafioBase()).toList());
+		
+		// Cambio efectuado para entregar DesafioDeUsuario en base a los Desafio que resultan recomendados
 		List<Desafio> desafiosBase = recomendacionElegida.desafiosRecomendados(usuarioBase, desafiosNoAceptadosPorUsuario);
 		List<DesafioDeUsuario> desafiosAEntregar = new ArrayList<DesafioDeUsuario>();
 		for (Desafio desafio : desafiosBase) {

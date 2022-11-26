@@ -17,9 +17,11 @@ public class ActualizacionDeDesafio {
 	
 	public void actualizarDesafio(DesafioDeUsuario desafio, Muestra muestra) {
 		boolean esMuestraDeArea = desafio.getDesafioBase().getAreaDeDesafio().seEncuentraEnElArea(muestra.getLatitudMuestra(), muestra.getLongitudMuestra());
+		boolean validoPorRestriccion = !desafio.getDesafioBase().getRestriccion().restringido(desafio);
 		
-		if (desafio.getEstadoDelDesafio() instanceof EstadoEnCurso && esMuestraDeArea) {
+		if (desafio.getEstadoDelDesafio() instanceof EstadoEnCurso && esMuestraDeArea && validoPorRestriccion) {
 			desafio.sumarMuestraCargada();
+			desafio.getEstadoDelDesafio().revisarEstadoDelDesafio(desafio);
 		}
 	 }
 	

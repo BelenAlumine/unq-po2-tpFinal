@@ -25,7 +25,7 @@ public class AreaGeografica {
 	}
 	
 	// Establecer distancia entre el centro y el punto donde estará la muestra
-	
+	// e indicar si se encuentra dentro del area
 	
 	public boolean seEncuentraEnElArea(double latitud, double longitud) {
 		double distLatitud = Math.pow(latitud - this.latitudCentro, 2);

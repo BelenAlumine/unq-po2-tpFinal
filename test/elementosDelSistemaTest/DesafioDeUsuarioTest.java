@@ -43,7 +43,6 @@ class DesafioDeUsuarioTest {
 		estadoEnCurso = new EstadoEnCurso();
 		desafio1 = new Desafio(5, 10, 5, restriccionPorFecha, areaGeografica);
 		desafio2 = new Desafio(5, 5, 5, restriccionPorSemana, areaGeografica);
-		//desafio3 = new Desafio(5, 5, restriccionPorFinDeSemana);
 		
 		desafioUsuario1 = new DesafioDeUsuario(desafio1);
 		desafioUsuario2 = new DesafioDeUsuario(desafio2);

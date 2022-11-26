@@ -1,6 +1,5 @@
 package accionesDeProyecto;
 
-import elementosDelSistema.Desafio;
 import elementosDelSistema.DesafioDeUsuario;
 
 public interface RestriccionTemporal {

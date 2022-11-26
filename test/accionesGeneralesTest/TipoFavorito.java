@@ -1,8 +1,6 @@
 package accionesGeneralesTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.*;
 
 import java.util.Arrays;

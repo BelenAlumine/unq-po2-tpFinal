@@ -1,16 +1,8 @@
 package accionesGenerales;
 
 
-import elementosDelSistema.AreaGeografica;
-
 import accionesDeProyecto.EstadoEnCurso;
 
-//import java.time.LocalDate;
-//import java.time.LocalTime;
-
-
-//import accionesDeProyecto.EstadoDelDesafio;
-//import accionesDeProyecto.EstadoEnCurso;
 import elementosDelSistema.Desafio;
 import elementosDelSistema.DesafioDeUsuario;
 import elementosDelSistema.Muestra;
@@ -29,7 +21,6 @@ public class GeneradorDeMuestra {
 		muestra = new Muestra(usuario, latitud, longitud);
 		
 		this.crearMuestra(usuario, proyecto, desafio, muestra); 
-
 
 	}
 	

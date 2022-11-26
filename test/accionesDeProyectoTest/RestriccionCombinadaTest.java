@@ -87,7 +87,7 @@ class RestriccionCombinadaTest {
 		
 		proyecto = new Proyecto("String1", "String2");
 	}
-//		when(desafio1.getFechaActual()).thenReturn(LocalDate.of(2022, 10, 30));
+
 
 	@Test
 	void agregarRestricciones() {

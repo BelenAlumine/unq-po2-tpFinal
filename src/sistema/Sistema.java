@@ -46,10 +46,7 @@ public class Sistema {
 	public void agregarProyecto(Proyecto proyecto) {
 		this.getProyectos().add(proyecto);
 	}
-	/*
-	public void setFiltro(FiltroDeBusqueda filtro) {
-		this.filtro = filtro;
-	}*/
+
 	
 	public List<Proyecto> buscar(List<Proyecto> proyectos, Busqueda filtro) {
 		return filtro.buscar(proyectos);
